@@ -19,16 +19,32 @@ mixin _$AppStore on _AppStoreBase, Store {
   final _$themeTypeAtom = Atom(name: '_AppStoreBase.themeType');
 
   @override
-  ThemeData get themeType {
+  ThemeData? get themeType {
     _$themeTypeAtom.reportRead();
     return super.themeType;
   }
 
   @override
-  set themeType(ThemeData value) {
+  set themeType(ThemeData? value) {
     _$themeTypeAtom.reportWrite(value, super.themeType, () {
       super.themeType = value;
     });
+  }
+
+  final _$saveThemePreferencesAsyncAction =
+      AsyncAction('_AppStoreBase.saveThemePreferences');
+
+  @override
+  Future saveThemePreferences() {
+    return _$saveThemePreferencesAsyncAction
+        .run(() => super.saveThemePreferences());
+  }
+
+  final _$loadThemeAsyncAction = AsyncAction('_AppStoreBase.loadTheme');
+
+  @override
+  Future<dynamic> loadTheme() {
+    return _$loadThemeAsyncAction.run(() => super.loadTheme());
   }
 
   final _$_AppStoreBaseActionController =

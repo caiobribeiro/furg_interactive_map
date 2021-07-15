@@ -35,6 +35,8 @@ dependencies:
   oktoast: ^3.0.0
   shared_preferences: ^2.0.6
   flutter_triple: ^1.2.1
+  flutter_map: ^0.13.1
+  # latlng: ^0.1.0
 
 dev_dependencies:
   flutter_modular_test: ^1.0.1
