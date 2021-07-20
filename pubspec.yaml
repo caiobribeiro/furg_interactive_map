@@ -37,6 +37,8 @@ dependencies:
   flutter_triple: ^1.2.1
   flutter_map: ^0.13.1
   # latlng: ^0.1.0
+  google_maps_flutter: ^2.0.6
+  google_nav_bar: ^5.0.5
 
 dev_dependencies:
   flutter_modular_test: ^1.0.1

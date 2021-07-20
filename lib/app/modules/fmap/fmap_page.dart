@@ -1,8 +1,7 @@
-import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FmapPage extends StatefulWidget {
   @override
@@ -20,28 +19,22 @@ class FmapPageState extends State<FmapPage> {
     final appBarHeight = appBar.preferredSize.height;
     final statusBarHeight = MediaQuery.of(context).padding.top;
     final deviceHeight = screenHeight - appBarHeight - statusBarHeight;
+    final CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(37.42796133580664, -122.085749655962),
+      zoom: 14.4746,
+    );
+
     return Scaffold(
       appBar: appBar,
       body: Column(
         children: <Widget>[
           Container(
             height: deviceHeight,
-            child: FlutterMap(
-              options: MapOptions(
-                center: LatLng(51.5, -0.09),
-                zoom: 13.0,
-              ),
-              layers: [
-                TileLayerOptions(
-                    urlTemplate:
-                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                    subdomains: ['a', 'b', 'c']),
-                MarkerLayerOptions(
-                  markers: [],
-                ),
-              ],
+            child: GoogleMap(
+              mapType: MapType.normal,
+              initialCameraPosition: _kGooglePlex,
             ),
-          )
+          ),
         ],
       ),
     );
