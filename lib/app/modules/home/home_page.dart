@@ -20,6 +20,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               value: store.appStore.isDark,
               onChanged: (value) {
                 setState(() {
+                  // store.appStore.loadTheme();
                   store.appStore.changeTheme();
                 });
               },

@@ -16,6 +16,7 @@ class _AppWidgetState extends State<AppWidget> {
     return Observer(builder: (_) {
       return MaterialApp(
         title: 'Flutter Slidy',
+        debugShowCheckedModeBanner: false,
         // theme: ThemeData(primarySwatch: Colors.blue),
         theme: store.themeType,
       ).modular();
