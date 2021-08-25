@@ -3,6 +3,9 @@
    <application
         android:label="furg_interactive_map"
         android:icon="@mipmap/ic_launcher">
+        <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               <!-- android:value="Olhe para o outro lado"/> -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
