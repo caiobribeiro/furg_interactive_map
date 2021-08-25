@@ -9,33 +9,33 @@ part of 'fmap_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FmapStore on _FmapStoreBase, Store {
-  final _$polygonsAtom = Atom(name: '_FmapStoreBase.polygons');
+  final _$allBuildingsAtom = Atom(name: '_FmapStoreBase.allBuildings');
 
   @override
-  Set<Polygon> get polygons {
-    _$polygonsAtom.reportRead();
-    return super.polygons;
+  List<Marker> get allBuildings {
+    _$allBuildingsAtom.reportRead();
+    return super.allBuildings;
   }
 
   @override
-  set polygons(Set<Polygon> value) {
-    _$polygonsAtom.reportWrite(value, super.polygons, () {
-      super.polygons = value;
+  set allBuildings(List<Marker> value) {
+    _$allBuildingsAtom.reportWrite(value, super.allBuildings, () {
+      super.allBuildings = value;
     });
   }
 
-  final _$emptyPolygonsAtom = Atom(name: '_FmapStoreBase.emptyPolygons');
+  final _$allBuildingsJsonAtom = Atom(name: '_FmapStoreBase.allBuildingsJson');
 
   @override
-  Set<Polygon> get emptyPolygons {
-    _$emptyPolygonsAtom.reportRead();
-    return super.emptyPolygons;
+  String? get allBuildingsJson {
+    _$allBuildingsJsonAtom.reportRead();
+    return super.allBuildingsJson;
   }
 
   @override
-  set emptyPolygons(Set<Polygon> value) {
-    _$emptyPolygonsAtom.reportWrite(value, super.emptyPolygons, () {
-      super.emptyPolygons = value;
+  set allBuildingsJson(String? value) {
+    _$allBuildingsJsonAtom.reportWrite(value, super.allBuildingsJson, () {
+      super.allBuildingsJson = value;
     });
   }
 
@@ -117,27 +117,12 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
-  final _$fillCampusAsyncAction = AsyncAction('_FmapStoreBase.fillCampus');
+  final _$loadBuildingsAsyncAction =
+      AsyncAction('_FmapStoreBase.loadBuildings');
 
   @override
-  Future<dynamic> fillCampus() {
-    return _$fillCampusAsyncAction.run(() => super.fillCampus());
-  }
-
-  final _$fillCordinatesAsyncAction =
-      AsyncAction('_FmapStoreBase.fillCordinates');
-
-  @override
-  Future<Coordinates> fillCordinates() {
-    return _$fillCordinatesAsyncAction.run(() => super.fillCordinates());
-  }
-
-  final _$loadCoordinatesAsyncAction =
-      AsyncAction('_FmapStoreBase.loadCoordinates');
-
-  @override
-  Future<dynamic> loadCoordinates() {
-    return _$loadCoordinatesAsyncAction.run(() => super.loadCoordinates());
+  Future<dynamic> loadBuildings() {
+    return _$loadBuildingsAsyncAction.run(() => super.loadBuildings());
   }
 
   final _$loadMapStylesAsyncAction =
@@ -155,36 +140,11 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     return _$setMapStyleAsyncAction.run(() => super.setMapStyle());
   }
 
-  final _$_FmapStoreBaseActionController =
-      ActionController(name: '_FmapStoreBase');
-
-  @override
-  dynamic addPolygontest01() {
-    final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
-        name: '_FmapStoreBase.addPolygontest01');
-    try {
-      return super.addPolygontest01();
-    } finally {
-      _$_FmapStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic emptyPolygon() {
-    final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
-        name: '_FmapStoreBase.emptyPolygon');
-    try {
-      return super.emptyPolygon();
-    } finally {
-      _$_FmapStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
-polygons: ${polygons},
-emptyPolygons: ${emptyPolygons},
+allBuildings: ${allBuildings},
+allBuildingsJson: ${allBuildingsJson},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},

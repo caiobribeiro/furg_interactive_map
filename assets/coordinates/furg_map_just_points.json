@@ -1,0 +1,1123 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": " C3 - Centro de Ciências Computacionais"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.072888,
+          -52.168751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": " ICB - Limnologia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076793,
+          -52.170215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anexo 4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075757,
+          -52.166873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anexo Pavilhão 4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075829,
+          -52.166197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aprofurg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07552,
+          -52.164867
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "AQUATEC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.063637,
+          -52.161123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arquivo Geral FURG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073856,
+          -52.163885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auditório do ILA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076847,
+          -52.170655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auditório PROPLAN"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.069993,
+          -52.161927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Biblioteca Centra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075075,
+          -52.167855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Biosul"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.072288,
+          -52.166702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Biotério"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.066606,
+          -52.159433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Café Cultura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.0741,
+          -52.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAIC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07542,
+          -52.171312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEAMECIM"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076138,
+          -52.170323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEILORS 1 - Núcleo Operacional de Triagem "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.069561,
+          -52.159755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEMESUL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076561,
+          -52.167394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CENTECO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07332,
+          -52.167994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Centeco"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073429,
+          -52.171835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Centro de Convivência - CC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074684,
+          -52.166519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Centro Esportivo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.071961,
+          -52.164556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEU 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.077688,
+          -52.170129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEU 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.077525,
+          -52.169673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CEU 3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07798,
+          -52.17014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CIDEC-SUL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073579,
+          -52.160913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CTG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076261,
+          -52.164829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DCE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073534,
+          -52.166229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Deck"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074597,
+          -52.166144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EDGRAF"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073988,
+          -52.162635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Educação Física"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.070452,
+          -52.163692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EQA - Escola de Química e Alimentos - FURG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.072693,
+          -52.167436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EQA LEEB CEAS - FURG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073029,
+          -52.168016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estação de Apoio Antártico - ESANTAR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.067833,
+          -52.162517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Expressão Gráfica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.071815,
+          -52.168665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Galpão Crioulo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.066115,
+          -52.160039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Garagem FURG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07477,
+          -52.163172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hotel de Trânsito"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.077243,
+          -52.165468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ICB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075752,
+          -52.168601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ILA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076397,
+          -52.169797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ILA CAIC 2 (Instituto de Letras e Artes)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.077007,
+          -52.169636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Imef / EE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073693,
+          -52.167029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Instituto de Ciências Biológicas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076188,
+          -52.168906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Instituto de Ciências Humanas e da Inrfomeção -ICHI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075357,
+          -52.170365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Instituto de Letras e Artes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07712,
+          -52.167007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Instituto de Oceanografia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.068811,
+          -52.162914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Laboratório de Análises"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.072229,
+          -52.165827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Laboratório de Engenhaeia Civil"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073675,
+          -52.169078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Laboratório de Esrudos de Oceano e Clima"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.06822,
+          -52.161611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Laboratório de Usinagem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073434,
+          -52.168472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LIFE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073811,
+          -52.168402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manutenção"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07482,
+          -52.163789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manutenção Elétrica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074602,
+          -52.163413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Marcenária FURG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07436,
+          -52.16417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metrologia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073841,
+          -52.168654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NUDESE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073456,
+          -52.162759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "OCEABTEC - Prédio-Padrão 1B"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.06355,
+          -52.16035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oceanogradia Biológica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.06937,
+          -52.160822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oceanografia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.06889,
+          -52.15991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oficinas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075066,
+          -52.164277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oficinas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075443,
+          -52.163569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074697,
+          -52.168761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07448,
+          -52.16793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão 3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075088,
+          -52.168826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão 5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.071325,
+          -52.162233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão 6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076197,
+          -52.167753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pavilhão da Psicologia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074716,
+          -52.169893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "POLICAB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073525,
+          -52.167994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pórtico Av. Roberto Socowski"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.066929,
+          -52.171471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pórtico Rua Padre Nilo Gollo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -52.158456,
+          -32.073375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Prédio da Música"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07397,
+          -52.166471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Prédio das Artes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076679,
+          -52.166905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pró Reitoria de Gestão de Pessoas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.073802,
+          -52.163263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pró Reitorias"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076707,
+          -52.165205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROGRAD - CEFOP"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075466,
+          -52.167453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07485,
+          -52.16455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA - Prédio Multiuso"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07507,
+          -52.162963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA - Prédio Multiuso"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07517,
+          -52.162705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA / CGA - Armazenamento Temporário de Resíduos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075343,
+          -52.162088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA / PU - Manutenção Elétrica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074497,
+          -52.162936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROINFA / PU - Manutenção Elétrica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.074329,
+          -52.163102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PROPLAD"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.075616,
+          -52.164486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reitoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.071965,
+          -52.161155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Restaurante Universitário"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.072979,
+          -52.165951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Restaurante Universitário"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.07511,
+          -52.16661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SEAD"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.076552,
+          -52.170677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SECOM (Secretaria de Comunicação Social)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -32.071788,
+          -52.159626
+        ]
+      }
+    }
+  ]
+}

@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
-import 'package:furg_interactive_map/models/coordinates/coordinates_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FmapPage extends StatefulWidget {
@@ -40,44 +39,11 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
                     store.googleMapController!.complete(controller);
                     store.setMapStyle();
                   },
-                  polygons: store.polygons,
+                  markers: Set.from(store.allBuildings),
                 );
               },
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    store.emptyPolygon();
-                  },
-                  child: const Text('Enabled'),
-                ),
-              ),
-            ],
-          ),
-          // FutureBuilder<Coordinates>(
-          //   future: store.fillCordinates(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       final coordinatesData = snapshot.data;
-          //       return Container(
-          //         child: ListView.builder(
-          //           itemCount: coordinatesData!.features?.length,
-          //           itemBuilder: (BuildContext context, i) {
-          //             return ListTile(
-          //               title: Text(
-          //                   '${coordinatesData.features![i].properties!.name}'),
-          //             );
-          //           },
-          //         ),
-          //       );
-          //     }
-          //     return Text("merda");
-          //   },
-          // ),
         ],
       ),
     );
