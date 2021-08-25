@@ -26,13 +26,18 @@ abstract class _FmapStoreBase with Store {
   @observable
   String? allBuildingsJson;
 
+  @observable
+  bool isAllMarkersFetched = false;
+
   @action
   Future loadBuildings() async {
+    // * Load json file
     allBuildingsJson = await rootBundle
         .loadString('assets/coordinates/furg_map_just_points.json');
+    // * Decode json file
     final jsonMarkers = jsonDecode(allBuildingsJson!);
     var jsonDecodedMarkers = CampusMarkers.fromJson(jsonMarkers);
-    print(jsonDecodedMarkers);
+    // * Create a marker for each building in json file
     for (var i = 0; i < jsonDecodedMarkers.features!.length; i++) {
       allBuildings.add(
         Marker(
@@ -48,6 +53,8 @@ abstract class _FmapStoreBase with Store {
         ),
       );
     }
+    // * Make the map widget visiable
+    return isAllMarkersFetched = !isAllMarkersFetched;
   }
 
   // * Map styles loading part
@@ -61,9 +68,11 @@ abstract class _FmapStoreBase with Store {
   @observable
   String? coordinates;
 
+  // * Define google map controller
   @observable
   Completer<GoogleMapController>? googleMapController = Completer();
 
+  // * Definition of my initial location for map controller
   @observable
   CameraPosition initialCameraPositionSmallHill = CameraPosition(
     target: LatLng(
@@ -73,6 +82,7 @@ abstract class _FmapStoreBase with Store {
     zoom: 14.4746,
   );
 
+  // * Load each map style
   @action
   Future loadMapStyles() async {
     darkMapStyle =
@@ -81,6 +91,7 @@ abstract class _FmapStoreBase with Store {
         await rootBundle.loadString('assets/map_styles/light_map.json');
   }
 
+  // * Set map style based at the app style
   @action
   Future setMapStyle() async {
     final controller = await googleMapController!.future;

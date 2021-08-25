@@ -39,6 +39,22 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$isAllMarkersFetchedAtom =
+      Atom(name: '_FmapStoreBase.isAllMarkersFetched');
+
+  @override
+  bool get isAllMarkersFetched {
+    _$isAllMarkersFetchedAtom.reportRead();
+    return super.isAllMarkersFetched;
+  }
+
+  @override
+  set isAllMarkersFetched(bool value) {
+    _$isAllMarkersFetchedAtom.reportWrite(value, super.isAllMarkersFetched, () {
+      super.isAllMarkersFetched = value;
+    });
+  }
+
   final _$darkMapStyleAtom = Atom(name: '_FmapStoreBase.darkMapStyle');
 
   @override
@@ -145,6 +161,7 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     return '''
 allBuildings: ${allBuildings},
 allBuildingsJson: ${allBuildingsJson},
+isAllMarkersFetched: ${isAllMarkersFetched},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},

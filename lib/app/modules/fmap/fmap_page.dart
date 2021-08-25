@@ -32,15 +32,18 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
             height: deviceHeight,
             child: Observer(
               builder: (_) {
-                return GoogleMap(
-                  mapType: MapType.normal,
-                  initialCameraPosition: store.initialCameraPositionSmallHill,
-                  onMapCreated: (GoogleMapController controller) {
-                    store.googleMapController!.complete(controller);
-                    store.setMapStyle();
-                  },
-                  markers: Set.from(store.allBuildings),
-                );
+                return Visibility(
+                    visible: store.isAllMarkersFetched,
+                    child: GoogleMap(
+                      mapType: MapType.normal,
+                      initialCameraPosition:
+                          store.initialCameraPositionSmallHill,
+                      onMapCreated: (GoogleMapController controller) {
+                        store.googleMapController!.complete(controller);
+                        store.setMapStyle();
+                      },
+                      markers: Set.from(store.allBuildings),
+                    ));
               },
             ),
           ),
