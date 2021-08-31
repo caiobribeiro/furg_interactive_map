@@ -17,6 +17,7 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
     centerTitle: true,
     actions: [],
   );
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -34,15 +35,18 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
               builder: (_) {
                 return Visibility(
                     visible: store.isAllMarkersFetched,
-                    child: GoogleMap(
-                      mapType: MapType.normal,
-                      initialCameraPosition:
-                          store.initialCameraPositionSmallHill,
-                      onMapCreated: (GoogleMapController controller) {
-                        store.googleMapController!.complete(controller);
-                        store.setMapStyle();
-                      },
-                      markers: Set.from(store.allBuildings),
+                    child: Hero(
+                      tag: 'fmap',
+                      child: GoogleMap(
+                        mapType: MapType.normal,
+                        initialCameraPosition:
+                            store.initialCameraPositionSmallHill,
+                        onMapCreated: (GoogleMapController controller) {
+                          store.googleMapController!.complete(controller);
+                          store.setMapStyle();
+                        },
+                        markers: Set.from(store.allBuildings),
+                      ),
                     ));
               },
             ),

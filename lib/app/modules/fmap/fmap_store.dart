@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
@@ -15,6 +16,7 @@ abstract class _FmapStoreBase with Store {
 
   // * Run function when render widget
   _FmapStoreBase(this._appStore) {
+    loadCustomMarker();
     loadMapStyles();
     loadBuildings();
   }
@@ -29,14 +31,29 @@ abstract class _FmapStoreBase with Store {
   @observable
   bool isAllMarkersFetched = false;
 
+  @observable
+  BitmapDescriptor? customIcon;
+
+  // * Load custom markers for each type of building
+  @action
+  Future loadCustomMarker() async {
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration(size: Size(3, 3)), 'assets/markers/marker.png')
+        .then((d) {
+      customIcon = d;
+    });
+  }
+
   @action
   Future loadBuildings() async {
     // * Load json file
     allBuildingsJson = await rootBundle
         .loadString('assets/coordinates/furg_map_just_points.json');
+
     // * Decode json file
     final jsonMarkers = jsonDecode(allBuildingsJson!);
     var jsonDecodedMarkers = CampusMarkers.fromJson(jsonMarkers);
+
     // * Create a marker for each building in json file
     for (var i = 0; i < jsonDecodedMarkers.features!.length; i++) {
       allBuildings.add(
@@ -44,12 +61,17 @@ abstract class _FmapStoreBase with Store {
           markerId:
               MarkerId("${jsonDecodedMarkers.features![i].properties!.name}"),
           draggable: false,
-          onTap: () {
-            print('Maker tapped');
+          onTap: () => {
+            // showModalBottomSheet(
+            //   jsonDecodedMarkers.features![i].properties!.name,
+            //   context: context,
+            //   builder: (context) => ,
+            // ),
           },
           position: LatLng(
-              jsonDecodedMarkers.features![i].geometry!.coordinates!.first,
-              jsonDecodedMarkers.features![i].geometry!.coordinates!.last),
+              jsonDecodedMarkers.features![i].geometry!.coordinates!.last,
+              jsonDecodedMarkers.features![i].geometry!.coordinates!.first),
+          // icon: customIcon!,
         ),
       );
     }

@@ -55,6 +55,21 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$customIconAtom = Atom(name: '_FmapStoreBase.customIcon');
+
+  @override
+  BitmapDescriptor? get customIcon {
+    _$customIconAtom.reportRead();
+    return super.customIcon;
+  }
+
+  @override
+  set customIcon(BitmapDescriptor? value) {
+    _$customIconAtom.reportWrite(value, super.customIcon, () {
+      super.customIcon = value;
+    });
+  }
+
   final _$darkMapStyleAtom = Atom(name: '_FmapStoreBase.darkMapStyle');
 
   @override
@@ -133,6 +148,14 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$loadCustomMarkerAsyncAction =
+      AsyncAction('_FmapStoreBase.loadCustomMarker');
+
+  @override
+  Future<dynamic> loadCustomMarker() {
+    return _$loadCustomMarkerAsyncAction.run(() => super.loadCustomMarker());
+  }
+
   final _$loadBuildingsAsyncAction =
       AsyncAction('_FmapStoreBase.loadBuildings');
 
@@ -162,6 +185,7 @@ mixin _$FmapStore on _FmapStoreBase, Store {
 allBuildings: ${allBuildings},
 allBuildingsJson: ${allBuildingsJson},
 isAllMarkersFetched: ${isAllMarkersFetched},
+customIcon: ${customIcon},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},
