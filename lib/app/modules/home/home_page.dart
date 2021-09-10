@@ -30,19 +30,6 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
           })
         ],
       ),
-      body: Row(
-        children: [
-          Observer(
-            builder: (context) => Text('${store.counter}'),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Modular.to.pushNamed('/auth');
-        },
-        child: Icon(Icons.add),
-      ),
     );
   }
 }

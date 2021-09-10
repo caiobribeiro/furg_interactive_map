@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
+import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:furg_interactive_map/models/coordinates/coordinates_model.dart';
@@ -18,7 +20,11 @@ abstract class _FmapStoreBase with Store {
   _FmapStoreBase(this._appStore) {
     loadCustomMarker();
     loadMapStyles();
-    loadBuildings();
+    if (isPolygon == true) {
+      loadPolygonBuildings();
+    } else {
+      loadBuildings();
+    }
   }
 
   // * Get all markers to fill campus
@@ -33,6 +39,18 @@ abstract class _FmapStoreBase with Store {
 
   @observable
   BitmapDescriptor? customIcon;
+
+  @observable
+  String? allPolygonBuildingsJson;
+
+  @observable
+  List<Polygon> allPolygonBuildings = [];
+
+  @observable
+  Set<Polygon> polygons = HashSet<Polygon>();
+
+  @observable
+  bool isPolygon = true;
 
   // * Load custom markers for each type of building
   @action
@@ -74,6 +92,41 @@ abstract class _FmapStoreBase with Store {
           // icon: customIcon!,
         ),
       );
+    }
+    // * Make the map widget visiable
+    return isAllMarkersFetched = !isAllMarkersFetched;
+  }
+
+  // ! Create a polygon for each building
+  Future loadPolygonBuildings() async {
+    // * Load json file
+    allPolygonBuildingsJson = await rootBundle
+        .loadString('assets/coordinates/polygon_coordinates.json');
+
+    // * Decode json file
+    final jsonPolygons = jsonDecode(allPolygonBuildingsJson!);
+    var jsonDecodedPolygons = PolygonCoordinates.fromJson(jsonPolygons);
+
+    // * Create a marker for each building in json file
+    for (var i = 0; i < jsonDecodedPolygons.features!.length; i++) {
+      List<LatLng> tempPolygonList = [];
+      for (var j = 0;
+          j < jsonDecodedPolygons.features![i].geometry!.coordinates!.length;
+          j++) {
+        print(i);
+        tempPolygonList.add(LatLng(
+            jsonDecodedPolygons.features![i].geometry!.coordinates![j].first,
+            jsonDecodedPolygons.features![i].geometry!.coordinates![j].last));
+        polygons.add(
+          Polygon(
+            polygonId: PolygonId(
+                "jsonDecodedPolygons.features![i].geometry!.coordinates!.length"),
+            points: tempPolygonList,
+            fillColor: Colors.pink,
+            strokeWidth: 2,
+          ),
+        );
+      }
     }
     // * Make the map widget visiable
     return isAllMarkersFetched = !isAllMarkersFetched;

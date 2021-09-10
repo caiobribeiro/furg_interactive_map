@@ -70,6 +70,69 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$allPolygonBuildingsJsonAtom =
+      Atom(name: '_FmapStoreBase.allPolygonBuildingsJson');
+
+  @override
+  String? get allPolygonBuildingsJson {
+    _$allPolygonBuildingsJsonAtom.reportRead();
+    return super.allPolygonBuildingsJson;
+  }
+
+  @override
+  set allPolygonBuildingsJson(String? value) {
+    _$allPolygonBuildingsJsonAtom
+        .reportWrite(value, super.allPolygonBuildingsJson, () {
+      super.allPolygonBuildingsJson = value;
+    });
+  }
+
+  final _$allPolygonBuildingsAtom =
+      Atom(name: '_FmapStoreBase.allPolygonBuildings');
+
+  @override
+  List<Polygon> get allPolygonBuildings {
+    _$allPolygonBuildingsAtom.reportRead();
+    return super.allPolygonBuildings;
+  }
+
+  @override
+  set allPolygonBuildings(List<Polygon> value) {
+    _$allPolygonBuildingsAtom.reportWrite(value, super.allPolygonBuildings, () {
+      super.allPolygonBuildings = value;
+    });
+  }
+
+  final _$polygonsAtom = Atom(name: '_FmapStoreBase.polygons');
+
+  @override
+  Set<Polygon> get polygons {
+    _$polygonsAtom.reportRead();
+    return super.polygons;
+  }
+
+  @override
+  set polygons(Set<Polygon> value) {
+    _$polygonsAtom.reportWrite(value, super.polygons, () {
+      super.polygons = value;
+    });
+  }
+
+  final _$isPolygonAtom = Atom(name: '_FmapStoreBase.isPolygon');
+
+  @override
+  bool get isPolygon {
+    _$isPolygonAtom.reportRead();
+    return super.isPolygon;
+  }
+
+  @override
+  set isPolygon(bool value) {
+    _$isPolygonAtom.reportWrite(value, super.isPolygon, () {
+      super.isPolygon = value;
+    });
+  }
+
   final _$darkMapStyleAtom = Atom(name: '_FmapStoreBase.darkMapStyle');
 
   @override
@@ -186,6 +249,10 @@ allBuildings: ${allBuildings},
 allBuildingsJson: ${allBuildingsJson},
 isAllMarkersFetched: ${isAllMarkersFetched},
 customIcon: ${customIcon},
+allPolygonBuildingsJson: ${allPolygonBuildingsJson},
+allPolygonBuildings: ${allPolygonBuildings},
+polygons: ${polygons},
+isPolygon: ${isPolygon},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},

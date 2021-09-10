@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
+import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FmapPage extends StatefulWidget {
@@ -27,6 +28,7 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
 
     return Scaffold(
       appBar: appBar,
+      drawer: DrawerCustom(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -46,6 +48,7 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
                           store.setMapStyle();
                         },
                         markers: Set.from(store.allBuildings),
+                        polygons: store.polygons,
                       ),
                     ));
               },
