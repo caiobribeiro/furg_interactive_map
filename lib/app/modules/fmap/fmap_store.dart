@@ -7,7 +7,9 @@ import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:furg_interactive_map/models/coordinates/coordinates_model.dart';
+
 import 'package:flutter/services.dart' show rootBundle;
+// import 'package:solid_bottom_sheet/solid_bottom_sheet.dart';
 part 'fmap_store.g.dart';
 
 class FmapStore = _FmapStoreBase with _$FmapStore;
@@ -52,6 +54,9 @@ abstract class _FmapStoreBase with Store {
   @observable
   bool isPolygon = true;
 
+  // * Pass context wiget to store
+  // BuildContext contextoFmap = ;
+
   // * Load custom markers for each type of building
   @action
   Future loadCustomMarker() async {
@@ -80,11 +85,30 @@ abstract class _FmapStoreBase with Store {
               MarkerId("${jsonDecodedMarkers.features![i].properties!.name}"),
           draggable: false,
           onTap: () => {
-            // showModalBottomSheet(
-            //   jsonDecodedMarkers.features![i].properties!.name,
-            //   context: context,
-            //   builder: (context) => ,
-            // ),
+            //   showModalBottomSheet<void>(
+            //     context: context,
+            //     builder: (BuildContext context) {
+            //       return Container(
+            //         height: 200,
+            //         color: Colors.amber,
+            //         child: Center(
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             mainAxisSize: MainAxisSize.min,
+            //             children: <Widget>[
+            //               const Text('Modal BottomSheet'),
+            //               ElevatedButton(
+            //                 child: const Text('Close BottomSheet'),
+            //                 onPressed: () => Navigator.pop(context),
+            //               )
+            //             ],
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            print(
+                "entrei aqui ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___"),
           },
           position: LatLng(
               jsonDecodedMarkers.features![i].geometry!.coordinates!.last,
@@ -101,7 +125,7 @@ abstract class _FmapStoreBase with Store {
   Future loadPolygonBuildings() async {
     // * Load json file
     allPolygonBuildingsJson = await rootBundle
-        .loadString('assets/coordinates/polygon_coordinates.json');
+        .loadString('assets/coordinates/mapa_interativo_furg_att.json');
 
     // * Decode json file
     final jsonPolygons = jsonDecode(allPolygonBuildingsJson!);
@@ -111,19 +135,21 @@ abstract class _FmapStoreBase with Store {
     for (var i = 0; i < jsonDecodedPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
       for (var j = 0;
-          j < jsonDecodedPolygons.features![i].geometry!.coordinates!.length;
+          j < jsonDecodedPolygons.features![i].geometry!.coordinates![0].length;
           j++) {
         print(i);
         tempPolygonList.add(LatLng(
-            jsonDecodedPolygons.features![i].geometry!.coordinates![j].first,
-            jsonDecodedPolygons.features![i].geometry!.coordinates![j].last));
+            jsonDecodedPolygons
+                .features![i].geometry!.coordinates!.single[j].last,
+            jsonDecodedPolygons
+                .features![i].geometry!.coordinates!.single[j].first));
         polygons.add(
           Polygon(
             polygonId: PolygonId(
                 "jsonDecodedPolygons.features![i].geometry!.coordinates!.length"),
             points: tempPolygonList,
-            fillColor: Colors.pink,
-            strokeWidth: 2,
+            fillColor: Colors.greenAccent,
+            strokeWidth: 1,
           ),
         );
       }

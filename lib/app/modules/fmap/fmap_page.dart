@@ -5,6 +5,7 @@ import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:solid_bottom_sheet/solid_bottom_sheet.dart';
 
 class FmapPage extends StatefulWidget {
   @override
@@ -36,21 +37,22 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
             child: Observer(
               builder: (_) {
                 return Visibility(
-                    visible: store.isAllMarkersFetched,
-                    child: Hero(
-                      tag: 'fmap',
-                      child: GoogleMap(
-                        mapType: MapType.normal,
-                        initialCameraPosition:
-                            store.initialCameraPositionSmallHill,
-                        onMapCreated: (GoogleMapController controller) {
-                          store.googleMapController!.complete(controller);
-                          store.setMapStyle();
-                        },
-                        markers: Set.from(store.allBuildings),
-                        polygons: store.polygons,
-                      ),
-                    ));
+                  visible: store.isAllMarkersFetched,
+                  child: Hero(
+                    tag: 'fmap',
+                    child: GoogleMap(
+                      mapType: MapType.normal,
+                      initialCameraPosition:
+                          store.initialCameraPositionSmallHill,
+                      onMapCreated: (GoogleMapController controller) {
+                        store.googleMapController!.complete(controller);
+                        store.setMapStyle();
+                      },
+                      markers: Set.from(store.allBuildings),
+                      polygons: store.polygons,
+                    ),
+                  ),
+                );
               },
             ),
           ),

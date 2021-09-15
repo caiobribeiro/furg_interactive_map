@@ -50,13 +50,12 @@ class Geometry {
   });
 
   final String? type;
-  final List<List<List<double>>>? coordinates;
+  final List<List<double>>? coordinates;
 
   factory Geometry.fromJson(Map<String, dynamic> json) => Geometry(
         type: json["type"],
-        coordinates: List<List<List<double>>>.from(json["coordinates"].map(
-            (x) => List<List<double>>.from(
-                x.map((x) => List<double>.from(x.map((x) => x.toDouble())))))),
+        coordinates: List<List<double>>.from(json["coordinates"]
+            .map((x) => List<double>.from(x.map((x) => x.toDouble())))),
       );
 }
 
@@ -87,7 +86,8 @@ class UmapOptions {
   });
 
   final String? popupShape;
-  final dynamic showLabel;
+  // ignore: unnecessary_question_mark
+  final dynamic? showLabel;
 
   factory UmapOptions.fromJson(Map<String, dynamic> json) => UmapOptions(
         popupShape: json["popupShape"],

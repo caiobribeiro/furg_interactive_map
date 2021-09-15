@@ -265,13 +265,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-  flutter_polyline_points:
-    dependency: "direct main"
-    description:
-      name: flutter_polyline_points
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -283,7 +276,7 @@ packages:
       name: flutter_triple
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -324,13 +317,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  google_nav_bar:
-    dependency: "direct main"
-    description:
-      name: google_nav_bar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.5"
   graphs:
     dependency: transitive
     description:
@@ -658,6 +644,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  solid_bottom_sheet:
+    dependency: "direct main"
+    description:
+      name: solid_bottom_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.10"
   source_gen:
     dependency: transitive
     description:

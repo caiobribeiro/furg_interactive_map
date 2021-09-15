@@ -7,7 +7,7 @@ import 'settingsApp_page.dart';
 class SettingsAppModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => SettingsAppStore(i.get<AppStore>())),
+    Bind.lazySingleton((i) => SettingsAppStore(i.get<AppStore>()))
   ];
 
   @override
