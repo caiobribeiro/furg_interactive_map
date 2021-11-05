@@ -5,7 +5,7 @@
         android:icon="@mipmap/ic_launcher">
         <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyAfVMr3b_o3x8FTAolzuGGDSoyOOM3fLRs"/>
+               android:value="olha o passarinho"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
