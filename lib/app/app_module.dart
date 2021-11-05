@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_module.dart';
+import 'package:furg_interactive_map/app/modules/buildingAndEvents/buildingAndEvents_module.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
 import 'package:furg_interactive_map/app/modules/settings_app/settingsApp_module.dart';
 // import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
@@ -16,5 +17,6 @@ class AppModule extends Module {
     ModuleRoute(Modular.initialRoute, module: AuthModule()),
     ModuleRoute('/fmap', module: FmapModule()),
     ModuleRoute('/settings', module: SettingsAppModule()),
+    ModuleRoute('/building', module: BuildingAndEventsModule()),
   ];
 }

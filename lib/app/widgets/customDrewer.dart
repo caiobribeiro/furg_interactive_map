@@ -9,28 +9,37 @@ class DrawerCustom extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
+          UserAccountsDrawerHeader(
+            accountName: Text('Caio'),
+            accountEmail: Text('caio@mail.com'),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.black,
+            ),
+          ),
+          Center(child: Text("Matérias registradas: 5")),
           const SizedBox(
-            height: 50,
+            height: 10,
           ),
-          IconButton(
-            onPressed: () {
-              Modular.to.pushReplacementNamed('/fmap');
-              Modular.to.pop();
+          ListTile(
+            onTap: () {
+              Modular.to.pushNamed('/fmap');
             },
-            icon: Icon(Icons.shopping_bag),
+            title: Text('Mapa'),
+            leading: Icon(Icons.map),
           ),
-          IconButton(
-            onPressed: () {
+          ListTile(
+            onTap: () {
+              Modular.to.pushNamed('/building');
+            },
+            title: Text('Prédios e Eventos'),
+            leading: Icon(Icons.search_rounded),
+          ),
+          ListTile(
+            onTap: () {
               Modular.to.pushNamed('/settings');
-              Modular.to.pop();
             },
-            icon: Icon(Icons.person),
-          ),
-          IconButton(
-            onPressed: () {
-              Modular.to.navigate('/');
-            },
-            icon: Icon(Icons.exit_to_app),
+            title: Text('Configurações'),
+            leading: Icon(Icons.settings),
           ),
         ],
       ),

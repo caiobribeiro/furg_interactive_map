@@ -7,6 +7,7 @@ import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:furg_interactive_map/models/coordinates/coordinates_model.dart';
+
 import 'package:flutter/services.dart' show rootBundle;
 part 'fmap_store.g.dart';
 
@@ -47,12 +48,59 @@ abstract class _FmapStoreBase with Store {
   List<Polygon> allPolygonBuildings = [];
 
   @observable
+  List<String> allBuildingNames = [];
+
+  @observable
   Set<Polygon> polygons = HashSet<Polygon>();
+
+  @observable
+  var jsonDecodedMarkers;
+
+  @observable
+  var jsonDecodedPolygons;
 
   @observable
   bool isPolygon = true;
 
-  // * Load custom markers for each type of building
+  // * BottomSheet
+
+  @observable
+  bool isBottonSheetActivated = false;
+
+  @computed
+  bool get showBottonSheet => isBottonSheetActivated;
+
+  @action
+  toggleBottonSheet() {
+    isBottonSheetActivated = !isBottonSheetActivated;
+  }
+
+  @observable
+  String? buildingName;
+
+  @observable
+  String? buildingDescription;
+
+  @action
+  updateBuildingInfoBottonSheet(currentName, currentDescription) {
+    buildingName = currentName;
+    buildingDescription = currentDescription;
+  }
+
+  // * API Response
+  @action
+  Future apiResponse() async {
+    // * Load json file
+    allBuildingsJson = await rootBundle
+        .loadString('assets/coordinates/furg_map_just_points.json');
+
+    // * Decode json file
+    final jsonMarkers = jsonDecode(allBuildingsJson!);
+    var jsonDecodedMarkers = CampusMarkers.fromJson(jsonMarkers);
+    return jsonDecodedMarkers;
+  }
+
+  // * Load custom markers
   @action
   Future loadCustomMarker() async {
     BitmapDescriptor.fromAssetImage(
@@ -62,6 +110,7 @@ abstract class _FmapStoreBase with Store {
     });
   }
 
+  // * Load custom markers for each type of building
   @action
   Future loadBuildings() async {
     // * Load json file
@@ -70,21 +119,23 @@ abstract class _FmapStoreBase with Store {
 
     // * Decode json file
     final jsonMarkers = jsonDecode(allBuildingsJson!);
-    var jsonDecodedMarkers = CampusMarkers.fromJson(jsonMarkers);
+    jsonDecodedMarkers = CampusMarkers.fromJson(jsonMarkers);
 
     // * Create a marker for each building in json file
     for (var i = 0; i < jsonDecodedMarkers.features!.length; i++) {
+      if (allBuildingNames.isEmpty) {
+        allBuildingNames.add(jsonDecodedMarkers.features![i].properties!.name);
+      }
       allBuildings.add(
         Marker(
           markerId:
               MarkerId("${jsonDecodedMarkers.features![i].properties!.name}"),
           draggable: false,
+          infoWindow: InfoWindow(
+              title: "${jsonDecodedMarkers.features![i].properties!.name}"),
           onTap: () => {
-            // showModalBottomSheet(
-            //   jsonDecodedMarkers.features![i].properties!.name,
-            //   context: context,
-            //   builder: (context) => ,
-            // ),
+            print(
+                "entrei aqui ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___"),
           },
           position: LatLng(
               jsonDecodedMarkers.features![i].geometry!.coordinates!.last,
@@ -101,29 +152,44 @@ abstract class _FmapStoreBase with Store {
   Future loadPolygonBuildings() async {
     // * Load json file
     allPolygonBuildingsJson = await rootBundle
-        .loadString('assets/coordinates/polygon_coordinates.json');
+        .loadString('assets/coordinates/mapa_interativo_furg_att.json');
 
     // * Decode json file
     final jsonPolygons = jsonDecode(allPolygonBuildingsJson!);
-    var jsonDecodedPolygons = PolygonCoordinates.fromJson(jsonPolygons);
+    jsonDecodedPolygons = PolygonCoordinates.fromJson(jsonPolygons);
 
     // * Create a marker for each building in json file
     for (var i = 0; i < jsonDecodedPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
+      String tempDescription = "Não há descrição";
       for (var j = 0;
-          j < jsonDecodedPolygons.features![i].geometry!.coordinates!.length;
+          j < jsonDecodedPolygons.features![i].geometry!.coordinates![0].length;
           j++) {
-        print(i);
         tempPolygonList.add(LatLng(
-            jsonDecodedPolygons.features![i].geometry!.coordinates![j].first,
-            jsonDecodedPolygons.features![i].geometry!.coordinates![j].last));
+            jsonDecodedPolygons
+                .features![i].geometry!.coordinates!.single[j].last,
+            jsonDecodedPolygons
+                .features![i].geometry!.coordinates!.single[j].first));
+        String tempName = jsonDecodedPolygons.features![i].properties!.name;
+        if (jsonDecodedPolygons.features![i].properties!.description != null) {
+          tempDescription =
+              jsonDecodedPolygons.features![i].properties!.description;
+        }
+
         polygons.add(
           Polygon(
-            polygonId: PolygonId(
-                "jsonDecodedPolygons.features![i].geometry!.coordinates!.length"),
+            consumeTapEvents: true,
+            polygonId: PolygonId(tempName),
             points: tempPolygonList,
-            fillColor: Colors.pink,
-            strokeWidth: 2,
+            fillColor: Colors.greenAccent,
+            strokeWidth: 1,
+            onTap: () {
+              // changeSize();
+              updateBuildingInfoBottonSheet(tempName, tempDescription);
+              if (isBottonSheetActivated == false) {
+                toggleBottonSheet();
+              }
+            },
           ),
         );
       }
@@ -154,7 +220,7 @@ abstract class _FmapStoreBase with Store {
       -32.075526,
       -52.163279,
     ),
-    zoom: 14.4746,
+    zoom: 16.4746,
   );
 
   // * Load each map style

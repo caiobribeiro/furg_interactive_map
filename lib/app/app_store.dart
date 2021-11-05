@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
@@ -14,16 +15,53 @@ class MyTheme {
   // * Iniatilizing light theme
   static ThemeData _buildLightTheme() {
     final base = ThemeData.light();
-    return base;
+    return base.copyWith(
+      colorScheme: ColorScheme(
+        primary: HexColor("#e9c46a"),
+        onPrimary: Colors.black,
+        primaryVariant: Colors.orange,
+        background: Colors.red,
+        onBackground: Colors.black,
+        secondary: Colors.red,
+        onSecondary: Colors.white,
+        secondaryVariant: Colors.deepOrange,
+        error: Colors.black,
+        onError: Colors.white,
+        surface: Colors.white,
+        onSurface: Colors.black,
+        brightness: Brightness.light,
+      ),
+
+      //   elevatedButtonTheme: ElevatedButtonThemeData(
+      //     style: ButtonStyle(
+      //       backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+      //     ),
+      //   ),
+    );
   }
 
   // * Iniatilizing dark theme and changing ElevatedButtonThemeData to fallow the dark theme
   static ThemeData _buildDarkTheme() {
     final base = ThemeData.dark();
     return base.copyWith(
+      colorScheme: ColorScheme(
+        primary: HexColor("#e9c46a"),
+        onPrimary: Colors.black,
+        primaryVariant: Colors.orange,
+        background: Colors.red,
+        onBackground: Colors.black,
+        secondary: Colors.red,
+        onSecondary: Colors.white,
+        secondaryVariant: Colors.deepOrange,
+        error: Colors.black,
+        onError: Colors.white,
+        surface: Colors.white,
+        onSurface: Colors.black,
+        brightness: Brightness.dark,
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
         ),
       ),
     );

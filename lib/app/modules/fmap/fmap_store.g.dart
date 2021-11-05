@@ -9,6 +9,14 @@ part of 'fmap_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FmapStore on _FmapStoreBase, Store {
+  Computed<bool>? _$showBottonSheetComputed;
+
+  @override
+  bool get showBottonSheet =>
+      (_$showBottonSheetComputed ??= Computed<bool>(() => super.showBottonSheet,
+              name: '_FmapStoreBase.showBottonSheet'))
+          .value;
+
   final _$allBuildingsAtom = Atom(name: '_FmapStoreBase.allBuildings');
 
   @override
@@ -103,6 +111,21 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$allBuildingNamesAtom = Atom(name: '_FmapStoreBase.allBuildingNames');
+
+  @override
+  List<String> get allBuildingNames {
+    _$allBuildingNamesAtom.reportRead();
+    return super.allBuildingNames;
+  }
+
+  @override
+  set allBuildingNames(List<String> value) {
+    _$allBuildingNamesAtom.reportWrite(value, super.allBuildingNames, () {
+      super.allBuildingNames = value;
+    });
+  }
+
   final _$polygonsAtom = Atom(name: '_FmapStoreBase.polygons');
 
   @override
@@ -118,6 +141,38 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$jsonDecodedMarkersAtom =
+      Atom(name: '_FmapStoreBase.jsonDecodedMarkers');
+
+  @override
+  dynamic get jsonDecodedMarkers {
+    _$jsonDecodedMarkersAtom.reportRead();
+    return super.jsonDecodedMarkers;
+  }
+
+  @override
+  set jsonDecodedMarkers(dynamic value) {
+    _$jsonDecodedMarkersAtom.reportWrite(value, super.jsonDecodedMarkers, () {
+      super.jsonDecodedMarkers = value;
+    });
+  }
+
+  final _$jsonDecodedPolygonsAtom =
+      Atom(name: '_FmapStoreBase.jsonDecodedPolygons');
+
+  @override
+  dynamic get jsonDecodedPolygons {
+    _$jsonDecodedPolygonsAtom.reportRead();
+    return super.jsonDecodedPolygons;
+  }
+
+  @override
+  set jsonDecodedPolygons(dynamic value) {
+    _$jsonDecodedPolygonsAtom.reportWrite(value, super.jsonDecodedPolygons, () {
+      super.jsonDecodedPolygons = value;
+    });
+  }
+
   final _$isPolygonAtom = Atom(name: '_FmapStoreBase.isPolygon');
 
   @override
@@ -130,6 +185,54 @@ mixin _$FmapStore on _FmapStoreBase, Store {
   set isPolygon(bool value) {
     _$isPolygonAtom.reportWrite(value, super.isPolygon, () {
       super.isPolygon = value;
+    });
+  }
+
+  final _$isBottonSheetActivatedAtom =
+      Atom(name: '_FmapStoreBase.isBottonSheetActivated');
+
+  @override
+  bool get isBottonSheetActivated {
+    _$isBottonSheetActivatedAtom.reportRead();
+    return super.isBottonSheetActivated;
+  }
+
+  @override
+  set isBottonSheetActivated(bool value) {
+    _$isBottonSheetActivatedAtom
+        .reportWrite(value, super.isBottonSheetActivated, () {
+      super.isBottonSheetActivated = value;
+    });
+  }
+
+  final _$buildingNameAtom = Atom(name: '_FmapStoreBase.buildingName');
+
+  @override
+  String? get buildingName {
+    _$buildingNameAtom.reportRead();
+    return super.buildingName;
+  }
+
+  @override
+  set buildingName(String? value) {
+    _$buildingNameAtom.reportWrite(value, super.buildingName, () {
+      super.buildingName = value;
+    });
+  }
+
+  final _$buildingDescriptionAtom =
+      Atom(name: '_FmapStoreBase.buildingDescription');
+
+  @override
+  String? get buildingDescription {
+    _$buildingDescriptionAtom.reportRead();
+    return super.buildingDescription;
+  }
+
+  @override
+  set buildingDescription(String? value) {
+    _$buildingDescriptionAtom.reportWrite(value, super.buildingDescription, () {
+      super.buildingDescription = value;
     });
   }
 
@@ -211,6 +314,13 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$apiResponseAsyncAction = AsyncAction('_FmapStoreBase.apiResponse');
+
+  @override
+  Future<dynamic> apiResponse() {
+    return _$apiResponseAsyncAction.run(() => super.apiResponse());
+  }
+
   final _$loadCustomMarkerAsyncAction =
       AsyncAction('_FmapStoreBase.loadCustomMarker');
 
@@ -242,6 +352,33 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     return _$setMapStyleAsyncAction.run(() => super.setMapStyle());
   }
 
+  final _$_FmapStoreBaseActionController =
+      ActionController(name: '_FmapStoreBase');
+
+  @override
+  dynamic toggleBottonSheet() {
+    final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
+        name: '_FmapStoreBase.toggleBottonSheet');
+    try {
+      return super.toggleBottonSheet();
+    } finally {
+      _$_FmapStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic updateBuildingInfoBottonSheet(
+      dynamic currentName, dynamic currentDescription) {
+    final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
+        name: '_FmapStoreBase.updateBuildingInfoBottonSheet');
+    try {
+      return super
+          .updateBuildingInfoBottonSheet(currentName, currentDescription);
+    } finally {
+      _$_FmapStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
@@ -251,13 +388,20 @@ isAllMarkersFetched: ${isAllMarkersFetched},
 customIcon: ${customIcon},
 allPolygonBuildingsJson: ${allPolygonBuildingsJson},
 allPolygonBuildings: ${allPolygonBuildings},
+allBuildingNames: ${allBuildingNames},
 polygons: ${polygons},
+jsonDecodedMarkers: ${jsonDecodedMarkers},
+jsonDecodedPolygons: ${jsonDecodedPolygons},
 isPolygon: ${isPolygon},
+isBottonSheetActivated: ${isBottonSheetActivated},
+buildingName: ${buildingName},
+buildingDescription: ${buildingDescription},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},
 googleMapController: ${googleMapController},
-initialCameraPositionSmallHill: ${initialCameraPositionSmallHill}
+initialCameraPositionSmallHill: ${initialCameraPositionSmallHill},
+showBottonSheet: ${showBottonSheet}
     ''';
   }
 }
