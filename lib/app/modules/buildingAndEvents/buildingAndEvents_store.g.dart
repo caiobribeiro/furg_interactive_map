@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'start_store.dart';
+part of 'buildingAndEvents_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'start_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$StartStore on _StartStoreBase, Store {
-  final _$valueAtom = Atom(name: '_StartStoreBase.value');
+mixin _$BuildingAndEventsStore on _BuildingAndEventsStoreBase, Store {
+  final _$valueAtom = Atom(name: '_BuildingAndEventsStoreBase.value');
 
   @override
   int get value {
@@ -24,17 +24,17 @@ mixin _$StartStore on _StartStoreBase, Store {
     });
   }
 
-  final _$_StartStoreBaseActionController =
-      ActionController(name: '_StartStoreBase');
+  final _$_BuildingAndEventsStoreBaseActionController =
+      ActionController(name: '_BuildingAndEventsStoreBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_StartStoreBaseActionController.startAction(
-        name: '_StartStoreBase.increment');
+    final _$actionInfo = _$_BuildingAndEventsStoreBaseActionController
+        .startAction(name: '_BuildingAndEventsStoreBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_StartStoreBaseActionController.endAction(_$actionInfo);
+      _$_BuildingAndEventsStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:furg_interactive_map/app/modules/start/start_store.dart';
+import 'package:furg_interactive_map/app/modules/buildingAndEvents/buildingAndEvents_store.dart';
  
 void main() {
-  late StartStore store;
+  late BuildingAndEventsStore store;
 
   setUpAll(() {
-    store = StartStore();
+    store = BuildingAndEventsStore();
   });
 
   test('increment count', () async {

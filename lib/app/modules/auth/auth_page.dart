@@ -12,7 +12,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends State<AuthPage> {
   final AuthStore store = Modular.get();
-
+  bool showcase = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,17 +29,26 @@ class AuthPageState extends State<AuthPage> {
             children: <Widget>[
               Text("Qual Visualização prefere?"),
               Switch(
-                value: true,
+                value: showcase,
                 onChanged: (value) {
                   setState(
                     () {
                       // store.appStore.loadTheme();
                       // store.changeTheme();
+                      showcase = !showcase;
                     },
                   );
                 },
                 activeTrackColor: Colors.lightGreenAccent,
                 activeColor: Colors.green,
+              ),
+              Visibility(
+                visible: showcase,
+                child: Text("Polígnos"),
+              ),
+              Visibility(
+                visible: !showcase,
+                child: Text("Marcadores"),
               ),
               ElevatedButton(
                 onPressed: () => Modular.to.pushNamed('/fmap'),

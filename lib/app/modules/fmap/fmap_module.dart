@@ -7,7 +7,7 @@ import 'fmap_page.dart';
 class FmapModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => FmapStore(i())),
+    Bind.factory((i) => FmapStore(i())),
   ];
 
   @override

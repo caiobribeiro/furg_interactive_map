@@ -22,21 +22,21 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Modular.to.navigate('/fmap');
+              Modular.to.pushNamed('/fmap');
             },
             title: Text('Mapa'),
             leading: Icon(Icons.map),
           ),
           ListTile(
             onTap: () {
-              // Modular.to.navigate('/agenda');
+              Modular.to.pushNamed('/building');
             },
-            title: Text('Matérias'),
-            leading: Icon(Icons.calendar_today_rounded),
+            title: Text('Prédios e Eventos'),
+            leading: Icon(Icons.search_rounded),
           ),
           ListTile(
             onTap: () {
-              Modular.to.navigate('/settings');
+              Modular.to.pushNamed('/settings');
             },
             title: Text('Configurações'),
             leading: Icon(Icons.settings),
