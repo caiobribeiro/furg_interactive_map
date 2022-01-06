@@ -74,6 +74,9 @@ abstract class _AppStoreBase with Store {
     loadTheme();
   }
 
+  @observable
+  bool isLogged = true;
+
   // * Type of my current theme
   @observable
   ThemeData? themeType;

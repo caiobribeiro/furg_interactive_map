@@ -2,8 +2,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_module.dart';
 import 'package:furg_interactive_map/app/modules/buildingAndEvents/buildingAndEvents_module.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
+import 'package:furg_interactive_map/app/modules/login/login_module.dart';
 import 'package:furg_interactive_map/app/modules/settings_app/settingsApp_module.dart';
-// import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
+import 'modules/allEvents/allEvents_module.dart';
+import 'modules/eventsManagement/eventsManagement_module.dart';
+import 'modules/furg_phone_list_search/furgPhoneListSearch_module.dart';
 import 'app_store.dart';
 
 class AppModule extends Module {
@@ -18,5 +21,9 @@ class AppModule extends Module {
     ModuleRoute('/fmap', module: FmapModule()),
     ModuleRoute('/settings', module: SettingsAppModule()),
     ModuleRoute('/building', module: BuildingAndEventsModule()),
+    ModuleRoute('/search', module: FurgPhoneListSearchModule()),
+    ModuleRoute('/eventsManagament', module: EventsManagementModule()),
+    ModuleRoute('/allEvents', module: AllEventsModule()),
+    ModuleRoute('/login', module: LoginModule()),
   ];
 }

@@ -157,34 +157,53 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
-  final _$jsonDecodedPolygonsAtom =
-      Atom(name: '_FmapStoreBase.jsonDecodedPolygons');
+  final _$jsonDecodedLatLngPolygonsAtom =
+      Atom(name: '_FmapStoreBase.jsonDecodedLatLngPolygons');
 
   @override
-  dynamic get jsonDecodedPolygons {
-    _$jsonDecodedPolygonsAtom.reportRead();
-    return super.jsonDecodedPolygons;
+  dynamic get jsonDecodedLatLngPolygons {
+    _$jsonDecodedLatLngPolygonsAtom.reportRead();
+    return super.jsonDecodedLatLngPolygons;
   }
 
   @override
-  set jsonDecodedPolygons(dynamic value) {
-    _$jsonDecodedPolygonsAtom.reportWrite(value, super.jsonDecodedPolygons, () {
-      super.jsonDecodedPolygons = value;
+  set jsonDecodedLatLngPolygons(dynamic value) {
+    _$jsonDecodedLatLngPolygonsAtom
+        .reportWrite(value, super.jsonDecodedLatLngPolygons, () {
+      super.jsonDecodedLatLngPolygons = value;
     });
   }
 
-  final _$isPolygonAtom = Atom(name: '_FmapStoreBase.isPolygon');
+  final _$jsonDecodedPointsAtom =
+      Atom(name: '_FmapStoreBase.jsonDecodedPoints');
 
   @override
-  bool get isPolygon {
-    _$isPolygonAtom.reportRead();
-    return super.isPolygon;
+  dynamic get jsonDecodedPoints {
+    _$jsonDecodedPointsAtom.reportRead();
+    return super.jsonDecodedPoints;
   }
 
   @override
-  set isPolygon(bool value) {
-    _$isPolygonAtom.reportWrite(value, super.isPolygon, () {
-      super.isPolygon = value;
+  set jsonDecodedPoints(dynamic value) {
+    _$jsonDecodedPointsAtom.reportWrite(value, super.jsonDecodedPoints, () {
+      super.jsonDecodedPoints = value;
+    });
+  }
+
+  final _$jsonDecodedLatLngPolygonssAtom =
+      Atom(name: '_FmapStoreBase.jsonDecodedLatLngPolygonss');
+
+  @override
+  dynamic get jsonDecodedLatLngPolygonss {
+    _$jsonDecodedLatLngPolygonssAtom.reportRead();
+    return super.jsonDecodedLatLngPolygonss;
+  }
+
+  @override
+  set jsonDecodedLatLngPolygonss(dynamic value) {
+    _$jsonDecodedLatLngPolygonssAtom
+        .reportWrite(value, super.jsonDecodedLatLngPolygonss, () {
+      super.jsonDecodedLatLngPolygonss = value;
     });
   }
 
@@ -329,12 +348,12 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     return _$loadCustomMarkerAsyncAction.run(() => super.loadCustomMarker());
   }
 
-  final _$loadBuildingsAsyncAction =
-      AsyncAction('_FmapStoreBase.loadBuildings');
+  final _$loadingsPolygonsAsyncAction =
+      AsyncAction('_FmapStoreBase.loadingsPolygons');
 
   @override
-  Future<dynamic> loadBuildings() {
-    return _$loadBuildingsAsyncAction.run(() => super.loadBuildings());
+  Future<dynamic> loadingsPolygons() {
+    return _$loadingsPolygonsAsyncAction.run(() => super.loadingsPolygons());
   }
 
   final _$loadMapStylesAsyncAction =
@@ -391,8 +410,9 @@ allPolygonBuildings: ${allPolygonBuildings},
 allBuildingNames: ${allBuildingNames},
 polygons: ${polygons},
 jsonDecodedMarkers: ${jsonDecodedMarkers},
-jsonDecodedPolygons: ${jsonDecodedPolygons},
-isPolygon: ${isPolygon},
+jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
+jsonDecodedPoints: ${jsonDecodedPoints},
+jsonDecodedLatLngPolygonss: ${jsonDecodedLatLngPolygonss},
 isBottonSheetActivated: ${isBottonSheetActivated},
 buildingName: ${buildingName},
 buildingDescription: ${buildingDescription},
