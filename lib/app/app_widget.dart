@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_store.dart';
 
 class AppWidget extends StatefulWidget {
@@ -19,6 +20,11 @@ class _AppWidgetState extends State<AppWidget> {
         debugShowCheckedModeBanner: false,
         // theme: ThemeData(primarySwatch: Colors.blue),
         theme: store.themeType,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
+        supportedLocales: [const Locale('pt', 'BR')],
       ).modular();
     });
   }

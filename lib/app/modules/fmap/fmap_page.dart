@@ -3,8 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
+import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
-// import 'dart:io' show Platform;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FmapPage extends StatefulWidget {
@@ -29,6 +29,7 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
     );
 
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     final appBarHeight = appBar.preferredSize.height;
     final statusBarHeight = MediaQuery.of(context).padding.top;
     // final deviceWidth = MediaQuery.of(context).size.width;
@@ -37,16 +38,6 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
     return Scaffold(
       appBar: appBar,
       drawer: DrawerCustom(),
-      floatingActionButton: FloatingActionButton.extended(
-        label: Row(
-          children: [
-            const Icon(Icons.search),
-            Text("Pesquisar"),
-          ],
-        ),
-        onPressed: () => Modular.to.pushNamed('/search'),
-        backgroundColor: ColorScheme.dark().background,
-      ),
       body: Observer(
         builder: (_) {
           return Stack(
@@ -68,6 +59,66 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
                   ),
                 ),
               ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    child: Text("data"),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            Icons.date_range,
+                            size: 24.0,
+                          ),
+                          label: Text('Mais Informações'),
+                          onPressed: () {
+                            store.toggleBottonSheet();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            Icons.search_rounded,
+                            size: 24.0,
+                          ),
+                          label: Text('Pesquisar Prédio'),
+                          onPressed: () {
+                            // phoneStore.searchPhoneListString =
+                            //     store.buildingName!;
+
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20),
+                                ),
+                              ),
+                              builder: (context) => BuildEventSheetWidget(),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               Visibility(
                 visible: store.isBottonSheetActivated,
                 child: AnimatedOpacity(
@@ -77,6 +128,7 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
                     children: [
                       Container(
                         height: deviceHeight,
+                        width: screenWidth,
                         decoration: new BoxDecoration(
                           color: Theme.of(context).backgroundColor,
                           borderRadius: new BorderRadius.only(

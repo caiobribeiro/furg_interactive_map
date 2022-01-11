@@ -9,19 +9,62 @@ part of 'eventsManagement_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
-  final _$allEventsPositionsAtom =
-      Atom(name: '_EventsManagementStoreBase.allEventsPositions');
+  Computed<bool>? _$isEventNameValidComputed;
 
   @override
-  List<Marker> get allEventsPositions {
-    _$allEventsPositionsAtom.reportRead();
-    return super.allEventsPositions;
+  bool get isEventNameValid => (_$isEventNameValidComputed ??= Computed<bool>(
+          () => super.isEventNameValid,
+          name: '_EventsManagementStoreBase.isEventNameValid'))
+      .value;
+  Computed<bool>? _$isEvenetDescriptionValidComputed;
+
+  @override
+  bool get isEvenetDescriptionValid => (_$isEvenetDescriptionValidComputed ??=
+          Computed<bool>(() => super.isEvenetDescriptionValid,
+              name: '_EventsManagementStoreBase.isEvenetDescriptionValid'))
+      .value;
+  Computed<bool>? _$isEventOficialSiteValidComputed;
+
+  @override
+  bool get isEventOficialSiteValid => (_$isEventOficialSiteValidComputed ??=
+          Computed<bool>(() => super.isEventOficialSiteValid,
+              name: '_EventsManagementStoreBase.isEventOficialSiteValid'))
+      .value;
+  Computed<bool>? _$isEventImageLinkValidComputed;
+
+  @override
+  bool get isEventImageLinkValid => (_$isEventImageLinkValidComputed ??=
+          Computed<bool>(() => super.isEventImageLinkValid,
+              name: '_EventsManagementStoreBase.isEventImageLinkValid'))
+      .value;
+  Computed<bool>? _$isEventPositionValidComputed;
+
+  @override
+  bool get isEventPositionValid => (_$isEventPositionValidComputed ??=
+          Computed<bool>(() => super.isEventPositionValid,
+              name: '_EventsManagementStoreBase.isEventPositionValid'))
+      .value;
+  Computed<bool>? _$isEventCreationFormValidComputed;
+
+  @override
+  bool get isEventCreationFormValid => (_$isEventCreationFormValidComputed ??=
+          Computed<bool>(() => super.isEventCreationFormValid,
+              name: '_EventsManagementStoreBase.isEventCreationFormValid'))
+      .value;
+
+  final _$missingValueAtom =
+      Atom(name: '_EventsManagementStoreBase.missingValue');
+
+  @override
+  List<String> get missingValue {
+    _$missingValueAtom.reportRead();
+    return super.missingValue;
   }
 
   @override
-  set allEventsPositions(List<Marker> value) {
-    _$allEventsPositionsAtom.reportWrite(value, super.allEventsPositions, () {
-      super.allEventsPositions = value;
+  set missingValue(List<String> value) {
+    _$missingValueAtom.reportWrite(value, super.missingValue, () {
+      super.missingValue = value;
     });
   }
 
@@ -53,6 +96,121 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   set eventDescription(String value) {
     _$eventDescriptionAtom.reportWrite(value, super.eventDescription, () {
       super.eventDescription = value;
+    });
+  }
+
+  final _$eventOficialSiteAtom =
+      Atom(name: '_EventsManagementStoreBase.eventOficialSite');
+
+  @override
+  String get eventOficialSite {
+    _$eventOficialSiteAtom.reportRead();
+    return super.eventOficialSite;
+  }
+
+  @override
+  set eventOficialSite(String value) {
+    _$eventOficialSiteAtom.reportWrite(value, super.eventOficialSite, () {
+      super.eventOficialSite = value;
+    });
+  }
+
+  final _$thereIsNoOficialSiteAtom =
+      Atom(name: '_EventsManagementStoreBase.thereIsNoOficialSite');
+
+  @override
+  bool get thereIsNoOficialSite {
+    _$thereIsNoOficialSiteAtom.reportRead();
+    return super.thereIsNoOficialSite;
+  }
+
+  @override
+  set thereIsNoOficialSite(bool value) {
+    _$thereIsNoOficialSiteAtom.reportWrite(value, super.thereIsNoOficialSite,
+        () {
+      super.thereIsNoOficialSite = value;
+    });
+  }
+
+  final _$eventImageLinkAtom =
+      Atom(name: '_EventsManagementStoreBase.eventImageLink');
+
+  @override
+  String get eventImageLink {
+    _$eventImageLinkAtom.reportRead();
+    return super.eventImageLink;
+  }
+
+  @override
+  set eventImageLink(String value) {
+    _$eventImageLinkAtom.reportWrite(value, super.eventImageLink, () {
+      super.eventImageLink = value;
+    });
+  }
+
+  final _$eventPositionAtom =
+      Atom(name: '_EventsManagementStoreBase.eventPosition');
+
+  @override
+  LatLng get eventPosition {
+    _$eventPositionAtom.reportRead();
+    return super.eventPosition;
+  }
+
+  @override
+  set eventPosition(LatLng value) {
+    _$eventPositionAtom.reportWrite(value, super.eventPosition, () {
+      super.eventPosition = value;
+    });
+  }
+
+  final _$selectedEventStartDateAtom =
+      Atom(name: '_EventsManagementStoreBase.selectedEventStartDate');
+
+  @override
+  DateTime get selectedEventStartDate {
+    _$selectedEventStartDateAtom.reportRead();
+    return super.selectedEventStartDate;
+  }
+
+  @override
+  set selectedEventStartDate(DateTime value) {
+    _$selectedEventStartDateAtom
+        .reportWrite(value, super.selectedEventStartDate, () {
+      super.selectedEventStartDate = value;
+    });
+  }
+
+  final _$selectedEventEndDateAtom =
+      Atom(name: '_EventsManagementStoreBase.selectedEventEndDate');
+
+  @override
+  DateTime get selectedEventEndDate {
+    _$selectedEventEndDateAtom.reportRead();
+    return super.selectedEventEndDate;
+  }
+
+  @override
+  set selectedEventEndDate(DateTime value) {
+    _$selectedEventEndDateAtom.reportWrite(value, super.selectedEventEndDate,
+        () {
+      super.selectedEventEndDate = value;
+    });
+  }
+
+  final _$eventLocantionAtom =
+      Atom(name: '_EventsManagementStoreBase.eventLocantion');
+
+  @override
+  Marker? get eventLocantion {
+    _$eventLocantionAtom.reportRead();
+    return super.eventLocantion;
+  }
+
+  @override
+  set eventLocantion(Marker? value) {
+    _$eventLocantionAtom.reportWrite(value, super.eventLocantion, () {
+      super.eventLocantion = value;
     });
   }
 
@@ -163,11 +321,45 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   }
 
   @override
-  void addNewwMarkerEvent(LatLng pos) {
+  void setEventOficialSite(String value) {
     final _$actionInfo = _$_EventsManagementStoreBaseActionController
-        .startAction(name: '_EventsManagementStoreBase.addNewwMarkerEvent');
+        .startAction(name: '_EventsManagementStoreBase.setEventOficialSite');
     try {
-      return super.addNewwMarkerEvent(pos);
+      return super.setEventOficialSite(value);
+    } finally {
+      _$_EventsManagementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setThereIsNoOficialSite(bool value) {
+    final _$actionInfo =
+        _$_EventsManagementStoreBaseActionController.startAction(
+            name: '_EventsManagementStoreBase.setThereIsNoOficialSite');
+    try {
+      return super.setThereIsNoOficialSite(value);
+    } finally {
+      _$_EventsManagementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEventImageLink(String value) {
+    final _$actionInfo = _$_EventsManagementStoreBaseActionController
+        .startAction(name: '_EventsManagementStoreBase.setEventImageLink');
+    try {
+      return super.setEventImageLink(value);
+    } finally {
+      _$_EventsManagementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic isAnyFieldEmpty() {
+    final _$actionInfo = _$_EventsManagementStoreBaseActionController
+        .startAction(name: '_EventsManagementStoreBase.isAnyFieldEmpty');
+    try {
+      return super.isAnyFieldEmpty();
     } finally {
       _$_EventsManagementStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -176,13 +368,26 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   @override
   String toString() {
     return '''
-allEventsPositions: ${allEventsPositions},
+missingValue: ${missingValue},
 eventName: ${eventName},
 eventDescription: ${eventDescription},
+eventOficialSite: ${eventOficialSite},
+thereIsNoOficialSite: ${thereIsNoOficialSite},
+eventImageLink: ${eventImageLink},
+eventPosition: ${eventPosition},
+selectedEventStartDate: ${selectedEventStartDate},
+selectedEventEndDate: ${selectedEventEndDate},
+eventLocantion: ${eventLocantion},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 googleMapController: ${googleMapController},
-initialCameraPositionSmallHill: ${initialCameraPositionSmallHill}
+initialCameraPositionSmallHill: ${initialCameraPositionSmallHill},
+isEventNameValid: ${isEventNameValid},
+isEvenetDescriptionValid: ${isEvenetDescriptionValid},
+isEventOficialSiteValid: ${isEventOficialSiteValid},
+isEventImageLinkValid: ${isEventImageLinkValid},
+isEventPositionValid: ${isEventPositionValid},
+isEventCreationFormValid: ${isEventCreationFormValid}
     ''';
   }
 }

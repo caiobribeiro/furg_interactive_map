@@ -75,6 +75,9 @@ abstract class _AppStoreBase with Store {
   }
 
   @observable
+  bool isRegistered = false;
+
+  @observable
   bool isLogged = true;
 
   // * Type of my current theme

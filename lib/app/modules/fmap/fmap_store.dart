@@ -49,6 +49,14 @@ abstract class _FmapStoreBase with Store {
   Set<Polygon> polygons = HashSet<Polygon>();
 
   @observable
+  bool isABuildingSelected = false;
+
+  @action
+  toggleMoreInfoElevetedButtonVisibity() {
+    isABuildingSelected = !isABuildingSelected;
+  }
+
+  @observable
   var jsonDecodedMarkers;
 
   @observable
@@ -167,7 +175,8 @@ abstract class _FmapStoreBase with Store {
               // changeSize();
               updateBuildingInfoBottonSheet(tempName, tempDescription);
               if (isBottonSheetActivated == false) {
-                toggleBottonSheet();
+                // toggleBottonSheet();
+                toggleMoreInfoElevetedButtonVisibity();
               }
             },
           ),

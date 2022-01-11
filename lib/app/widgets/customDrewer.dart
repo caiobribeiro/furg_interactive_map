@@ -17,28 +17,28 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Modular.to.pushNamed('/fmap');
+              Modular.to.navigate('/furgMap');
             },
             title: Text('Mapa'),
             leading: Icon(Icons.map),
           ),
           ListTile(
             onTap: () {
-              Modular.to.pushNamed('/search');
+              Modular.to.navigate('/search');
             },
             title: Text('Pesquisar na Universidade'),
             leading: Icon(Icons.search_rounded),
           ),
           ListTile(
             onTap: () {
-              Modular.to.pushNamed('/building');
+              Modular.to.navigate('/building');
             },
             title: Text('Prédios'),
             leading: Icon(Icons.business_rounded),
           ),
           ListTile(
             onTap: () {
-              Modular.to.pushNamed('/allEvents');
+              Modular.to.navigate('/allEvents');
             },
             title: Text('Eventos'),
             leading: Icon(Icons.event),
@@ -49,7 +49,7 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Modular.to.pushNamed('/settings');
+              Modular.to.navigate('/settings');
             },
             title: Text('Configurações'),
             leading: Icon(Icons.settings),

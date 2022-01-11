@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -15,16 +17,18 @@ class EventsManagementStore = _EventsManagementStoreBase
 abstract class _EventsManagementStoreBase with Store {
   final AppStore _appStore = Modular.get();
 
-  _EventsManagementStore() {
+  _EventsManagementStoreBase() {
+    loadMapStyles();
     autorun(
       (_) {
-        print(eventName);
+        print("Start: ${selectedEventStartDate}");
+        print("End: ${selectedEventEndDate}");
       },
     );
   }
 
   @observable
-  List<Marker> allEventsPositions = [];
+  List<String> missingValue = [];
 
   @observable
   String eventName = "";
@@ -38,14 +42,87 @@ abstract class _EventsManagementStoreBase with Store {
   @action
   void setEventDescription(String value) => eventDescription = value;
 
+  @observable
+  String eventOficialSite = "";
+
   @action
-  void addNewwMarkerEvent(LatLng pos) {
-    // allEventsPositions.add(Marker(markerId: eventName))
+  void setEventOficialSite(String value) => eventOficialSite = value;
+
+  @observable
+  bool thereIsNoOficialSite = false;
+
+  @action
+  void setThereIsNoOficialSite(bool value) => thereIsNoOficialSite = value;
+
+  @observable
+  String eventImageLink = "";
+
+  @action
+  void setEventImageLink(String value) => eventImageLink = value;
+
+  @observable
+  LatLng eventPosition = LatLng(-32.074618722943924, -52.16706030070782);
+
+  @computed
+  bool get isEventNameValid => eventName.isNotEmpty;
+
+  @computed
+  bool get isEvenetDescriptionValid => eventDescription.isNotEmpty;
+
+  @computed
+  bool get isEventOficialSiteValid =>
+      eventOficialSite.isNotEmpty && thereIsNoOficialSite == true;
+
+  @computed
+  bool get isEventImageLinkValid => eventImageLink.isNotEmpty;
+
+  @computed
+  bool get isEventPositionValid =>
+      eventPosition != LatLng(-32.074618722943924, -52.16706030070782);
+
+  @computed
+  bool get isEventCreationFormValid =>
+      isEventNameValid &&
+      isEvenetDescriptionValid &&
+      isEventOficialSiteValid &&
+      isEventImageLinkValid &&
+      isEventPositionValid;
+
+  @action
+  isAnyFieldEmpty() {
+    if (eventName == "") {
+      missingValue.add("Nome");
+    }
+    if (eventImageLink == "") {
+      missingValue.add("URL da Imagem de Capa");
+    }
+    if (eventOficialSite == "") {
+      missingValue.add("Site Oficial");
+    }
+    if (eventDescription == "") {
+      missingValue.add("Descrição");
+    }
+    if (!isEventPositionValid) {
+      missingValue.add("Localização");
+    }
+    if (missingValue.isEmpty) {
+      print("enviado");
+      // função de enviar para o server
+      return true;
+    } else {
+      print("falta");
+      return false;
+    }
   }
 
-  _EventsManagementStoreBase() {
-    loadMapStyles();
-  }
+  @observable
+  DateTime selectedEventStartDate = DateTime.now();
+
+  @observable
+  DateTime selectedEventEndDate = DateTime.now();
+
+  @observable
+  Marker? eventLocantion;
 
   @observable
   String? darkMapStyle;

@@ -37,13 +37,22 @@ dependencies:
   flutter_map: ^0.13.1
   # latlng: ^0.1.0
   google_maps_flutter: ^2.0.6
-  dio: ^4.0.0
   # flutter_polyline_points: ^1.0.0
   solid_bottom_sheet: ^0.1.10
-  get: ^4.3.8
   hexcolor: ^2.0.5
   # google_maps: ^5.3.0
   material_floating_search_bar: ^0.3.6
+  dio: ^4.0.4
+  parse_server_sdk_flutter: ^3.1.0
+  flutter_blurhash: ^0.6.0
+
+  intl: ^0.17.0
+  custom_info_window: ^1.0.1
+  clippy_flutter: ^2.0.0-nullsafety.1
+  url_launcher: ^6.0.17
+  flutter_localizations: 
+    sdk: flutter
+    version: ^0.0.0
 
 
 dev_dependencies:

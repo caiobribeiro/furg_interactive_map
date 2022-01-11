@@ -1,12 +1,19 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_store.dart';
 import 'package:flutter/material.dart';
-// import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:furg_interactive_map/models/phone_list_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FurgPhoneListSearchPage extends StatefulWidget {
   final String title;
+  final String buildingSearch;
   const FurgPhoneListSearchPage(
-      {Key? key, this.title = 'Pesquisar na Universidade'})
+      {Key? key,
+      this.title = 'Pesquisar na Universidade',
+      required this.buildingSearch})
       : super(key: key);
   @override
   FurgPhoneListSearchPageState createState() => FurgPhoneListSearchPageState();
@@ -16,70 +23,22 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
   final FurgPhoneListSearchStore store = Modular.get();
 
   @override
+  void initState() {
+    print("Recebendo");
+    print("${widget.buildingSearch}");
+    store.searchPhoneListString = "${widget.buildingSearch}";
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    const historyLength = 5;
-    String selectedTerm;
-
-    List<String> _searchHistory = [
-      'deus',
-      'eh',
-      'cantor',
-    ];
-
-    List<String> filteredSearchHistory;
-
-    List<String> filterSearchTerms({
-      required String filter,
-    }) {
-      if (filter != null && filter.isNotEmpty) {
-        return _searchHistory.reversed
-            .where((term) => term.startsWith(filter))
-            .toList();
-      } else {
-        return _searchHistory.reversed.toList();
-      }
-    }
-
-    void addSearchTerm(String term) {
-      if (_searchHistory.contains(term)) {
-        // putSearchtermFirst(term);
-        return;
-      }
-
-      _searchHistory.add(term);
-      if (_searchHistory.length > historyLength) {
-        _searchHistory.removeRange(0, _searchHistory.length - historyLength);
-      }
-
-      filteredSearchHistory = filterSearchTerms(filter: "null");
-    }
-
-    void deleteSearchTerm(String term) {
-      _searchHistory.removeWhere((t) => t == term);
-      filteredSearchHistory = filterSearchTerms(filter: "null");
-    }
-
-    void putSearchTermFirst(String term) {
-      deleteSearchTerm(term);
-      addSearchTerm(term);
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      filteredSearchHistory = filterSearchTerms(filter: "null");
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          const SizedBox(
-            height: 10,
-          ),
           Text(
             "Encontre aqui os telefones de pessoas ou setores da universidade.",
             textAlign: TextAlign.center,
@@ -87,8 +46,237 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
               fontSize: 18,
             ),
           ),
+          Expanded(
+            child: FutureBuilder<PhoneListApi>(
+              future: store.getPhoneSearch(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final responseResultPhoneSearch = snapshot.data;
+                  return Container(
+                    child: ListView.builder(
+                      itemCount:
+                          responseResultPhoneSearch!.res!.telefones!.length,
+                      itemBuilder: (BuildContext context, i) {
+                        return Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(12.0),
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              child: new Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "${responseResultPhoneSearch.res!.telefones![i].unidade}",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Divider(),
+                                  Text(
+                                      "Servidores: ${responseResultPhoneSearch.res!.telefones![i].pessoas!}",
+                                      textAlign: TextAlign.left),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                  ),
+                                  Text(
+                                      "Câmpus/Prédio: ${responseResultPhoneSearch.res!.telefones![i].nmLocal!}",
+                                      textAlign: TextAlign.left),
+                                  OutlinedButton(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          margin:
+                                              EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                          child: Icon(
+                                            Icons.phone_callback_outlined,
+                                            color: Colors.grey,
+                                            size: 22.0,
+                                          ),
+                                        ),
+                                        Text(
+                                            "Telefone: (${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}",
+                                            textAlign: TextAlign.left),
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      launch(
+                                          "tel://${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}");
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                              // color: Colors.black,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(20),
+                      topRight: const Radius.circular(20),
+                    )),
+                  );
+                }
+                return Container(
+                  child: ListView.builder(
+                    itemCount: 20,
+                    itemBuilder: (BuildContext context, itemco) {
+                      return CircularProgressIndicator();
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+          Column(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(5, 5, 5, 15),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Pesquisar',
+                  ),
+                  onChanged: store.setSearchTelListString,
+                ),
+              ),
+              ElevatedButton.icon(
+                icon: Icon(
+                  Icons.search_rounded,
+                  size: 24.0,
+                ),
+                label: Text('Procurar na Lista'),
+                onPressed: () {
+                  openBottomSheet();
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
+    );
+  }
+
+  void openBottomSheet() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return FutureBuilder<PhoneListApi>(
+          future: store.getPhoneSearch(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final responseResultPhoneSearch = snapshot.data;
+              return Container(
+                child: ListView.builder(
+                  itemCount: responseResultPhoneSearch!.res!.telefones!.length,
+                  itemBuilder: (BuildContext context, i) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(12.0),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "${responseResultPhoneSearch.res!.telefones![i].unidade}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Divider(),
+                                      Text(
+                                          "Servidores: ${responseResultPhoneSearch.res!.telefones![i].pessoas!}",
+                                          textAlign: TextAlign.left),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      ),
+                                      Text(
+                                          "Câmpus/Prédio: ${responseResultPhoneSearch.res!.telefones![i].nmLocal!}",
+                                          textAlign: TextAlign.left),
+                                      OutlinedButton(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 10, 0),
+                                              child: Icon(
+                                                Icons.phone_callback_outlined,
+                                                color: Colors.grey,
+                                                size: 22.0,
+                                              ),
+                                            ),
+                                            Text(
+                                                "Telefone: (${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}",
+                                                textAlign: TextAlign.left),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          launch(
+                                              "tel://${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}");
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                            // color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(20),
+                  topRight: const Radius.circular(20),
+                )),
+              );
+            }
+            return Container(
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (BuildContext context, itemco) {
+                  return CircularProgressIndicator();
+                },
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

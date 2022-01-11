@@ -1,6 +1,7 @@
 import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_Page.dart';
-import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'furgPhoneListSearch_store.dart';
 
 class FurgPhoneListSearchModule extends Module {
   @override
@@ -10,6 +11,9 @@ class FurgPhoneListSearchModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => FurgPhoneListSearchPage()),
+    // ChildRoute('/', child: (_, args) => FurgPhoneListSearchPage()),
+    ChildRoute('/:buildingSearch',
+        child: (_, args) => FurgPhoneListSearchPage(
+            buildingSearch: args.params['buildingSearch'] ?? "")),
   ];
 }

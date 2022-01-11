@@ -141,6 +141,22 @@ mixin _$FmapStore on _FmapStoreBase, Store {
     });
   }
 
+  final _$isABuildingSelectedAtom =
+      Atom(name: '_FmapStoreBase.isABuildingSelected');
+
+  @override
+  bool get isABuildingSelected {
+    _$isABuildingSelectedAtom.reportRead();
+    return super.isABuildingSelected;
+  }
+
+  @override
+  set isABuildingSelected(bool value) {
+    _$isABuildingSelectedAtom.reportWrite(value, super.isABuildingSelected, () {
+      super.isABuildingSelected = value;
+    });
+  }
+
   final _$jsonDecodedMarkersAtom =
       Atom(name: '_FmapStoreBase.jsonDecodedMarkers');
 
@@ -375,6 +391,17 @@ mixin _$FmapStore on _FmapStoreBase, Store {
       ActionController(name: '_FmapStoreBase');
 
   @override
+  dynamic toggleMoreInfoElevetedButtonVisibity() {
+    final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
+        name: '_FmapStoreBase.toggleMoreInfoElevetedButtonVisibity');
+    try {
+      return super.toggleMoreInfoElevetedButtonVisibity();
+    } finally {
+      _$_FmapStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic toggleBottonSheet() {
     final _$actionInfo = _$_FmapStoreBaseActionController.startAction(
         name: '_FmapStoreBase.toggleBottonSheet');
@@ -409,6 +436,7 @@ allPolygonBuildingsJson: ${allPolygonBuildingsJson},
 allPolygonBuildings: ${allPolygonBuildings},
 allBuildingNames: ${allBuildingNames},
 polygons: ${polygons},
+isABuildingSelected: ${isABuildingSelected},
 jsonDecodedMarkers: ${jsonDecodedMarkers},
 jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
 jsonDecodedPoints: ${jsonDecodedPoints},

@@ -16,6 +16,21 @@ mixin _$AppStore on _AppStoreBase, Store {
           Computed<bool>(() => super.isDark, name: '_AppStoreBase.isDark'))
       .value;
 
+  final _$isRegisteredAtom = Atom(name: '_AppStoreBase.isRegistered');
+
+  @override
+  bool get isRegistered {
+    _$isRegisteredAtom.reportRead();
+    return super.isRegistered;
+  }
+
+  @override
+  set isRegistered(bool value) {
+    _$isRegisteredAtom.reportWrite(value, super.isRegistered, () {
+      super.isRegistered = value;
+    });
+  }
+
   final _$isLoggedAtom = Atom(name: '_AppStoreBase.isLogged');
 
   @override
@@ -79,6 +94,7 @@ mixin _$AppStore on _AppStoreBase, Store {
   @override
   String toString() {
     return '''
+isRegistered: ${isRegistered},
 isLogged: ${isLogged},
 themeType: ${themeType},
 isDark: ${isDark}

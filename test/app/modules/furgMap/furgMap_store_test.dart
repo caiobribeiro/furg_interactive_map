@@ -1,11 +1,11 @@
 // import 'package:flutter_test/flutter_test.dart';
-// import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_store.dart';
+// import 'package:furg_interactive_map/app/modules/furgMap/furgMap_store.dart';
  
 // void main() {
-//   late FurgPhoneListSearchStore store;
+//   late FurgMapStore store;
 
 //   setUpAll(() {
-//     store = FurgPhoneListSearchStore();
+//     store = FurgMapStore();
 //   });
 
 //   test('increment count', () async {
