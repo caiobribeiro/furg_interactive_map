@@ -30,40 +30,34 @@ mixin _$LoginStore on _LoginStoreBase, Store {
           () => super.isLoginFormValid,
           name: '_LoginStoreBase.isLoginFormValid'))
       .value;
-  Computed<bool>? _$isRegisterEmailValidComputed;
+
+  final _$errorMassegeAtom = Atom(name: '_LoginStoreBase.errorMassege');
 
   @override
-  bool get isRegisterEmailValid => (_$isRegisterEmailValidComputed ??=
-          Computed<bool>(() => super.isRegisterEmailValid,
-              name: '_LoginStoreBase.isRegisterEmailValid'))
-      .value;
-  Computed<bool>? _$isRegisterPasswordValidComputed;
-
-  @override
-  bool get isRegisterPasswordValid => (_$isRegisterPasswordValidComputed ??=
-          Computed<bool>(() => super.isRegisterPasswordValid,
-              name: '_LoginStoreBase.isRegisterPasswordValid'))
-      .value;
-  Computed<bool>? _$isResgiterFormValidComputed;
-
-  @override
-  bool get isResgiterFormValid => (_$isResgiterFormValidComputed ??=
-          Computed<bool>(() => super.isResgiterFormValid,
-              name: '_LoginStoreBase.isResgiterFormValid'))
-      .value;
-
-  final _$loginEmailAtom = Atom(name: '_LoginStoreBase.loginEmail');
-
-  @override
-  String get loginEmail {
-    _$loginEmailAtom.reportRead();
-    return super.loginEmail;
+  String get errorMassege {
+    _$errorMassegeAtom.reportRead();
+    return super.errorMassege;
   }
 
   @override
-  set loginEmail(String value) {
-    _$loginEmailAtom.reportWrite(value, super.loginEmail, () {
-      super.loginEmail = value;
+  set errorMassege(String value) {
+    _$errorMassegeAtom.reportWrite(value, super.errorMassege, () {
+      super.errorMassege = value;
+    });
+  }
+
+  final _$loginNickNameAtom = Atom(name: '_LoginStoreBase.loginNickName');
+
+  @override
+  String get loginNickName {
+    _$loginNickNameAtom.reportRead();
+    return super.loginNickName;
+  }
+
+  @override
+  set loginNickName(String value) {
+    _$loginNickNameAtom.reportWrite(value, super.loginNickName, () {
+      super.loginNickName = value;
     });
   }
 
@@ -82,53 +76,6 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
-  final _$registerEmailAtom = Atom(name: '_LoginStoreBase.registerEmail');
-
-  @override
-  String get registerEmail {
-    _$registerEmailAtom.reportRead();
-    return super.registerEmail;
-  }
-
-  @override
-  set registerEmail(String value) {
-    _$registerEmailAtom.reportWrite(value, super.registerEmail, () {
-      super.registerEmail = value;
-    });
-  }
-
-  final _$registerPasswordAtom = Atom(name: '_LoginStoreBase.registerPassword');
-
-  @override
-  String get registerPassword {
-    _$registerPasswordAtom.reportRead();
-    return super.registerPassword;
-  }
-
-  @override
-  set registerPassword(String value) {
-    _$registerPasswordAtom.reportWrite(value, super.registerPassword, () {
-      super.registerPassword = value;
-    });
-  }
-
-  final _$registerConfirmationPasswordAtom =
-      Atom(name: '_LoginStoreBase.registerConfirmationPassword');
-
-  @override
-  String get registerConfirmationPassword {
-    _$registerConfirmationPasswordAtom.reportRead();
-    return super.registerConfirmationPassword;
-  }
-
-  @override
-  set registerConfirmationPassword(String value) {
-    _$registerConfirmationPasswordAtom
-        .reportWrite(value, super.registerConfirmationPassword, () {
-      super.registerConfirmationPassword = value;
-    });
-  }
-
   final _$furgImageLoginAtom = Atom(name: '_LoginStoreBase.furgImageLogin');
 
   @override
@@ -144,15 +91,22 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
+  final _$saveUserAsyncAction = AsyncAction('_LoginStoreBase.saveUser');
+
+  @override
+  Future saveUser() {
+    return _$saveUserAsyncAction.run(() => super.saveUser());
+  }
+
   final _$_LoginStoreBaseActionController =
       ActionController(name: '_LoginStoreBase');
 
   @override
-  void setLoginEmail(String value) {
+  void setLoginNickName(String value) {
     final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
-        name: '_LoginStoreBase.setLoginEmail');
+        name: '_LoginStoreBase.setLoginNickName');
     try {
-      return super.setLoginEmail(value);
+      return super.setLoginNickName(value);
     } finally {
       _$_LoginStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -170,53 +124,15 @@ mixin _$LoginStore on _LoginStoreBase, Store {
   }
 
   @override
-  void setRegisterEmail(String value) {
-    final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
-        name: '_LoginStoreBase.setRegisterEmail');
-    try {
-      return super.setRegisterEmail(value);
-    } finally {
-      _$_LoginStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setRegisterPassword(String value) {
-    final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
-        name: '_LoginStoreBase.setRegisterPassword');
-    try {
-      return super.setRegisterPassword(value);
-    } finally {
-      _$_LoginStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setRegisterConfirmationPassword(String value) {
-    final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
-        name: '_LoginStoreBase.setRegisterConfirmationPassword');
-    try {
-      return super.setRegisterConfirmationPassword(value);
-    } finally {
-      _$_LoginStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-loginEmail: ${loginEmail},
+errorMassege: ${errorMassege},
+loginNickName: ${loginNickName},
 loginPassword: ${loginPassword},
-registerEmail: ${registerEmail},
-registerPassword: ${registerPassword},
-registerConfirmationPassword: ${registerConfirmationPassword},
 furgImageLogin: ${furgImageLogin},
 isLoginEmailValid: ${isLoginEmailValid},
 isLoginPasswordValid: ${isLoginPasswordValid},
-isLoginFormValid: ${isLoginFormValid},
-isRegisterEmailValid: ${isRegisterEmailValid},
-isRegisterPasswordValid: ${isRegisterPasswordValid},
-isResgiterFormValid: ${isResgiterFormValid}
+isLoginFormValid: ${isLoginFormValid}
     ''';
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_store.dart';
 import 'package:flutter/material.dart';
 // import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
@@ -15,9 +14,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends State<AuthPage> {
   final AuthStore store = Modular.get();
-  final AppStore _appStore = Modular.get();
 
-  bool showcase = true;
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
@@ -76,7 +73,6 @@ class AuthPageState extends State<AuthPage> {
                 ),
                 label: Text('Entrar'),
                 onPressed: () {
-                  _appStore.isRegistered = true;
                   Modular.to.pushNamed('/login');
                 },
                 style: ElevatedButton.styleFrom(
@@ -96,8 +92,7 @@ class AuthPageState extends State<AuthPage> {
                 ),
                 label: Text('Registrar-se'),
                 onPressed: () {
-                  _appStore.isRegistered = false;
-                  Modular.to.pushNamed('/login');
+                  Modular.to.pushNamed('/registrationUser');
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(deviceWidth * 0.65, 45),

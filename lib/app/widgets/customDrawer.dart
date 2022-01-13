@@ -31,7 +31,7 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Modular.to.navigate('/building');
+              Modular.to.navigate('/allBuildings');
             },
             title: Text('Prédios'),
             leading: Icon(Icons.business_rounded),
