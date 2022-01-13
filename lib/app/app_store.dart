@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mobx/mobx.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 part 'app_store.g.dart';
@@ -71,6 +72,8 @@ class MyTheme {
 abstract class _AppStoreBase with Store {
   // * Before teh render _AppStorebase will run what is inside
   _AppStoreBase() {
+    hasUserLogged();
+    isLoggedVerification();
     loadTheme();
   }
 
@@ -78,7 +81,47 @@ abstract class _AppStoreBase with Store {
   bool isRegistered = false;
 
   @observable
-  bool isLogged = true;
+  bool isLogged = false;
+
+  @observable
+  String userEmail = "";
+
+  @observable
+  String fullName = "";
+
+  @action
+  isLoggedVerification() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool('isLogged') == null) {
+      isLogged = false;
+    } else {
+      isLogged = prefs.getBool('isLogged')!;
+      print(isLogged);
+    }
+  }
+
+  @action
+  Future<bool> hasUserLogged() async {
+    ParseUser? currentUser = await ParseUser.currentUser() as ParseUser?;
+    if (currentUser == null) {
+      return false;
+    }
+    //Checks whether the user's session token is valid
+    final ParseResponse? parseResponse =
+        await ParseUser.getCurrentUserFromServer(currentUser.sessionToken!);
+
+    if (parseResponse?.success == null || !parseResponse!.success) {
+      //Invalid session. Logout
+      await currentUser.logout();
+
+      return false;
+    } else {
+      userEmail = currentUser.emailAddress!;
+      isLogged = true;
+      print(currentUser.authData);
+      return true;
+    }
+  }
 
   // * Type of my current theme
   @observable

@@ -46,6 +46,36 @@ mixin _$AppStore on _AppStoreBase, Store {
     });
   }
 
+  final _$userEmailAtom = Atom(name: '_AppStoreBase.userEmail');
+
+  @override
+  String get userEmail {
+    _$userEmailAtom.reportRead();
+    return super.userEmail;
+  }
+
+  @override
+  set userEmail(String value) {
+    _$userEmailAtom.reportWrite(value, super.userEmail, () {
+      super.userEmail = value;
+    });
+  }
+
+  final _$fullNameAtom = Atom(name: '_AppStoreBase.fullName');
+
+  @override
+  String get fullName {
+    _$fullNameAtom.reportRead();
+    return super.fullName;
+  }
+
+  @override
+  set fullName(String value) {
+    _$fullNameAtom.reportWrite(value, super.fullName, () {
+      super.fullName = value;
+    });
+  }
+
   final _$themeTypeAtom = Atom(name: '_AppStoreBase.themeType');
 
   @override
@@ -59,6 +89,22 @@ mixin _$AppStore on _AppStoreBase, Store {
     _$themeTypeAtom.reportWrite(value, super.themeType, () {
       super.themeType = value;
     });
+  }
+
+  final _$isLoggedVerificationAsyncAction =
+      AsyncAction('_AppStoreBase.isLoggedVerification');
+
+  @override
+  Future isLoggedVerification() {
+    return _$isLoggedVerificationAsyncAction
+        .run(() => super.isLoggedVerification());
+  }
+
+  final _$hasUserLoggedAsyncAction = AsyncAction('_AppStoreBase.hasUserLogged');
+
+  @override
+  Future<bool> hasUserLogged() {
+    return _$hasUserLoggedAsyncAction.run(() => super.hasUserLogged());
   }
 
   final _$saveThemePreferencesAsyncAction =
@@ -96,6 +142,8 @@ mixin _$AppStore on _AppStoreBase, Store {
     return '''
 isRegistered: ${isRegistered},
 isLogged: ${isLogged},
+userEmail: ${userEmail},
+fullName: ${fullName},
 themeType: ${themeType},
 isDark: ${isDark}
     ''';

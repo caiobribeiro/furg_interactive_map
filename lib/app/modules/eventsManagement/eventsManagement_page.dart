@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class EventsManagementPage extends StatefulWidget {
   final String title;
@@ -51,6 +52,29 @@ class EventsManagementPageState extends State<EventsManagementPage> {
 
   @override
   Widget build(BuildContext context) {
+    _registerEvent() async {
+      var event = ParseObject('Event')
+        ..set('eventName', store.eventName)
+        ..set('eventDescription', store.eventDescription)
+        ..set('eventImageLink', store.eventImageLink)
+        ..set('eventOficialSite', store.eventOficialSite)
+        ..set('eventStart', store.selectedEventStartDate)
+        ..set('eventEnd', store.selectedEventEndDate)
+        ..set(
+            'eventPosition',
+            ParseGeoPoint(
+                latitude: store.eventPosition.latitude,
+                longitude: store.eventPosition.longitude));
+
+      await event.save();
+      // if (response.success) {
+      //   store.saveUser();
+      //   showSuccess("Conta registrada com sucesso!");
+      // } else {
+      //   showError(response.error!.message);
+      // }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -234,8 +258,10 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                                 const Text('Você será direcionado ao mapa'),
                             actions: <Widget>[
                               TextButton(
-                                onPressed: () =>
-                                    Modular.to.pushNamed('/furgMap'),
+                                onPressed: () {
+                                  _registerEvent();
+                                  Navigator.of(context).pop();
+                                },
                                 child: const Text('OK'),
                               ),
                             ],

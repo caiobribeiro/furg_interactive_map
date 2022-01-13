@@ -1,10 +1,8 @@
-// ignore_for_file: unused_local_variable
-
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_store.dart';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/models/phone_list_model.dart';
+import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FurgPhoneListSearchPage extends StatefulWidget {
@@ -36,6 +34,7 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      drawer: DrawerCustom(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[

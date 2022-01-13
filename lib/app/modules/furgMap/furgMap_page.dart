@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
-import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
+// import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/buildMapInfoSheet_widget.dart';
-import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
+import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -140,33 +140,33 @@ class FurgMapPageState extends State<FurgMapPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        child: ElevatedButton.icon(
-                          icon: Icon(
-                            Icons.search_rounded,
-                            size: 24.0,
-                          ),
-                          label: Text('Pesquisar Prédio'),
-                          onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20),
-                                ),
-                              ),
-                              builder: (context) => BuildEventSheetWidget(),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   margin: EdgeInsets.all(10),
+                      //   child: ElevatedButton.icon(
+                      //     icon: Icon(
+                      //       Icons.search_rounded,
+                      //       size: 24.0,
+                      //     ),
+                      //     label: Text('Pesquisar Prédio'),
+                      //     onPressed: () {
+                      //       showModalBottomSheet(
+                      //         context: context,
+                      //         isScrollControlled: true,
+                      //         shape: RoundedRectangleBorder(
+                      //           borderRadius: BorderRadius.vertical(
+                      //             top: Radius.circular(20),
+                      //           ),
+                      //         ),
+                      //         builder: (context) => BuildEventSheetWidget(),
+                      //       );
+                      //     },
+                      //     style: ElevatedButton.styleFrom(
+                      //       shape: new RoundedRectangleBorder(
+                      //         borderRadius: new BorderRadius.circular(20.0),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],

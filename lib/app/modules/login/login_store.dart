@@ -1,13 +1,14 @@
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:furg_interactive_map/app/app_store.dart';
+// import 'package:flutter_modular/flutter_modular.dart';
+// import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:mobx/mobx.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_store.g.dart';
 
 class LoginStore = _LoginStoreBase with _$LoginStore;
 
 abstract class _LoginStoreBase with Store {
-  final AppStore store = Modular.get<AppStore>();
+  // final AppStore _appStore = Modular.get();
 
   _LoginStoreBase() {
     autorun(
@@ -16,10 +17,13 @@ abstract class _LoginStoreBase with Store {
   }
 
   @observable
-  String loginEmail = "";
+  String errorMassege = "";
+
+  @observable
+  String loginNickName = "";
 
   @action
-  void setLoginEmail(String value) => loginEmail = value;
+  void setLoginNickName(String value) => loginNickName = value;
 
   @observable
   String loginPassword = "";
@@ -27,29 +31,10 @@ abstract class _LoginStoreBase with Store {
   @action
   void setLoginPassword(String value) => loginPassword = value;
 
-  @observable
-  String registerEmail = "";
-
-  @action
-  void setRegisterEmail(String value) => registerEmail = value;
-
-  @observable
-  String registerPassword = "";
-
-  @action
-  void setRegisterPassword(String value) => registerPassword = value;
-
-  @observable
-  String registerConfirmationPassword = "";
-
-  @action
-  void setRegisterConfirmationPassword(String value) =>
-      registerConfirmationPassword = value;
-
   @computed
   bool get isLoginEmailValid => RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(loginEmail);
+      .hasMatch(loginNickName);
 
   @computed
   bool get isLoginPasswordValid => loginPassword.length > 6;
@@ -57,21 +42,14 @@ abstract class _LoginStoreBase with Store {
   @computed
   bool get isLoginFormValid => isLoginEmailValid && isLoginPasswordValid;
 
-  @computed
-  bool get isRegisterEmailValid => RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(registerEmail);
-
-  @computed
-  bool get isRegisterPasswordValid =>
-      registerPassword.length > 6 &&
-      registerConfirmationPassword == registerPassword;
-
-  @computed
-  bool get isResgiterFormValid =>
-      isRegisterEmailValid && isRegisterPasswordValid;
-
   @observable
   String furgImageLogin =
       "https://reinter.furg.br/images/inicial/Carreiros.jpg";
+
+  @action
+  saveUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('registeredNickName', loginNickName);
+    prefs.setBool('isLogged', true);
+  }
 }

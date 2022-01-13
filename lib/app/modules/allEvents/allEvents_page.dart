@@ -1,6 +1,8 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/allEvents/allEvents_store.dart';
 import 'package:flutter/material.dart';
+import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 
 import '../../app_store.dart';
 
@@ -22,27 +24,30 @@ class AllEventsPageState extends State<AllEventsPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          ListTile(
-            onTap: () {},
-            title: Text('Evento X'),
-            leading: Icon(Icons.business_rounded),
-          ),
-          _appStore.isLogged == true
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () =>
-                          Modular.to.pushNamed('/eventsManagament'),
-                      child: Text("Criar Eventos"),
-                    ),
-                  ],
-                )
-              : Text("não há eventos"),
-        ],
-      ),
+      drawer: DrawerCustom(),
+      body: Observer(builder: (_) {
+        return Column(
+          children: [
+            ListTile(
+              onTap: () {},
+              title: Text('Evento X'),
+              leading: Icon(Icons.business_rounded),
+            ),
+            _appStore.isLogged == true
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () =>
+                            Modular.to.pushNamed('/eventsManagament'),
+                        child: Text("Criar Eventos"),
+                      ),
+                    ],
+                  )
+                : Container(),
+          ],
+        );
+      }),
     );
   }
 }
