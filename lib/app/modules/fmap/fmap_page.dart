@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/fmap/fmap_store.dart';
 import 'package:flutter/material.dart';
-import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -97,16 +96,16 @@ class _FmapPageState extends ModularState<FmapPage, FmapStore> {
                             // phoneStore.searchPhoneListString =
                             //     store.buildingName!;
 
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20),
-                                ),
-                              ),
-                              builder: (context) => BuildEventSheetWidget(),
-                            );
+                            // showModalBottomSheet(
+                            //   context: context,
+                            //   isScrollControlled: true,
+                            //   shape: RoundedRectangleBorder(
+                            //     borderRadius: BorderRadius.vertical(
+                            //       top: Radius.circular(20),
+                            //     ),
+                            //   ),
+                            //   builder: (context) => BuildEventSheetWidget(),
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                             shape: new RoundedRectangleBorder(

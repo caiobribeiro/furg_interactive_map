@@ -9,6 +9,29 @@ part of 'furgMap_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FurgMapStore on _FurgMapStoreBase, Store {
+  Computed<bool>? _$isMapPopulatedComputed;
+
+  @override
+  bool get isMapPopulated =>
+      (_$isMapPopulatedComputed ??= Computed<bool>(() => super.isMapPopulated,
+              name: '_FurgMapStoreBase.isMapPopulated'))
+          .value;
+
+  final _$eventsResponseAtom = Atom(name: '_FurgMapStoreBase.eventsResponse');
+
+  @override
+  dynamic get eventsResponse {
+    _$eventsResponseAtom.reportRead();
+    return super.eventsResponse;
+  }
+
+  @override
+  set eventsResponse(dynamic value) {
+    _$eventsResponseAtom.reportWrite(value, super.eventsResponse, () {
+      super.eventsResponse = value;
+    });
+  }
+
   final _$allPolygonBuildingsJsonAtom =
       Atom(name: '_FurgMapStoreBase.allPolygonBuildingsJson');
 
@@ -120,6 +143,22 @@ mixin _$FurgMapStore on _FurgMapStoreBase, Store {
     });
   }
 
+  final _$connectedToInternetAtom =
+      Atom(name: '_FurgMapStoreBase.connectedToInternet');
+
+  @override
+  bool get connectedToInternet {
+    _$connectedToInternetAtom.reportRead();
+    return super.connectedToInternet;
+  }
+
+  @override
+  set connectedToInternet(bool value) {
+    _$connectedToInternetAtom.reportWrite(value, super.connectedToInternet, () {
+      super.connectedToInternet = value;
+    });
+  }
+
   final _$darkMapStyleAtom = Atom(name: '_FurgMapStoreBase.darkMapStyle');
 
   @override
@@ -180,19 +219,35 @@ mixin _$FurgMapStore on _FurgMapStoreBase, Store {
     });
   }
 
-  final _$isAllMarkersFetchedAtom =
-      Atom(name: '_FurgMapStoreBase.isAllMarkersFetched');
+  final _$allMarkersFetchedAtom =
+      Atom(name: '_FurgMapStoreBase.allMarkersFetched');
 
   @override
-  bool get isAllMarkersFetched {
-    _$isAllMarkersFetchedAtom.reportRead();
-    return super.isAllMarkersFetched;
+  bool get allMarkersFetched {
+    _$allMarkersFetchedAtom.reportRead();
+    return super.allMarkersFetched;
   }
 
   @override
-  set isAllMarkersFetched(bool value) {
-    _$isAllMarkersFetchedAtom.reportWrite(value, super.isAllMarkersFetched, () {
-      super.isAllMarkersFetched = value;
+  set allMarkersFetched(bool value) {
+    _$allMarkersFetchedAtom.reportWrite(value, super.allMarkersFetched, () {
+      super.allMarkersFetched = value;
+    });
+  }
+
+  final _$allPolygonsFetchedAtom =
+      Atom(name: '_FurgMapStoreBase.allPolygonsFetched');
+
+  @override
+  bool get allPolygonsFetched {
+    _$allPolygonsFetchedAtom.reportRead();
+    return super.allPolygonsFetched;
+  }
+
+  @override
+  set allPolygonsFetched(bool value) {
+    _$allPolygonsFetchedAtom.reportWrite(value, super.allPolygonsFetched, () {
+      super.allPolygonsFetched = value;
     });
   }
 
@@ -244,6 +299,14 @@ mixin _$FurgMapStore on _FurgMapStoreBase, Store {
     });
   }
 
+  final _$internetVerifierAsyncAction =
+      AsyncAction('_FurgMapStoreBase.internetVerifier');
+
+  @override
+  Future<dynamic> internetVerifier() {
+    return _$internetVerifierAsyncAction.run(() => super.internetVerifier());
+  }
+
   final _$loadMapStylesAsyncAction =
       AsyncAction('_FurgMapStoreBase.loadMapStyles');
 
@@ -278,6 +341,7 @@ mixin _$FurgMapStore on _FurgMapStoreBase, Store {
   @override
   String toString() {
     return '''
+eventsResponse: ${eventsResponse},
 allPolygonBuildingsJson: ${allPolygonBuildingsJson},
 jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
 buildingName: ${buildingName},
@@ -285,14 +349,17 @@ buildingDescription: ${buildingDescription},
 buildingOficialSite: ${buildingOficialSite},
 urlOficialSite: ${urlOficialSite},
 appBarSize: ${appBarSize},
+connectedToInternet: ${connectedToInternet},
 darkMapStyle: ${darkMapStyle},
 lightMapStyle: ${lightMapStyle},
 coordinates: ${coordinates},
 polygons: ${polygons},
-isAllMarkersFetched: ${isAllMarkersFetched},
+allMarkersFetched: ${allMarkersFetched},
+allPolygonsFetched: ${allPolygonsFetched},
 allBuildings: ${allBuildings},
 googleMapController: ${googleMapController},
-initialCameraPositionSmallHill: ${initialCameraPositionSmallHill}
+initialCameraPositionSmallHill: ${initialCameraPositionSmallHill},
+isMapPopulated: ${isMapPopulated}
     ''';
   }
 }

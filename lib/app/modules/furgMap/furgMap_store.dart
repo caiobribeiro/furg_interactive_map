@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:io';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -11,6 +12,9 @@ class FurgMapStore = _FurgMapStoreBase with _$FurgMapStore;
 
 abstract class _FurgMapStoreBase with Store {
   final AppStore _appStore = Modular.get();
+
+  @observable
+  var eventsResponse;
 
   @observable
   String? allPolygonBuildingsJson;
@@ -42,6 +46,25 @@ abstract class _FurgMapStoreBase with Store {
     buildingOficialSite = currentOficialSite;
   }
 
+  @observable
+  bool connectedToInternet = true;
+
+  @computed
+  bool get isMapPopulated => allMarkersFetched && allPolygonsFetched;
+
+  @action
+  Future internetVerifier() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        connectedToInternet = true;
+      }
+    } on SocketException catch (_) {
+      allMarkersFetched = true;
+      connectedToInternet = false;
+    }
+  }
+
   // * Map styles loading part
 
   @observable
@@ -57,7 +80,10 @@ abstract class _FurgMapStoreBase with Store {
   Set<Polygon> polygons = HashSet<Polygon>();
 
   @observable
-  bool isAllMarkersFetched = false;
+  bool allMarkersFetched = false;
+
+  @observable
+  bool allPolygonsFetched = false;
 
   @observable
   List<Marker> allBuildings = [];

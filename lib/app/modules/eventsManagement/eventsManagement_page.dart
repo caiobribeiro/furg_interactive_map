@@ -40,9 +40,10 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     }
   }
 
-  _addNewwMarkerEvent(LatLng pos) {
-    print(pos);
+  Future _addNewwMarkerEvent(LatLng pos) async {
     store.eventPosition = pos;
+    final currentUser = await ParseUser.currentUser() as ParseUser?;
+
     store.eventLocantion = Marker(
       markerId: MarkerId(store.eventName),
       position: pos,
@@ -54,7 +55,17 @@ class EventsManagementPageState extends State<EventsManagementPage> {
             top: Radius.circular(20),
           ),
         ),
-        builder: (context) => BuildEventSheetWidget(),
+        builder: (context) => BuildEventSheetWidget(
+          eventName: store.eventName,
+          eventDescription: store.eventDescription,
+          eventImageLink: store.eventImageLink,
+          eventOficialSite: store.eventOficialSite,
+          userFurgEmail: currentUser!.emailAddress,
+          eventPosition: pos,
+          eventStart:
+              DateFormat('dd/MM/yyyy').format(store.selectedEventStartDate),
+          eventEnd: DateFormat('dd/MM/yyyy').format(store.selectedEventEndDate),
+        ),
       ),
     );
   }
@@ -73,7 +84,6 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
       String tempDescription = "Não há descrição";
-      String siteExeple = "http://c3.furg.br";
 
       for (var j = 0;
           j <

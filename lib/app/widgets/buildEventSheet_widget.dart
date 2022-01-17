@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:furg_interactive_map/app/modules/eventsManagement/eventsManagement_store.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BuildEventSheetWidget extends StatelessWidget {
   final String title;
-  const BuildEventSheetWidget({Key? key, this.title = "BuildEventSheetWidget"})
-      : super(key: key);
+  final String? eventOficialSite;
+  final String? eventName;
+  final String? eventDescription;
+  final String? eventImageLink;
+  final String? userFurgEmail;
+  final String? eventStart;
+  final String? eventEnd;
+  final LatLng? eventPosition;
+
+  const BuildEventSheetWidget({
+    Key? key,
+    this.title = "BuildEventSheetWidget",
+    required this.eventOficialSite,
+    required this.eventName,
+    required this.eventDescription,
+    required this.eventImageLink,
+    required this.userFurgEmail,
+    required this.eventPosition,
+    this.eventStart,
+    this.eventEnd,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final EventsManagementStore store = Modular.get();
-
-    void _launchURL() async {
-      String link = store.eventOficialSite;
+    void _launchURL(link) async {
       if (await canLaunch(link)) {
         await launch(
           link,
@@ -23,19 +38,24 @@ class BuildEventSheetWidget extends StatelessWidget {
       }
     }
 
+    void _launchMapsUrl(double lat, double lon) async {
+      final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Container(
       padding: EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
-            child: Image.network(store.eventImageLink),
-          ),
-          Container(
             margin: EdgeInsets.fromLTRB(5, 5, 5, 10),
             child: Text(
-              store.eventName,
+              eventName!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -44,32 +64,77 @@ class BuildEventSheetWidget extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(5, 5, 5, 10),
+            margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+            child: Image.network(eventImageLink!),
+          ),
+          eventStart != null
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text("Início: $eventStart"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text("Término: $eventEnd"),
+                    ),
+                  ],
+                )
+              : Container(),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: ElevatedButton.icon(
               icon: Icon(
                 Icons.web_rounded,
                 size: 24.0,
               ),
               label: Text('Visitar Site Oficial'),
-              onPressed: () async {
-                _launchURL();
-              },
               style: ElevatedButton.styleFrom(
+                minimumSize: Size(330, 50),
                 shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(20.0),
+                  borderRadius: new BorderRadius.circular(10.0),
                 ),
               ),
+              onPressed: () {
+                _launchURL(eventOficialSite);
+              },
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+            child: ElevatedButton.icon(
+              icon: Icon(
+                Icons.map_sharp,
+                size: 24.0,
+              ),
+              label: Text('Navegar'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(330, 50),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                ),
+              ),
+              onPressed: () {
+                _launchMapsUrl(
+                    eventPosition!.latitude, eventPosition!.longitude);
+              },
             ),
           ),
           Container(
             margin: EdgeInsets.fromLTRB(5, 5, 5, 10),
             child: Text(
-              store.eventDescription,
+              eventDescription!,
               style: TextStyle(
                 fontSize: 16,
               ),
             ),
           ),
+          userFurgEmail != null
+              ? Container(
+                  child: Text("Responsável: $userFurgEmail"),
+                )
+              : Container(),
         ],
       ),
     );

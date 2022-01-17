@@ -45,46 +45,50 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Image.network(
-              store.urlOficialSite,
-              width: deviceHeight * 0.3,
+            Container(
+              margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+              child: Image.network(
+                store.urlOficialSite,
+              ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(5, 20, 5, 0),
+              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: ElevatedButton.icon(
                 icon: Icon(
                   Icons.web_rounded,
                   size: 24.0,
                 ),
                 label: Text('Visitar Site Oficial'),
-                onPressed: () async {
-                  _launchURL();
-                },
+                onPressed: () => _launchURL(),
                 style: ElevatedButton.styleFrom(
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.65, 45),
                   shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+                    borderRadius: new BorderRadius.circular(10.0),
                   ),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: ElevatedButton.icon(
                 icon: Icon(
                   Icons.search_rounded,
                   size: 24.0,
                 ),
                 label: Text('Pesquisar na Universidade'),
-                onPressed: () async {
-                  print("Enviando");
-                  print(store.buildingName);
-                  Modular.to.pushNamed('/search/pedro');
-                },
                 style: ElevatedButton.styleFrom(
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.65, 45),
                   shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+                    borderRadius: new BorderRadius.circular(10.0),
                   ),
                 ),
+                onPressed: () => {
+                  print("Enviando"),
+                  print(store.buildingName),
+                  Modular.to.pushNamed('/search/pedro'),
+                },
               ),
             ),
             Container(

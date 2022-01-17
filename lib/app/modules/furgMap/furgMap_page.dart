@@ -1,15 +1,16 @@
 import 'dart:convert';
-
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
-// import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
+import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/buildMapInfoSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:furg_interactive_map/app/modules/furgMap/furgMap_store.dart';
+import 'package:intl/intl.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class FurgMapPage extends StatefulWidget {
   final String title;
@@ -29,9 +30,79 @@ class FurgMapPageState extends State<FurgMapPage> {
       actions: [],
     );
     store.appBarSize = appBar.preferredSize.height;
+
+    _getAllEvents();
     store.loadMapStyles();
     createPolygonForEachBuilding();
     super.initState();
+  }
+
+  Future<List<ParseObject>> _getAllEvents() async {
+    QueryBuilder<ParseObject> allEvents =
+        QueryBuilder<ParseObject>(ParseObject('Event'));
+    final ParseResponse apiResponse = await allEvents.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      store.eventsResponse = apiResponse.results as List<ParseObject>;
+      final apiReponseLength = store.eventsResponse.length;
+
+      for (var index = 0; index < apiReponseLength; index++) {
+        var allEventsApiResponse = store.eventsResponse[index];
+        final eventName = allEventsApiResponse.get<String>('eventName')!;
+        final eventDescription =
+            allEventsApiResponse.get<String>('eventDescription')!;
+        final eventUserEmail =
+            allEventsApiResponse.get<String>('userFurgEmail')!;
+        final eventOficialSite =
+            allEventsApiResponse.get<String>('eventOficialSite')!;
+        final eventImageLink =
+            allEventsApiResponse.get<String>('eventImageLink')!;
+        final userNickName = allEventsApiResponse.get<String>('userNickName')!;
+        final eventPosition =
+            allEventsApiResponse.get<ParseGeoPoint>('eventPosition')!;
+        final eventStart = DateFormat('dd-MM-yyyy')
+            .format(allEventsApiResponse.get<DateTime>('eventStart')!);
+        final eventEnd = DateFormat('dd-MM-yyyy')
+            .format(allEventsApiResponse.get<DateTime>('eventEnd')!);
+        // *************************************
+
+        store.allBuildings.add(
+          Marker(
+            markerId: MarkerId("$userNickName"),
+            draggable: false,
+            infoWindow: InfoWindow(title: "$eventName"),
+            onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              builder: (context) => BuildEventSheetWidget(
+                eventName: eventName,
+                eventDescription: eventDescription,
+                eventImageLink: eventImageLink,
+                eventOficialSite: eventOficialSite,
+                userFurgEmail: eventUserEmail,
+                eventStart: eventStart,
+                eventEnd: eventEnd,
+                eventPosition:
+                    LatLng(eventPosition.latitude, eventPosition.longitude),
+              ),
+            ),
+
+            position: LatLng(eventPosition.latitude, eventPosition.longitude),
+            // icon: customIcon!,
+          ),
+        );
+      }
+      store.allMarkersFetched = true;
+
+      return apiResponse.results as List<ParseObject>;
+    } else {
+      return [];
+    }
   }
 
   // ! Create a polygon for each building
@@ -95,7 +166,7 @@ class FurgMapPageState extends State<FurgMapPage> {
       }
     }
     // * Make the map widget visiable
-    return store.isAllMarkersFetched = !store.isAllMarkersFetched;
+    return store.allPolygonsFetched = !store.allPolygonsFetched;
   }
 
   @override
@@ -120,7 +191,7 @@ class FurgMapPageState extends State<FurgMapPage> {
               Container(
                 height: deviceHeight,
                 child: Visibility(
-                  visible: store.isAllMarkersFetched,
+                  visible: store.isMapPopulated,
                   child: GoogleMap(
                     mapType: MapType.normal,
                     zoomControlsEnabled: false,

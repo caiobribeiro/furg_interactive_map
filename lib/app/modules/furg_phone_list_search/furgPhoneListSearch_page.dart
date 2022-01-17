@@ -1,3 +1,4 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/furg_phone_list_search/furgPhoneListSearch_store.dart';
 import 'package:flutter/material.dart';
@@ -38,133 +39,119 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(
-            "Encontre aqui os telefones de pessoas ou setores da universidade.",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
+          Container(
+            margin: EdgeInsets.all(10),
+            child: Text(
+              "Encontre aqui os telefones de pessoas ou setores da universidade.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+              ),
             ),
           ),
-          Expanded(
-            child: FutureBuilder<PhoneListApi>(
-              future: store.getPhoneSearch(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final responseResultPhoneSearch = snapshot.data;
-                  return Container(
-                    child: ListView.builder(
-                      itemCount:
-                          responseResultPhoneSearch!.res!.telefones!.length,
-                      itemBuilder: (BuildContext context, i) {
-                        return Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              child: new Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    "${responseResultPhoneSearch.res!.telefones![i].unidade}",
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Divider(),
-                                  Text(
-                                      "Servidores: ${responseResultPhoneSearch.res!.telefones![i].pessoas!}",
-                                      textAlign: TextAlign.left),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                  ),
-                                  Text(
-                                      "Câmpus/Prédio: ${responseResultPhoneSearch.res!.telefones![i].nmLocal!}",
-                                      textAlign: TextAlign.left),
-                                  OutlinedButton(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Container(
-                                          margin:
-                                              EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                          child: Icon(
-                                            Icons.phone_callback_outlined,
-                                            color: Colors.grey,
-                                            size: 22.0,
-                                          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+            child: TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white30,
+                border: OutlineInputBorder(),
+                hintText: 'Pesquisar',
+              ),
+              onChanged: store.setSearchTelListString,
+            ),
+          ),
+          Observer(
+            builder: (_) {
+              store.searchPhoneListString;
+              return Expanded(
+                child: FutureBuilder<PhoneListApi>(
+                  future: store.getPhoneSearch(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final responseResultPhoneSearch = snapshot.data;
+                      return Container(
+                        child: ListView.builder(
+                          itemCount:
+                              responseResultPhoneSearch!.res!.telefones!.length,
+                          itemBuilder: (BuildContext context, i) {
+                            return Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(12.0),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "${responseResultPhoneSearch.res!.telefones![i].unidade}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
                                         ),
-                                        Text(
-                                            "Telefone: (${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}",
-                                            textAlign: TextAlign.left),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      launch(
-                                          "tel://${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}");
-                                    },
+                                      ),
+                                      Divider(),
+                                      Text(
+                                          "Servidores: ${responseResultPhoneSearch.res!.telefones![i].pessoas!}",
+                                          textAlign: TextAlign.left),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      ),
+                                      Text(
+                                          "Câmpus/Prédio: ${responseResultPhoneSearch.res!.telefones![i].nmLocal!}",
+                                          textAlign: TextAlign.left),
+                                      OutlinedButton(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 10, 0),
+                                              child: Icon(
+                                                Icons.phone_callback_outlined,
+                                                color: Colors.grey,
+                                                size: 22.0,
+                                              ),
+                                            ),
+                                            Text(
+                                                "Telefone: (${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}",
+                                                textAlign: TextAlign.left),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          launch(
+                                              "tel://${responseResultPhoneSearch.res!.telefones![i].nrDdd}) ${responseResultPhoneSearch.res!.telefones![i].nrTelefone}");
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              thickness: 1.5,
-                              // color: Colors.black,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(20),
-                      topRight: const Radius.circular(20),
-                    )),
-                  );
-                }
-                return Container(
-                  child: ListView.builder(
-                    itemCount: 20,
-                    itemBuilder: (BuildContext context, itemco) {
-                      return CircularProgressIndicator();
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(5, 5, 5, 15),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Pesquisar',
-                  ),
-                  onChanged: store.setSearchTelListString,
+                                ),
+                                Divider(
+                                  thickness: 1.5,
+                                  // color: Colors.black,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(20),
+                          topRight: const Radius.circular(20),
+                        )),
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  },
                 ),
-              ),
-              ElevatedButton.icon(
-                icon: Icon(
-                  Icons.search_rounded,
-                  size: 24.0,
-                ),
-                label: Text('Procurar na Lista'),
-                onPressed: () {
-                  openBottomSheet();
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
-                  ),
-                ),
-              ),
-            ],
+              );
+            },
           ),
         ],
       ),
@@ -265,13 +252,8 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
                 )),
               );
             }
-            return Container(
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (BuildContext context, itemco) {
-                  return CircularProgressIndicator();
-                },
-              ),
+            return Center(
+              child: CircularProgressIndicator(),
             );
           },
         );
