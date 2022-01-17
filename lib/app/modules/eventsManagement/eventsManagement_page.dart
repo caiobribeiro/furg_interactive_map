@@ -1,8 +1,11 @@
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/eventsManagement/eventsManagement_store.dart';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
+import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -17,6 +20,13 @@ class EventsManagementPage extends StatefulWidget {
 
 class EventsManagementPageState extends State<EventsManagementPage> {
   final EventsManagementStore store = Modular.get();
+
+  @override
+  void initState() {
+    store.loadMapStyles();
+    createPolygonForEachBuilding();
+    super.initState();
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final picked = await showDateRangePicker(
@@ -35,7 +45,6 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     store.eventPosition = pos;
     store.eventLocantion = Marker(
       markerId: MarkerId(store.eventName),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
       position: pos,
       onTap: () => showModalBottomSheet(
         context: context,
@@ -48,6 +57,57 @@ class EventsManagementPageState extends State<EventsManagementPage> {
         builder: (context) => BuildEventSheetWidget(),
       ),
     );
+  }
+
+  // ! Create a polygon for each building
+  Future createPolygonForEachBuilding() async {
+    // * Load json file
+    store.allPolygonBuildingsJson = await rootBundle
+        .loadString('assets/coordinates/mapa_interativo_furg_att.json');
+
+    // * Decode json file
+    final jsonPolygons = jsonDecode(store.allPolygonBuildingsJson!);
+    store.jsonDecodedLatLngPolygons = PolygonCoordinates.fromJson(jsonPolygons);
+
+    // * Create a marker for each building in json file
+    for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
+      List<LatLng> tempPolygonList = [];
+      String tempDescription = "Não há descrição";
+      String siteExeple = "http://c3.furg.br";
+
+      for (var j = 0;
+          j <
+              store.jsonDecodedLatLngPolygons.features![i].geometry!
+                  .coordinates![0].length;
+          j++) {
+        tempPolygonList.add(LatLng(
+            store.jsonDecodedLatLngPolygons.features![i].geometry!.coordinates!
+                .single[j].last,
+            store.jsonDecodedLatLngPolygons.features![i].geometry!.coordinates!
+                .single[j].first));
+        String tempName =
+            store.jsonDecodedLatLngPolygons.features![i].properties!.name;
+        if (store.jsonDecodedLatLngPolygons.features![i].properties!
+                .description !=
+            null) {
+          tempDescription = store
+              .jsonDecodedLatLngPolygons.features![i].properties!.description;
+        }
+
+        store.polygons.add(
+          Polygon(
+            consumeTapEvents: true,
+            polygonId: PolygonId(tempName),
+            points: tempPolygonList,
+            fillColor: Colors.greenAccent,
+            strokeWidth: 1,
+            onTap: () {},
+          ),
+        );
+      }
+    }
+    // * Make the map widget visiable
+    return store.isAllMarkersFetched = !store.isAllMarkersFetched;
   }
 
   @override
@@ -67,12 +127,6 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                 longitude: store.eventPosition.longitude));
 
       await event.save();
-      // if (response.success) {
-      //   store.saveUser();
-      //   showSuccess("Conta registrada com sucesso!");
-      // } else {
-      //   showError(response.error!.message);
-      // }
     }
 
     return Scaffold(
@@ -171,18 +225,21 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                   ),
                 ],
               ),
-              ElevatedButton.icon(
-                icon: Icon(
-                  Icons.date_range,
-                  size: 24.0,
-                ),
-                label: Text('Selecionar Data'),
-                onPressed: () {
-                  _selectDate(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.date_range,
+                    size: 24.0,
+                  ),
+                  label: Text('Selecionar Data'),
+                  onPressed: () => _selectDate(context),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width * 0.65, 45),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
                   ),
                 ),
               ),
@@ -210,20 +267,24 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                     height: MediaQuery.of(context).size.height * 0.3,
                     child: Observer(
                       builder: (_) {
-                        return GoogleMap(
-                          mapType: MapType.normal,
-                          zoomControlsEnabled: false,
-                          initialCameraPosition:
-                              store.initialCameraPositionSmallHill,
-                          onMapCreated: (GoogleMapController controller) {
-                            store.googleMapController!.complete(controller);
-                            store.setMapStyle();
-                          },
-                          markers: {
-                            if (store.eventLocantion != null)
-                              store.eventLocantion!,
-                          },
-                          onLongPress: _addNewwMarkerEvent,
+                        return Visibility(
+                          visible: store.isAllMarkersFetched,
+                          child: GoogleMap(
+                            mapType: MapType.normal,
+                            zoomControlsEnabled: false,
+                            initialCameraPosition:
+                                store.initialCameraPositionSmallHill,
+                            onMapCreated: (GoogleMapController controller) {
+                              store.googleMapController!.complete(controller);
+                              store.setMapStyle();
+                            },
+                            markers: {
+                              if (store.eventLocantion != null)
+                                store.eventLocantion!,
+                            },
+                            polygons: store.polygons,
+                            onLongPress: _addNewwMarkerEvent,
+                          ),
                         );
                       },
                     ),
@@ -240,51 +301,56 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                   ),
                 ],
               ),
-              ElevatedButton.icon(
-                icon: Icon(
-                  Icons.save_alt_rounded,
-                  size: 24.0,
-                ),
-                label: Text('Criar Evento'),
-                onPressed: () {
-                  var missingValues = store.missingValue;
-                  // store.isAnyFieldEmpty();
-                  store.isAnyFieldEmpty()
-                      ? showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: const Text('Evento Criado com Sucesso'),
-                            content:
-                                const Text('Você será direcionado ao mapa'),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  _registerEvent();
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        )
-                      : ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Campos Vazios: $missingValues"),
-                            action: SnackBarAction(
-                              label: 'Dispensar',
-                              onPressed: () {
-                                // Code to execute.
-                              },
-                            ),
-                          ),
-                        );
-                  store.missingValue.clear();
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.save_alt_rounded,
+                    size: 24.0,
                   ),
+                  label: Text('Criar Evento'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width * 0.65, 45),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    var missingValues = store.missingValue;
+                    // store.isAnyFieldEmpty();
+                    store.isAnyFieldEmpty()
+                        ? showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Evento Criado com Sucesso'),
+                              content:
+                                  const Text('Você será direcionado ao mapa'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    _registerEvent();
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Campos Vazios: $missingValues"),
+                              action: SnackBarAction(
+                                label: 'Dispensar',
+                                onPressed: () {
+                                  // Code to execute.
+                                },
+                              ),
+                            ),
+                          );
+                    store.missingValue.clear();
+                  },
                 ),
               ),
             ],

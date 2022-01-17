@@ -52,6 +52,71 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
               name: '_EventsManagementStoreBase.isEventCreationFormValid'))
       .value;
 
+  final _$allPolygonBuildingsJsonAtom =
+      Atom(name: '_EventsManagementStoreBase.allPolygonBuildingsJson');
+
+  @override
+  String? get allPolygonBuildingsJson {
+    _$allPolygonBuildingsJsonAtom.reportRead();
+    return super.allPolygonBuildingsJson;
+  }
+
+  @override
+  set allPolygonBuildingsJson(String? value) {
+    _$allPolygonBuildingsJsonAtom
+        .reportWrite(value, super.allPolygonBuildingsJson, () {
+      super.allPolygonBuildingsJson = value;
+    });
+  }
+
+  final _$jsonDecodedLatLngPolygonsAtom =
+      Atom(name: '_EventsManagementStoreBase.jsonDecodedLatLngPolygons');
+
+  @override
+  dynamic get jsonDecodedLatLngPolygons {
+    _$jsonDecodedLatLngPolygonsAtom.reportRead();
+    return super.jsonDecodedLatLngPolygons;
+  }
+
+  @override
+  set jsonDecodedLatLngPolygons(dynamic value) {
+    _$jsonDecodedLatLngPolygonsAtom
+        .reportWrite(value, super.jsonDecodedLatLngPolygons, () {
+      super.jsonDecodedLatLngPolygons = value;
+    });
+  }
+
+  final _$polygonsAtom = Atom(name: '_EventsManagementStoreBase.polygons');
+
+  @override
+  Set<Polygon> get polygons {
+    _$polygonsAtom.reportRead();
+    return super.polygons;
+  }
+
+  @override
+  set polygons(Set<Polygon> value) {
+    _$polygonsAtom.reportWrite(value, super.polygons, () {
+      super.polygons = value;
+    });
+  }
+
+  final _$isAllMarkersFetchedAtom =
+      Atom(name: '_EventsManagementStoreBase.isAllMarkersFetched');
+
+  @override
+  bool get isAllMarkersFetched {
+    _$isAllMarkersFetchedAtom.reportRead();
+    return super.isAllMarkersFetched;
+  }
+
+  @override
+  set isAllMarkersFetched(bool value) {
+    _$isAllMarkersFetchedAtom.reportWrite(value, super.isAllMarkersFetched, () {
+      super.isAllMarkersFetched = value;
+    });
+  }
+
   final _$missingValueAtom =
       Atom(name: '_EventsManagementStoreBase.missingValue');
 
@@ -368,6 +433,10 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   @override
   String toString() {
     return '''
+allPolygonBuildingsJson: ${allPolygonBuildingsJson},
+jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
+polygons: ${polygons},
+isAllMarkersFetched: ${isAllMarkersFetched},
 missingValue: ${missingValue},
 eventName: ${eventName},
 eventDescription: ${eventDescription},

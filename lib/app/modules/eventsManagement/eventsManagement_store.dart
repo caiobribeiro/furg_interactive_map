@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
+import 'dart:collection';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -26,6 +28,18 @@ abstract class _EventsManagementStoreBase with Store {
       },
     );
   }
+
+  @observable
+  String? allPolygonBuildingsJson;
+
+  @observable
+  var jsonDecodedLatLngPolygons;
+
+  @observable
+  Set<Polygon> polygons = HashSet<Polygon>();
+
+  @observable
+  bool isAllMarkersFetched = false;
 
   @observable
   List<String> missingValue = [];

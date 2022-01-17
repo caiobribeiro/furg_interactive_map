@@ -95,6 +95,23 @@ mixin _$RegistrationUserStore on _RegistrationUserStoreBase, Store {
     });
   }
 
+  final _$registerFurgEmailTypeAtom =
+      Atom(name: '_RegistrationUserStoreBase.registerFurgEmailType');
+
+  @override
+  String get registerFurgEmailType {
+    _$registerFurgEmailTypeAtom.reportRead();
+    return super.registerFurgEmailType;
+  }
+
+  @override
+  set registerFurgEmailType(String value) {
+    _$registerFurgEmailTypeAtom.reportWrite(value, super.registerFurgEmailType,
+        () {
+      super.registerFurgEmailType = value;
+    });
+  }
+
   final _$registerPasswordAtom =
       Atom(name: '_RegistrationUserStoreBase.registerPassword');
 
@@ -184,6 +201,18 @@ mixin _$RegistrationUserStore on _RegistrationUserStoreBase, Store {
   }
 
   @override
+  void setRegisterFurgEmailType(String value) {
+    final _$actionInfo =
+        _$_RegistrationUserStoreBaseActionController.startAction(
+            name: '_RegistrationUserStoreBase.setRegisterFurgEmailType');
+    try {
+      return super.setRegisterFurgEmailType(value);
+    } finally {
+      _$_RegistrationUserStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setRegisterPassword(String value) {
     final _$actionInfo = _$_RegistrationUserStoreBaseActionController
         .startAction(name: '_RegistrationUserStoreBase.setRegisterPassword');
@@ -213,6 +242,7 @@ registerNickName: ${registerNickName},
 registerFirstName: ${registerFirstName},
 registerLastName: ${registerLastName},
 registerEmail: ${registerEmail},
+registerFurgEmailType: ${registerFurgEmailType},
 registerPassword: ${registerPassword},
 registerConfirmationPassword: ${registerConfirmationPassword},
 isRegisterEmailValid: ${isRegisterEmailValid},

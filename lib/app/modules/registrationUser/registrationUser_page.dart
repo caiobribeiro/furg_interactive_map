@@ -1,3 +1,4 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/registrationUser/registrationUser_store.dart';
 import 'package:flutter/material.dart';
@@ -68,8 +69,10 @@ class RegistrationUserPageState extends State<RegistrationUserPage> {
     }
 
     _resgisterUser() async {
+      final emailRegisterFurg =
+          store.registerEmail + store.registerFurgEmailType;
       final user = ParseUser.createUser(
-          store.registerNickName, store.registerPassword, store.registerEmail)
+          store.registerNickName, store.registerPassword, emailRegisterFurg)
         ..set('userFirstName', store.registerFirstName)
         ..set('userLastName', store.registerLastName);
 
@@ -134,17 +137,54 @@ class RegistrationUserPageState extends State<RegistrationUserPage> {
                   onChanged: store.setRegisterLastName,
                 ),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                child: TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white30,
-                    border: OutlineInputBorder(),
-                    hintText: 'Email Furg',
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(30, 10, 10, 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white30,
+                          border: OutlineInputBorder(),
+                          hintText: 'Email Furg',
+                        ),
+                        onChanged: store.setRegisterEmail,
+                      ),
+                    ),
                   ),
-                  onChanged: store.setRegisterEmail,
-                ),
+                  Observer(builder: (_) {
+                    return Container(
+                      margin: EdgeInsets.fromLTRB(0, 10, 30, 10),
+                      child: DropdownButton<String>(
+                        value: store.registerFurgEmailType,
+                        icon: const Icon(Icons.arrow_downward),
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.black),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.black,
+                        ),
+                        onChanged: (String? value) {
+                          store.setRegisterFurgEmailType(value!);
+                        },
+                        items: <String>[
+                          '@furg.br',
+                          '@hu.furg.br',
+                          '@faherg.furg.br',
+                          '@uab.furg.br',
+                          '@faurg.furg.br',
+                          '@nti.furg.br',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    );
+                  })
+                ],
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(30, 10, 30, 10),

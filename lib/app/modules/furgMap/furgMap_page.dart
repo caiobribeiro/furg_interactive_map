@@ -134,43 +134,6 @@ class FurgMapPageState extends State<FurgMapPage> {
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // Container(
-                      //   margin: EdgeInsets.all(10),
-                      //   child: ElevatedButton.icon(
-                      //     icon: Icon(
-                      //       Icons.search_rounded,
-                      //       size: 24.0,
-                      //     ),
-                      //     label: Text('Pesquisar Prédio'),
-                      //     onPressed: () {
-                      //       showModalBottomSheet(
-                      //         context: context,
-                      //         isScrollControlled: true,
-                      //         shape: RoundedRectangleBorder(
-                      //           borderRadius: BorderRadius.vertical(
-                      //             top: Radius.circular(20),
-                      //           ),
-                      //         ),
-                      //         builder: (context) => BuildEventSheetWidget(),
-                      //       );
-                      //     },
-                      //     style: ElevatedButton.styleFrom(
-                      //       shape: new RoundedRectangleBorder(
-                      //         borderRadius: new BorderRadius.circular(20.0),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ],
-              ),
             ],
           );
         },

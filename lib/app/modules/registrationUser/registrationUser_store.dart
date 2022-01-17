@@ -32,6 +32,12 @@ abstract class _RegistrationUserStoreBase with Store {
   void setRegisterEmail(String value) => registerEmail = value;
 
   @observable
+  String registerFurgEmailType = "@furg.br";
+
+  @action
+  void setRegisterFurgEmailType(String value) => registerFurgEmailType = value;
+
+  @observable
   String registerPassword = "";
 
   @action
