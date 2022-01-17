@@ -5,20 +5,27 @@ import 'package:url_launcher/url_launcher.dart';
 
 class BuildMapInfoSheetWidget extends StatelessWidget {
   final String title;
-  const BuildMapInfoSheetWidget(
-      {Key? key, this.title = "BuildMapInfoSheetWidget"})
-      : super(key: key);
+  final String? buildingName;
+  final String? buildingDescription;
+  final String? buildingOficialSite;
+  final String? buildingImageLink;
+  const BuildMapInfoSheetWidget({
+    Key? key,
+    this.title = "BuildMapInfoSheetWidget",
+    required this.buildingName,
+    this.buildingDescription,
+    this.buildingOficialSite,
+    this.buildingImageLink,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final FurgMapStore store = Modular.get();
     final screenHeight = MediaQuery.of(context).size.height;
     final statusBarHeight = MediaQuery.of(context).padding.top;
-    // final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = screenHeight - statusBarHeight;
 
-    void _launchURL() async {
-      String link = store.buildingOficialSite;
+    void _launchURL(link) async {
       if (await canLaunch(link)) {
         await launch(
           link,
@@ -37,7 +44,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: IgnorePointer(
                 child: Text(
-                  "${store.buildingName}",
+                  "$buildingName",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 34,
@@ -47,9 +54,11 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
-              child: Image.network(
-                store.urlOficialSite,
-              ),
+              child: buildingImageLink != ""
+                  ? Image.network(
+                      "$buildingImageLink",
+                    )
+                  : Text(buildingImageLink!),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -59,7 +68,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                   size: 24.0,
                 ),
                 label: Text('Visitar Site Oficial'),
-                onPressed: () => _launchURL(),
+                onPressed: () => _launchURL(buildingOficialSite),
                 style: ElevatedButton.styleFrom(
                   minimumSize:
                       Size(MediaQuery.of(context).size.width * 0.65, 45),
@@ -87,14 +96,14 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                 onPressed: () => {
                   print("Enviando"),
                   print(store.buildingName),
-                  Modular.to.pushNamed('/search/pedro'),
+                  Modular.to.navigate('/search/$buildingName'),
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.all(10),
               child: Text(
-                "${store.buildingDescription}",
+                "$buildingDescription",
                 style: TextStyle(
                   fontSize: 22,
                 ),

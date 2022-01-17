@@ -64,15 +64,11 @@ class Properties {
   Properties({
     @required this.name,
     @required this.umapOptions,
-    @required this.oficialSite,
-    @required this.imageBuilding,
     @required this.description,
   });
 
   final String? name;
   final UmapOptions? umapOptions;
-  final String? oficialSite;
-  final String? imageBuilding;
   final String? description;
 
   factory Properties.fromJson(Map<String, dynamic> json) => Properties(
@@ -80,9 +76,6 @@ class Properties {
         umapOptions: json["_umap_options"] == null
             ? null
             : UmapOptions.fromJson(json["_umap_options"]),
-        oficialSite: json["oficialSite"] == null ? null : json["oficialSite"],
-        imageBuilding:
-            json["imageBuilding"] == null ? null : json["imageBuilding"],
         description: json["description"] == null ? null : json["description"],
       );
 }

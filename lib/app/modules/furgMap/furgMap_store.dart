@@ -61,7 +61,7 @@ abstract class _FurgMapStoreBase with Store {
       }
     } on SocketException catch (_) {
       allMarkersFetched = true;
-      connectedToInternet = false;
+      connectedToInternet = true;
     }
   }
 

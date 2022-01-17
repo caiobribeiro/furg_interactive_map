@@ -30,7 +30,6 @@ class FurgMapPageState extends State<FurgMapPage> {
       actions: [],
     );
     store.appBarSize = appBar.preferredSize.height;
-
     _getAllEvents();
     store.loadMapStyles();
     createPolygonForEachBuilding();
@@ -101,6 +100,7 @@ class FurgMapPageState extends State<FurgMapPage> {
 
       return apiResponse.results as List<ParseObject>;
     } else {
+      store.allMarkersFetched = true;
       return [];
     }
   }
@@ -119,7 +119,8 @@ class FurgMapPageState extends State<FurgMapPage> {
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
       String tempDescription = "Não há descrição";
-      String siteExeple = "http://c3.furg.br";
+      String oficialBuildingSite = "Site não disponível";
+      String tempimage = "";
 
       for (var j = 0;
           j <
@@ -139,6 +140,12 @@ class FurgMapPageState extends State<FurgMapPage> {
           tempDescription = store
               .jsonDecodedLatLngPolygons.features![i].properties!.description;
         }
+        if (store.jsonDecodedLatLngPolygons.features![i].properties!
+                .oficialSite !=
+            null) {
+          tempimage = store
+              .jsonDecodedLatLngPolygons.features![i].properties!.oficialSite;
+        }
 
         store.polygons.add(
           Polygon(
@@ -148,8 +155,6 @@ class FurgMapPageState extends State<FurgMapPage> {
             fillColor: Colors.greenAccent,
             strokeWidth: 1,
             onTap: () {
-              store.updateBuildingInfoBottonSheet(
-                  tempName, tempDescription, siteExeple);
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
@@ -158,7 +163,12 @@ class FurgMapPageState extends State<FurgMapPage> {
                     top: Radius.circular(20),
                   ),
                 ),
-                builder: (context) => BuildMapInfoSheetWidget(),
+                builder: (context) => BuildMapInfoSheetWidget(
+                  buildingName: tempName,
+                  buildingDescription: tempDescription,
+                  buildingOficialSite: oficialBuildingSite,
+                  buildingImageLink: tempimage,
+                ),
               );
             },
           ),

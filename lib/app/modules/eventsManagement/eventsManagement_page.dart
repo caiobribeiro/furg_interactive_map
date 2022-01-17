@@ -83,6 +83,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     // * Create a marker for each building in json file
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
+      // ignore: unused_local_variable
       String tempDescription = "Não há descrição";
 
       for (var j = 0;
@@ -123,13 +124,16 @@ class EventsManagementPageState extends State<EventsManagementPage> {
   @override
   Widget build(BuildContext context) {
     _registerEvent() async {
+      final currentUser = await ParseUser.currentUser() as ParseUser?;
       var event = ParseObject('Event')
+        ..set('userNickName', currentUser?.username)
         ..set('eventName', store.eventName)
         ..set('eventDescription', store.eventDescription)
         ..set('eventImageLink', store.eventImageLink)
         ..set('eventOficialSite', store.eventOficialSite)
         ..set('eventStart', store.selectedEventStartDate)
         ..set('eventEnd', store.selectedEventEndDate)
+        ..set('userFurgEmail', currentUser?.emailAddress)
         ..set(
             'eventPosition',
             ParseGeoPoint(
@@ -341,7 +345,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                                 TextButton(
                                   onPressed: () {
                                     _registerEvent();
-                                    Navigator.of(context).pop();
+                                    Modular.to.navigate('/furgMap');
                                   },
                                   child: const Text('OK'),
                                 ),

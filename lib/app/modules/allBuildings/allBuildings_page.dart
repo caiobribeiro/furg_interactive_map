@@ -102,25 +102,9 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
               ),
             );
           }
-          return Container(
-              child: ListView.builder(
-            itemCount: 20,
-            itemBuilder: (BuildContext context, itemco) {
-              return SizedBox(
-                width: 25,
-                height: 35.0,
-                child: CircularProgressIndicator(),
-                // child: Shimmer.fromColors(
-                //   child: Card(
-                //     color: Colors.grey,
-                //   ),
-                //   baseColor: Colors.white70,
-                //   highlightColor: Colors.grey[400],
-                //   direction: ShimmerDirection.ltr,
-                // ),
-              );
-            },
-          ));
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

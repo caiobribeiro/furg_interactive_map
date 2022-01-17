@@ -22,10 +22,7 @@ abstract class _EventsManagementStoreBase with Store {
   _EventsManagementStoreBase() {
     loadMapStyles();
     autorun(
-      (_) {
-        print("Start: ${selectedEventStartDate}");
-        print("End: ${selectedEventEndDate}");
-      },
+      (_) {},
     );
   }
 
@@ -173,10 +170,8 @@ abstract class _EventsManagementStoreBase with Store {
     final controller = await googleMapController!.future;
     if (_appStore.isDark) {
       controller.setMapStyle(darkMapStyle);
-      print("dark");
     } else {
       controller.setMapStyle(lightMapStyle);
-      print("bright");
     }
   }
 }
