@@ -84,13 +84,32 @@ class AuthPageState extends State<AuthPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 10, 0, 70),
+              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: ElevatedButton.icon(
                 icon: Icon(
                   Icons.person_add_outlined,
                   size: 24.0,
                 ),
                 label: Text('Registrar-se'),
+                onPressed: () {
+                  Modular.to.pushNamed('/registrationUser');
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(deviceWidth * 0.65, 45),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 10, 0, 70),
+              child: ElevatedButton.icon(
+                icon: Icon(
+                  Icons.info_outline_rounded,
+                  size: 24.0,
+                ),
+                label: Text('Sobre o Projeto'),
                 onPressed: () {
                   Modular.to.pushNamed('/registrationUser');
                 },

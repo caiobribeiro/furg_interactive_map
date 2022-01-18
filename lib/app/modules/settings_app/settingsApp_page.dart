@@ -20,33 +20,23 @@ class _SettingsAppPageState
 
   @override
   void initState() {
-    store.getSavedUserInfo();
-
+    isUserLogged();
     super.initState();
+  }
+
+  Future isUserLogged() async {
+    final currentUser = await ParseUser.currentUser() as ParseUser?;
+    if (currentUser?.emailVerified == null) {
+      store.isLogged = false;
+    } else {
+      store.isLogged = currentUser!.emailVerified!;
+      store.userLoggedNickeName = currentUser.username!;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    void showSuccess(String message) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Sucesso"),
-            content: Text("Desconectado(a)"),
-            actions: <Widget>[
-              TextButton(
-                child: const Text("Ok"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
 
     void showError(String message) {
       showDialog(
@@ -73,8 +63,8 @@ class _SettingsAppPageState
       var response = await user.logout();
 
       if (response.success) {
-        showSuccess("User was successfully logout!");
         store.userLogoutShared();
+        Modular.to.navigate('/furgMap');
       } else {
         showError(response.error!.message);
       }
@@ -136,27 +126,109 @@ class _SettingsAppPageState
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                store.savedUserNickName == ""
-                    ? Text(store.savedUserNickName!)
-                    : Text("Não conectado"),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: ElevatedButton.icon(
-                    icon: Icon(
-                      Icons.logout_outlined,
-                      size: 24.0,
-                    ),
-                    label: Text('Desconectar'),
-                    onPressed: () =>
-                        store.appStore.isLogged ? areYouSure() : null,
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(deviceWidth * 0.65, 45),
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(10.0),
+                store.isLogged == true
+                    ? Column(
+                        children: [
+                          Text(store.userLoggedNickeName!),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.logout_outlined,
+                                size: 24.0,
+                              ),
+                              label: Text('Desconectar'),
+                              onPressed: () =>
+                                  store.appStore.isLogged ? areYouSure() : null,
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(deviceWidth * 0.65, 45),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Text("Não conectado"),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.map_outlined,
+                                size: 24.0,
+                              ),
+                              label: Text('Voltar ao Mapa'),
+                              onPressed: () => Modular.to.pushNamed('/furgMap'),
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(deviceWidth * 0.65, 45),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.login_rounded,
+                                size: 24.0,
+                              ),
+                              label: Text('Entrar'),
+                              onPressed: () {
+                                Modular.to.pushNamed('/login');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(deviceWidth * 0.65, 45),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.person_add_outlined,
+                                size: 24.0,
+                              ),
+                              label: Text('Registrar-se'),
+                              onPressed: () {
+                                Modular.to.pushNamed('/registrationUser');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(deviceWidth * 0.65, 45),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 70),
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                Icons.info_outline_rounded,
+                                size: 24.0,
+                              ),
+                              label: Text('Sobre o Projeto'),
+                              onPressed: () {
+                                Modular.to.pushNamed('/registrationUser');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(deviceWidth * 0.65, 45),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                ),
               ],
             );
           }),

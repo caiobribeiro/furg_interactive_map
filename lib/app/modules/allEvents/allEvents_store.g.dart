@@ -40,11 +40,44 @@ mixin _$AllEventsStore on _AllEventsStoreBase, Store {
     });
   }
 
+  final _$isLoggedAtom = Atom(name: '_AllEventsStoreBase.isLogged');
+
+  @override
+  bool get isLogged {
+    _$isLoggedAtom.reportRead();
+    return super.isLogged;
+  }
+
+  @override
+  set isLogged(bool value) {
+    _$isLoggedAtom.reportWrite(value, super.isLogged, () {
+      super.isLogged = value;
+    });
+  }
+
+  final _$userLoggedNickeNameAtom =
+      Atom(name: '_AllEventsStoreBase.userLoggedNickeName');
+
+  @override
+  String get userLoggedNickeName {
+    _$userLoggedNickeNameAtom.reportRead();
+    return super.userLoggedNickeName;
+  }
+
+  @override
+  set userLoggedNickeName(String value) {
+    _$userLoggedNickeNameAtom.reportWrite(value, super.userLoggedNickeName, () {
+      super.userLoggedNickeName = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 eventsResponse: ${eventsResponse},
-customTileExpanded: ${customTileExpanded}
+customTileExpanded: ${customTileExpanded},
+isLogged: ${isLogged},
+userLoggedNickeName: ${userLoggedNickeName}
     ''';
   }
 }

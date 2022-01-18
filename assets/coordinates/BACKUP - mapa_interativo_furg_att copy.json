@@ -4,10 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Almoxarifado / Patrimônio"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -40,10 +37,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Anexo 4"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -188,10 +182,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Anexo 4"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -288,10 +279,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Aprofurg"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -332,10 +320,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "AQUATEC"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -392,10 +377,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Arquivo GEral FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -452,10 +434,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Auditório PROPLAN"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -648,10 +627,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Bar do Japa"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -688,10 +664,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Biblioteca Centra"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -780,10 +753,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Biosul"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -844,10 +814,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Biotério"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -908,10 +875,7 @@
           "popupShape": "Large",
           "showLabel": null
         },
-        "imageBuilding": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR-KiRO_wvDeoDAoLU7kd7zlaTak2e0u7iNHT5xqOrYW_z41BJ34g8GZ-h3tMAc7ZI_bk&usqp=CAU",
-        "oficialSite": "http://c3.furg.br",
         "name": "C3 - Centro de Ciências Computacionais",
-        
         "description": "C3 foi fundado em setembro de 2008 mas tem sua gênese na formação pioneira no Brasil em Engenharia de Computação, que remonta a década de 1990. Identifica-se com as três dimensões estruturadoras do trabalho numa instituição de ensino superior: o ensino, a pesquisa e a extensão, sendo reconhecido pela sua excelência acadêmica em inovação e compromisso social. O corpo docente do C3 é formado por mais de 35 professores doutores, com grande abrangência de áreas de pesquisa, e uma equipe de servidores técnico-administrativos que dão suporte de forma diferenciada às atividades acadêmicas de uma comunidade constituída por cerca de 500 alunos de graduação e 150 de pós-graduação. Situado no Campus Carreiros da FURG, o C3 tem uma área física de 3200 m², distribuída em 10 laboratórios de ensino, 35 salas-laboratórios para pesquisas, sala de videoconferência e auditório. "
       },
       "geometry": {
@@ -1037,10 +1001,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Café Cultura"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1113,10 +1074,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CAIC"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1217,10 +1175,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEAMECIM"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1285,10 +1240,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEILORS 1 - Núcleo Operacional de Triagem "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1461,10 +1413,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEMESUL"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1537,10 +1486,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CENTECO"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1589,10 +1535,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Centeco"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1725,10 +1668,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Centro de Convivência - CC"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1813,10 +1753,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Centro Esportivo"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -1953,10 +1890,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CIDEC-SUL"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2033,10 +1967,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CTG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2085,10 +2016,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "DCE"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2161,10 +2089,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Deck"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2229,10 +2154,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "EDGRAF"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2265,10 +2187,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Educação Física"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2325,10 +2244,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "EQA - Escola de Química e Alimentos - FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2401,10 +2317,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "EQA - Escola de Química e Alimentos - FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2521,10 +2434,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "EQA LEEB CEAS - FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2565,10 +2475,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estação de Apoio Antártico - ESANTAR"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2705,58 +2612,59 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Expressão Gráfica"
-        
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -52.168673,
-              -32.071711
+              -52.168464,
+              -32.071875
             ],
             [
-              -52.168668,
-              -32.071738
+              -52.168645,
+              -32.0719
             ],
             [
-              -52.168823,
-              -32.071754
+              -52.168641,
+              -32.071873
             ],
             [
-              -52.168821,
-              -32.071781
+              -52.168905,
+              -32.071894
             ],
             [
-              -52.168925,
-              -32.071795
+              -52.168924,
+              -32.071794
             ],
             [
-              -52.168912,
-              -32.071904
+              -52.168818,
+              -32.071783
             ],
             [
-              -52.168649,
-              -32.071872
+              -52.168833,
+              -32.071755
             ],
             [
-              -52.168643,
-              -32.071902
+              -52.168664,
+              -32.071735
             ],
             [
-              -52.168461,
-              -32.071881
+              -52.16867,
+              -32.071712
             ],
             [
               -52.168493,
-              -32.071693
+              -32.071696
             ],
             [
-              -52.168673,
-              -32.071711
+              -52.168468,
+              -32.07188
+            ],
+            [
+              -52.168464,
+              -32.071875
             ]
           ]
         ]
@@ -2765,10 +2673,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Galpão Crioulo"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2801,10 +2706,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Garagem FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2837,10 +2739,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "ICB"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2893,10 +2792,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "ICB - Limnologia"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -2961,10 +2857,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "ILA"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3029,10 +2922,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Imef / EE"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3537,10 +3427,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Instituto de Ciências Humanas e da Inrfomeção -ICHI"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3653,10 +3540,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Instituto de Letras e Artes"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3737,10 +3621,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Instituto de Oceanografia"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3869,10 +3750,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Laboratório de Análises"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3905,10 +3783,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Laboratório de Engenhaeia Civil"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3973,10 +3848,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Laboratório de Esrudos de Oceano e Clima"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4117,10 +3989,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Laboratório de Usinagem"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4225,10 +4094,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Lanchonete Cláudio"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4265,10 +4131,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "LIFE"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4309,10 +4172,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Manutenção"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4345,10 +4205,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Manutenção Elétrica"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4389,10 +4246,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Marcenária FURG"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4425,10 +4279,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Max Xerox"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4469,10 +4320,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Metrologia"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4505,10 +4353,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "NUDESE"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4541,10 +4386,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "OCEABTEC - Prédio-Padrão 1B",
-        
         "description": "{{https://oceantec.furg.br/images/h1111111111111.fw.png}}\nAcesse o site:\nhttps://oceantec.furg.br/\n"
       },
       "geometry": {
@@ -4666,10 +4508,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Oceanogradia Biológica"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -4806,10 +4645,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Oceanografia"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5078,10 +4914,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Oficinas"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5162,10 +4995,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão 1"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5262,10 +5092,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão 2"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5390,10 +5217,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão 3",
-        
         "description": "fera da bola"
       },
       "geometry": {
@@ -5507,10 +5331,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão 5"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5607,10 +5428,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão 6"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5703,10 +5521,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pavilhão da Psicologia"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5775,10 +5590,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "POLICAB"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5835,10 +5647,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PRAE"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5871,10 +5680,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Prédio da Música"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -5947,10 +5753,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Prédio das Artes"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6051,10 +5854,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pró Reitoria de Gestão de Pessoas"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6139,10 +5939,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pró Reitorias"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6219,10 +6016,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROGRAD - CEFOP"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6311,10 +6105,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6387,10 +6178,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA / CGA - Armazenamento Temporário de Resíduos"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6439,10 +6227,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROPLAD"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6531,10 +6316,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Reitoria"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6623,10 +6405,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Rose Conveniências"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6659,10 +6438,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "SEAD"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6727,10 +6503,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "SECOM (Secretaria de Comunicação Social)"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6771,10 +6544,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pórtico Av. Roberto Socowski"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6807,10 +6577,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Pórtico Rua Padre Nilo Gollo"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6843,10 +6610,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Restaurante Universitário"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6887,10 +6651,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Restaurante Universitário"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -6991,10 +6752,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEU 1"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7027,10 +6785,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEU 2"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7063,10 +6818,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "CEU 3"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7099,10 +6851,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Hotel de Trânsito"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7167,10 +6916,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Auditório do ILA"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7255,10 +7001,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7311,10 +7054,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7347,10 +7087,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7387,10 +7124,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7487,10 +7221,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7555,10 +7286,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7591,10 +7319,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7627,10 +7352,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7663,10 +7385,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7763,10 +7482,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7799,10 +7515,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7843,10 +7556,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7895,10 +7605,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7931,10 +7638,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -7967,10 +7671,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8023,10 +7724,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8111,10 +7809,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8147,10 +7842,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8183,10 +7875,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8219,10 +7908,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8291,10 +7977,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8335,10 +8018,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8379,10 +8059,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8435,10 +8112,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8567,10 +8241,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "ILA CAIC 2 (Instituto de Letras e Artes)"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8643,10 +8314,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Instituto de Ciências Biológicas"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8743,10 +8411,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Instituto de Ciências Biológicas"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8795,10 +8460,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "Estacionamento "
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8831,10 +8493,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA - Prédio Multiuso"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8867,10 +8526,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA - Prédio Multiuso"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8903,10 +8559,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA / PU - Manutenção Elétrica"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -8947,10 +8600,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
         "name": "PROINFA / PU - Manutenção Elétrica"
-        
       },
       "geometry": {
         "type": "Polygon",

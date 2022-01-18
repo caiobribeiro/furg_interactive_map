@@ -12,14 +12,10 @@ abstract class SettingsAppStoreBase with Store {
   SettingsAppStoreBase(this.appStore);
 
   @observable
-  String? savedUserNickName = "";
+  String? userLoggedNickeName = "";
 
-  @action
-  getSavedUserInfo() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    //Return String
-    savedUserNickName = prefs.getString('registeredNickName');
-  }
+  @observable
+  bool isLogged = false;
 
   @action
   userLogoutShared() async {

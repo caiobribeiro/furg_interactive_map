@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:furg_interactive_map/app/modules/furgMap/furgMap_store.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BuildMapInfoSheetWidget extends StatelessWidget {
@@ -20,7 +19,6 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FurgMapStore store = Modular.get();
     final screenHeight = MediaQuery.of(context).size.height;
     final statusBarHeight = MediaQuery.of(context).padding.top;
     final deviceHeight = screenHeight - statusBarHeight;
@@ -58,7 +56,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                   ? Image.network(
                       "$buildingImageLink",
                     )
-                  : Text(buildingImageLink!),
+                  : Text("Imagem indisponível"),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -94,9 +92,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                   ),
                 ),
                 onPressed: () => {
-                  print("Enviando"),
-                  print(store.buildingName),
-                  Modular.to.navigate('/search/$buildingName'),
+                  Modular.to.pushNamed('/search', arguments: buildingName),
                 },
               ),
             ),

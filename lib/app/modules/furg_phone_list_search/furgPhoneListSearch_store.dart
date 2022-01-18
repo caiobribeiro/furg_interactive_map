@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:furg_interactive_map/models/phone_list_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:dio/dio.dart';
@@ -11,7 +13,11 @@ abstract class _FurgPhoneListSearchStoreBase with Store {
   String searchPhoneListString = "";
 
   @action
-  void setSearchTelListString(String value) => searchPhoneListString = value;
+  void setSearchTelListString(String value) => {
+        Timer(Duration(seconds: 1), () {
+          searchPhoneListString = value;
+        })
+      };
 
   @observable
   Response? response;
@@ -21,7 +27,6 @@ abstract class _FurgPhoneListSearchStoreBase with Store {
 
   @action
   Future<PhoneListApi> getPhoneSearch() async {
-    print(searchPhoneListString);
     var dio = Dio();
     try {
       response = await dio.post(
@@ -35,9 +40,7 @@ abstract class _FurgPhoneListSearchStoreBase with Store {
       print(response);
 
       return PhoneListApi.fromJson(response!.data);
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
     throw 42;
   }
 }

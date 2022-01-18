@@ -10,4 +10,10 @@ abstract class _AllEventsStoreBase with Store {
 
   @observable
   bool customTileExpanded = false;
+
+  @observable
+  bool isLogged = false;
+
+  @observable
+  String userLoggedNickeName = "";
 }

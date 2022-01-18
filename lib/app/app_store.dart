@@ -96,7 +96,6 @@ abstract class _AppStoreBase with Store {
       isLogged = false;
     } else {
       isLogged = prefs.getBool('isLogged')!;
-      print(isLogged);
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/allEvents/allEvents_store.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,6 @@ import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:intl/intl.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../app_store.dart';
 
 class AllEventsPage extends StatefulWidget {
   final String title;
@@ -18,7 +17,22 @@ class AllEventsPage extends StatefulWidget {
 
 class AllEventsPageState extends State<AllEventsPage> {
   final AllEventsStore store = Modular.get();
-  final AppStore _appStore = Modular.get();
+
+  @override
+  void initState() {
+    isUserLogged();
+    super.initState();
+  }
+
+  Future isUserLogged() async {
+    final currentUser = await ParseUser.currentUser() as ParseUser?;
+    if (currentUser?.emailVerified == null) {
+      store.isLogged = false;
+    } else {
+      store.isLogged = currentUser!.emailVerified!;
+      store.userLoggedNickeName = currentUser.username!;
+    }
+  }
 
   Future<List<ParseObject>> _getAllEvents() async {
     QueryBuilder<ParseObject> queryTodo =
@@ -27,7 +41,6 @@ class AllEventsPageState extends State<AllEventsPage> {
 
     if (apiResponse.success && apiResponse.results != null) {
       store.eventsResponse = apiResponse.results as List<ParseObject>;
-      print(store.eventsResponse);
       return apiResponse.results as List<ParseObject>;
     } else {
       return [];
@@ -47,11 +60,12 @@ class AllEventsPageState extends State<AllEventsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        drawer: DrawerCustom(),
-        body: Column(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      drawer: DrawerCustom(),
+      body: Observer(builder: (_) {
+        return Column(
           children: [
             Expanded(
               child: FutureBuilder<List<ParseObject>>(
@@ -173,7 +187,7 @@ class AllEventsPageState extends State<AllEventsPage> {
                 },
               ),
             ),
-            _appStore.isLogged == true
+            store.isLogged == true
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -201,6 +215,8 @@ class AllEventsPageState extends State<AllEventsPage> {
                   )
                 : Container(),
           ],
-        ));
+        );
+      }),
+    );
   }
 }

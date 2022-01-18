@@ -121,7 +121,6 @@ abstract class _EventsManagementStoreBase with Store {
       // função de enviar para o server
       return true;
     } else {
-      print("falta");
       return false;
     }
   }

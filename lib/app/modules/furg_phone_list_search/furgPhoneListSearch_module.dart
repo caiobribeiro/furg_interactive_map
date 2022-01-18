@@ -12,8 +12,8 @@ class FurgPhoneListSearchModule extends Module {
   @override
   final List<ModularRoute> routes = [
     // ChildRoute('/', child: (_, args) => FurgPhoneListSearchPage()),
-    ChildRoute('/:buildingSearch',
-        child: (_, args) => FurgPhoneListSearchPage(
-            buildingSearch: args.params['buildingSearch'] ?? "")),
+    ChildRoute('/',
+        child: (_, args) =>
+            FurgPhoneListSearchPage(buildingSearch: args.data ?? "")),
   ];
 }

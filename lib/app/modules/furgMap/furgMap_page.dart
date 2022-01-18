@@ -143,8 +143,15 @@ class FurgMapPageState extends State<FurgMapPage> {
         if (store.jsonDecodedLatLngPolygons.features![i].properties!
                 .oficialSite !=
             null) {
-          tempimage = store
+          oficialBuildingSite = store
               .jsonDecodedLatLngPolygons.features![i].properties!.oficialSite;
+        }
+
+        if (store.jsonDecodedLatLngPolygons.features![i].properties!
+                .imageBuilding !=
+            null) {
+          tempimage = store
+              .jsonDecodedLatLngPolygons.features![i].properties!.imageBuilding;
         }
 
         store.polygons.add(
