@@ -27,6 +27,12 @@ abstract class _EventsManagementStoreBase with Store {
   }
 
   @observable
+  String usersTermEmail = "";
+
+  @observable
+  bool customTileExpanded = false;
+
+  @observable
   String? allPolygonBuildingsJson;
 
   @observable
@@ -70,6 +76,13 @@ abstract class _EventsManagementStoreBase with Store {
 
   @action
   void setEventImageLink(String value) => eventImageLink = value;
+
+  @observable
+  bool userTermAgreementAccepted = false;
+
+  @action
+  void setUserTermAgreementAccepted(bool value) =>
+      userTermAgreementAccepted = value;
 
   @observable
   LatLng eventPosition = LatLng(-32.074618722943924, -52.16706030070782);

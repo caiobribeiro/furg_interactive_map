@@ -111,7 +111,7 @@ class AuthPageState extends State<AuthPage> {
                 ),
                 label: Text('Sobre o Projeto'),
                 onPressed: () {
-                  Modular.to.pushNamed('/registrationUser');
+                  Modular.to.pushNamed('/aboutTheProject');
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(deviceWidth * 0.65, 45),

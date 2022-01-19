@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:furg_interactive_map/app/modules/aboutTheProject/aboutTheProject_module.dart';
 import 'package:furg_interactive_map/app/modules/allBuildings/allBuildings_module.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_module.dart';
 // import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
@@ -31,5 +32,6 @@ class AppModule extends Module {
     ModuleRoute('/furgMap', module: FurgMapModule()),
     ModuleRoute('/registrationUser', module: RegistrationUserModule()),
     ModuleRoute('/resetPassword', module: ResetPasswordModule()),
+    ModuleRoute('/aboutTheProject', module: AboutTheProjectModule()),
   ];
 }

@@ -92,7 +92,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                   ),
                 ),
                 onPressed: () => {
-                  Modular.to.pushNamed('/search', arguments: buildingName),
+                  Modular.to.navigate('/search', arguments: buildingName),
                 },
               ),
             ),

@@ -100,23 +100,6 @@ class _SettingsAppPageState
     return Scaffold(
       appBar: AppBar(
         title: Text('Configurações'),
-        actions: [
-          Observer(
-            builder: (_) {
-              return Switch(
-                value: store.appStore.isDark,
-                onChanged: (value) {
-                  setState(() {
-                    // store.appStore.loadTheme();
-                    store.appStore.changeTheme();
-                  });
-                },
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-              );
-            },
-          ),
-        ],
       ),
       drawer: DrawerCustom(),
       body: Row(
@@ -126,6 +109,31 @@ class _SettingsAppPageState
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Alterar tema",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Switch(
+                      value: store.appStore.isDark,
+                      onChanged: (value) {
+                        setState(() {
+                          // store.appStore.loadTheme();
+                          store.appStore.changeTheme();
+                        });
+                      },
+                      activeTrackColor: Colors.lightGreenAccent,
+                      activeColor: Colors.green,
+                    ),
+                    Divider(),
+                  ],
+                ),
                 store.isLogged == true
                     ? Column(
                         children: [
@@ -152,7 +160,12 @@ class _SettingsAppPageState
                       )
                     : Column(
                         children: [
-                          Text("Não conectado"),
+                          Text(
+                            "Não conectado.",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
                           Container(
                             margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                             child: ElevatedButton.icon(
@@ -217,7 +230,7 @@ class _SettingsAppPageState
                               ),
                               label: Text('Sobre o Projeto'),
                               onPressed: () {
-                                Modular.to.pushNamed('/registrationUser');
+                                Modular.to.pushNamed('/aboutTheProject');
                               },
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(deviceWidth * 0.65, 45),

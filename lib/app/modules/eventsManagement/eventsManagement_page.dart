@@ -23,9 +23,15 @@ class EventsManagementPageState extends State<EventsManagementPage> {
 
   @override
   void initState() {
+    loadUserIds();
     store.loadMapStyles();
     createPolygonForEachBuilding();
     super.initState();
+  }
+
+  Future loadUserIds() async {
+    final currentUser = await ParseUser.currentUser() as ParseUser?;
+    store.usersTermEmail = currentUser!.emailAddress!;
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -43,7 +49,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
   Future _addNewwMarkerEvent(LatLng pos) async {
     store.eventPosition = pos;
     final currentUser = await ParseUser.currentUser() as ParseUser?;
-
+    store.usersTermEmail = currentUser!.emailAddress!;
     store.eventLocantion = Marker(
       markerId: MarkerId(store.eventName),
       position: pos,
@@ -60,7 +66,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
           eventDescription: store.eventDescription,
           eventImageLink: store.eventImageLink,
           eventOficialSite: store.eventOficialSite,
-          userFurgEmail: currentUser!.emailAddress,
+          userFurgEmail: currentUser.emailAddress,
           eventPosition: pos,
           eventStart:
               DateFormat('dd/MM/yyyy').format(store.selectedEventStartDate),
@@ -134,6 +140,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
         ..set('eventStart', store.selectedEventStartDate)
         ..set('eventEnd', store.selectedEventEndDate)
         ..set('userFurgEmail', currentUser?.emailAddress)
+        ..set('userTermAgreementAccepted', store.userTermAgreementAccepted)
         ..set(
             'eventPosition',
             ParseGeoPoint(
@@ -315,6 +322,44 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                   ),
                 ],
               ),
+              Observer(builder: (_) {
+                return ExpansionTile(
+                  title: Text("Termos de uso"),
+                  subtitle: Text(
+                      'O usuário, ${store.usersTermEmail}, concorda com os termos de Uso'),
+                  trailing: Icon(
+                    store.customTileExpanded
+                        ? Icons.arrow_drop_down_circle
+                        : Icons.arrow_drop_down,
+                  ),
+                  onExpansionChanged: (bool expanded) {
+                    store.customTileExpanded = expanded;
+                  },
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "O usuário ${store.usersTermEmail} concorda em publicar um evento no Mapa Interativo Furg seguindo os Termos de Uso.\nO usuário ${store.usersTermEmail} é responsável pelo conteúdo e isenta os criadores do aplicativo e suas dependência de toda e qualquer responsabilidade sob o conteúdo de um evento.\n   Não é permitido: \n     - Conteúdo adulto;\n     - Qualquer tipo de discriminação;",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    CheckboxListTile(
+                      title: Text(
+                          "Eu, ${store.usersTermEmail}, concordo com os Termos de Uso"),
+                      checkColor: Colors.white,
+                      // fillColor: MaterialStateProperty.resolveWith(getColor),
+                      value: store.userTermAgreementAccepted,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          store.userTermAgreementAccepted = value!;
+                        });
+                      },
+                    ),
+                  ],
+                );
+              }),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child: ElevatedButton.icon(

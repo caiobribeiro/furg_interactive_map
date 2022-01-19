@@ -52,6 +52,38 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
               name: '_EventsManagementStoreBase.isEventCreationFormValid'))
       .value;
 
+  final _$usersTermEmailAtom =
+      Atom(name: '_EventsManagementStoreBase.usersTermEmail');
+
+  @override
+  String get usersTermEmail {
+    _$usersTermEmailAtom.reportRead();
+    return super.usersTermEmail;
+  }
+
+  @override
+  set usersTermEmail(String value) {
+    _$usersTermEmailAtom.reportWrite(value, super.usersTermEmail, () {
+      super.usersTermEmail = value;
+    });
+  }
+
+  final _$customTileExpandedAtom =
+      Atom(name: '_EventsManagementStoreBase.customTileExpanded');
+
+  @override
+  bool get customTileExpanded {
+    _$customTileExpandedAtom.reportRead();
+    return super.customTileExpanded;
+  }
+
+  @override
+  set customTileExpanded(bool value) {
+    _$customTileExpandedAtom.reportWrite(value, super.customTileExpanded, () {
+      super.customTileExpanded = value;
+    });
+  }
+
   final _$allPolygonBuildingsJsonAtom =
       Atom(name: '_EventsManagementStoreBase.allPolygonBuildingsJson');
 
@@ -210,6 +242,23 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   set eventImageLink(String value) {
     _$eventImageLinkAtom.reportWrite(value, super.eventImageLink, () {
       super.eventImageLink = value;
+    });
+  }
+
+  final _$userTermAgreementAcceptedAtom =
+      Atom(name: '_EventsManagementStoreBase.userTermAgreementAccepted');
+
+  @override
+  bool get userTermAgreementAccepted {
+    _$userTermAgreementAcceptedAtom.reportRead();
+    return super.userTermAgreementAccepted;
+  }
+
+  @override
+  set userTermAgreementAccepted(bool value) {
+    _$userTermAgreementAcceptedAtom
+        .reportWrite(value, super.userTermAgreementAccepted, () {
+      super.userTermAgreementAccepted = value;
     });
   }
 
@@ -420,6 +469,18 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   }
 
   @override
+  void setUserTermAgreementAccepted(bool value) {
+    final _$actionInfo =
+        _$_EventsManagementStoreBaseActionController.startAction(
+            name: '_EventsManagementStoreBase.setUserTermAgreementAccepted');
+    try {
+      return super.setUserTermAgreementAccepted(value);
+    } finally {
+      _$_EventsManagementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic isAnyFieldEmpty() {
     final _$actionInfo = _$_EventsManagementStoreBaseActionController
         .startAction(name: '_EventsManagementStoreBase.isAnyFieldEmpty');
@@ -433,6 +494,8 @@ mixin _$EventsManagementStore on _EventsManagementStoreBase, Store {
   @override
   String toString() {
     return '''
+usersTermEmail: ${usersTermEmail},
+customTileExpanded: ${customTileExpanded},
 allPolygonBuildingsJson: ${allPolygonBuildingsJson},
 jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
 polygons: ${polygons},
@@ -443,6 +506,7 @@ eventDescription: ${eventDescription},
 eventOficialSite: ${eventOficialSite},
 thereIsNoOficialSite: ${thereIsNoOficialSite},
 eventImageLink: ${eventImageLink},
+userTermAgreementAccepted: ${userTermAgreementAccepted},
 eventPosition: ${eventPosition},
 selectedEventStartDate: ${selectedEventStartDate},
 selectedEventEndDate: ${selectedEventEndDate},
