@@ -56,6 +56,7 @@ class FurgMapPageState extends State<FurgMapPage> {
             allEventsApiResponse.get<String>('eventOficialSite')!;
         final eventImageLink =
             allEventsApiResponse.get<String>('eventImageLink')!;
+        // ignore: unused_local_variable
         final userNickName = allEventsApiResponse.get<String>('userNickName')!;
         final eventPosition =
             allEventsApiResponse.get<ParseGeoPoint>('eventPosition')!;
@@ -67,7 +68,7 @@ class FurgMapPageState extends State<FurgMapPage> {
 
         store.allBuildings.add(
           Marker(
-            markerId: MarkerId("$userNickName"),
+            markerId: MarkerId("$eventName"),
             draggable: false,
             infoWindow: InfoWindow(title: "$eventName"),
             onTap: () => showModalBottomSheet(

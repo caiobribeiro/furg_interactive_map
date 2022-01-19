@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:furg_interactive_map/app/modules/eventsManagement/eventsManagement_store.dart';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:furg_interactive_map/app/modules/eventsManagement/eventsManagement_store.dart';
 
 class EventsManagementPage extends StatefulWidget {
   final String title;

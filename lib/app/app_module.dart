@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:furg_interactive_map/app/modules/aboutTheProject/aboutTheProject_module.dart';
 import 'package:furg_interactive_map/app/modules/allBuildings/allBuildings_module.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_module.dart';
+import 'package:furg_interactive_map/app/modules/eventUpdater/eventUpdater_module.dart';
 // import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
 import 'package:furg_interactive_map/app/modules/login/login_module.dart';
 import 'package:furg_interactive_map/app/modules/registrationUser/registrationUser_module.dart';
@@ -33,5 +34,6 @@ class AppModule extends Module {
     ModuleRoute('/registrationUser', module: RegistrationUserModule()),
     ModuleRoute('/resetPassword', module: ResetPasswordModule()),
     ModuleRoute('/aboutTheProject', module: AboutTheProjectModule()),
+    ModuleRoute('/eventUpdaterModule', module: EventUpdaterModule()),
   ];
 }

@@ -23,8 +23,6 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
 
   @override
   void initState() {
-    print("Recebendo");
-    print("${widget.buildingSearch}");
     store.searchPhoneListString = "${widget.buildingSearch}";
     super.initState();
   }

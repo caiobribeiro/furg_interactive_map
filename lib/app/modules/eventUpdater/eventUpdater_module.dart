@@ -10,6 +10,8 @@ class EventUpdaterModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => EventUpdaterPage()),
+    // ChildRoute('/', child: (_, args) => EventUpdaterPage()),
+    ChildRoute('/',
+        child: (_, args) => EventUpdaterPage(eventId: args.data ?? "")),
   ];
 }

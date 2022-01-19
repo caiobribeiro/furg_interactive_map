@@ -111,13 +111,13 @@ class CustomAvatarCard extends StatelessWidget {
                             onPressed: () {
                               _launchURL("http://linkedin.com/in/caiobribeiro");
                             },
-                            child: const Text('Github'),
+                            child: const Text('Linkdin'),
                           ),
                           ElevatedButton(
                             onPressed: () {
                               _launchURL("http://github.com/caio4719");
                             },
-                            child: const Text('Linkdin'),
+                            child: const Text('Github'),
                           ),
                           ElevatedButton.icon(
                             icon: Icon(

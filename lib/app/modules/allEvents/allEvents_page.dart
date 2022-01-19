@@ -47,6 +47,11 @@ class AllEventsPageState extends State<AllEventsPage> {
     }
   }
 
+  _deleteEvent(eventId) async {
+    var evenDelete = ParseObject('Event')..objectId = eventId;
+    await evenDelete.delete();
+  }
+
   void _launchURL(link) async {
     if (await canLaunch(link)) {
       await launch(
@@ -59,6 +64,34 @@ class AllEventsPageState extends State<AllEventsPage> {
 
   @override
   Widget build(BuildContext context) {
+    void deleteConfirmation(eventId) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Você deseja deletar este evento?"),
+            // content: Text("Você deseja deletar este evento"),
+            actions: <Widget>[
+              new TextButton(
+                child: const Text("Sim"),
+                onPressed: () {
+                  _deleteEvent(eventId);
+                  Navigator.of(context).pop();
+                  Modular.to.navigate('/furgMap');
+                },
+              ),
+              new TextButton(
+                child: const Text("Não"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -110,6 +143,8 @@ class AllEventsPageState extends State<AllEventsPage> {
                                 .get<String>('eventImageLink')!;
                             final userNickName = allEventsApiResponse
                                 .get<String>('userNickName')!;
+                            final eventId =
+                                allEventsApiResponse.get<String>('objectId')!;
                             final eventStart = DateFormat('dd-MM-yyyy').format(
                                 allEventsApiResponse
                                     .get<DateTime>('eventStart')!);
@@ -185,34 +220,72 @@ class AllEventsPageState extends State<AllEventsPage> {
                                           Text("Reponsável: $eventUserEmail"),
                                     ),
                                     store.userLoggedNickeName == userNickName
-                                        ? Container(
-                                            margin: EdgeInsets.fromLTRB(
-                                                0, 10, 0, 10),
-                                            child: ElevatedButton.icon(
-                                              icon: Icon(
-                                                Icons.add,
-                                                size: 24.0,
-                                              ),
-                                              label: Text('Modificar evento'),
-                                              onPressed: () {
-                                                Modular.to.pushNamed(
-                                                    '/eventsManagament');
-                                              },
-                                              style: ElevatedButton.styleFrom(
-                                                minimumSize: Size(
-                                                    MediaQuery.of(context)
-                                                            .size
-                                                            .width *
-                                                        0.65,
-                                                    45),
-                                                shape:
-                                                    new RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      new BorderRadius.circular(
-                                                          10.0),
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 10, 0, 10),
+                                                child: ElevatedButton.icon(
+                                                  icon: Icon(
+                                                    Icons.mode,
+                                                    size: 24.0,
+                                                  ),
+                                                  label:
+                                                      Text('Modificar evento'),
+                                                  onPressed: () {
+                                                    Modular.to.navigate(
+                                                        '/eventUpdaterModule',
+                                                        arguments: eventId);
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    minimumSize: Size(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.20,
+                                                        45),
+                                                    shape:
+                                                        new RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          new BorderRadius
+                                                              .circular(10.0),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 10, 0, 10),
+                                                child: ElevatedButton.icon(
+                                                  icon: Icon(
+                                                    Icons.delete,
+                                                    size: 24.0,
+                                                  ),
+                                                  label: Text('Deletar evento'),
+                                                  onPressed: () {
+                                                    deleteConfirmation(eventId);
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    minimumSize: Size(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.20,
+                                                        45),
+                                                    shape:
+                                                        new RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          new BorderRadius
+                                                              .circular(10.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           )
                                         : Container(),
                                   ],
