@@ -120,7 +120,7 @@ abstract class _EventsManagementStoreBase with Store {
     if (eventImageLink == "") {
       missingValue.add("URL da Imagem de Capa");
     }
-    if (eventOficialSite == "") {
+    if (eventOficialSite.isNotEmpty && thereIsNoOficialSite == true) {
       missingValue.add("Site Oficial");
     }
     if (eventDescription == "") {

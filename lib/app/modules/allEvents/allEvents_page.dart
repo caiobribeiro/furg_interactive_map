@@ -166,9 +166,17 @@ class AllEventsPageState extends State<AllEventsPage> {
                                     store.customTileExpanded = expanded;
                                   },
                                   children: <Widget>[
-                                    Image.network(
-                                      eventImageLink,
-                                      width: MediaQuery.of(context).size.width,
+                                    Container(
+                                      margin: EdgeInsets.all(10),
+                                      child: Image.network(
+                                        eventImageLink,
+                                        errorBuilder: (BuildContext context,
+                                            Object exception,
+                                            StackTrace? stackTrace) {
+                                          return const Text(
+                                              'Imagem indisponível');
+                                        },
+                                      ),
                                     ),
                                     Row(
                                       mainAxisAlignment:

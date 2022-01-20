@@ -67,7 +67,13 @@ class BuildEventSheetWidget extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
-              child: Image.network(eventImageLink!),
+              child: Image.network(
+                eventImageLink!,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  return const Text('Imagem indisponível');
+                },
+              ),
             ),
             eventStart != null
                 ? Row(
