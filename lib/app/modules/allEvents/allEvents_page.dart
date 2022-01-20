@@ -70,7 +70,6 @@ class AllEventsPageState extends State<AllEventsPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text("Você deseja deletar este evento?"),
-            // content: Text("Você deseja deletar este evento"),
             actions: <Widget>[
               new TextButton(
                 child: const Text("Sim"),
@@ -270,6 +269,7 @@ class AllEventsPageState extends State<AllEventsPage> {
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
+                                                    primary: Colors.red,
                                                     minimumSize: Size(
                                                         MediaQuery.of(context)
                                                                 .size

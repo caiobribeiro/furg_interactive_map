@@ -230,7 +230,30 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Nome atual: ${store.eventName}"),
+                        Text(
+                          "Nome atual:",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${store.eventName}"),
+                        Divider(),
+                        Text(
+                          "Descrição atual:",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${store.eventDescription}"),
+                        Divider(),
+                        Text(
+                          "URL imagem atual: ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${store.eventImageLink}"),
+                        Divider(),
+                        Text(
+                          "Site atual: ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${store.eventOficialSite}"),
+                        Divider(),
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 0, 5, 15),
                           child: TextFormField(
@@ -241,7 +264,6 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                             onChanged: store.setEventName,
                           ),
                         ),
-                        Text("Descrição atual: ${store.eventDescription}"),
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 5, 5, 15),
                           child: TextFormField(
@@ -252,7 +274,6 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                             onChanged: store.setEventDescription,
                           ),
                         ),
-                        Text("URL imagem atual: ${store.eventImageLink}"),
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 5, 5, 15),
                           child: TextFormField(
@@ -263,7 +284,6 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                             onChanged: store.setEventImageLink,
                           ),
                         ),
-                        Text("Site atual: ${store.eventOficialSite}"),
                         !store.thereIsNoOficialSite
                             ? Container(
                                 margin: EdgeInsets.fromLTRB(5, 5, 5, 15),
@@ -473,7 +493,8 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                                         ],
                                       ),
                                     )
-                                  : null;
+                                  // ignore: unnecessary_statements
+                                  : [];
 
                               store.missingValue.clear();
                             },
