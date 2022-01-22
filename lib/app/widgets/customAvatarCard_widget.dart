@@ -97,7 +97,7 @@ class CustomAvatarCard extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(10),
                         child: Text(
-                          "Bacharel em Sistemas de Informação e esenvolvedor mobile focado em Flutter com interesse em iniciativas de cunho socioambiental.\nAgradecimento especial a meu orientador Luciano Maciel Ribeiro.",
+                          "Bacharel em Sistemas de Informação e desenvolvedor mobile focado em Flutter com interesse em iniciativas de cunho socioambiental.\nAgradecimento especial a meu orientador Luciano Maciel Ribeiro.",
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,

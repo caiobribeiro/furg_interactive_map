@@ -110,7 +110,7 @@ class LoginPageState extends State<LoginPage> {
                       filled: true,
                       fillColor: Colors.white30,
                       border: OutlineInputBorder(),
-                      hintText: 'Nome de Usuário',
+                      hintText: 'Email Furg',
                     ),
                     onChanged: store.setLoginNickName,
                   ),

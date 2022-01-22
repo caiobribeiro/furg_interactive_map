@@ -212,7 +212,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                   visible: store.isMapPopulated,
                   child: GoogleMap(
                     mapType: MapType.normal,
-                    zoomControlsEnabled: false,
+                    zoomControlsEnabled: true,
                     initialCameraPosition: store.initialCameraPositionSmallHill,
                     onMapCreated: (GoogleMapController controller) {
                       store.googleMapController!.complete(controller);

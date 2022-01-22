@@ -23,7 +23,7 @@
     </intent>
   </queries>
    <application
-        android:label="furg_interactive_map"
+        android:label="Mapa Interativo Furg"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <!-- <uses-permission android:name="android.permission.INTERNET"/> -->

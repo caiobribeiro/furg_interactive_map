@@ -292,7 +292,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                           visible: store.isAllMarkersFetched,
                           child: GoogleMap(
                             mapType: MapType.normal,
-                            zoomControlsEnabled: false,
+                            zoomControlsEnabled: true,
                             initialCameraPosition:
                                 store.initialCameraPositionSmallHill,
                             onMapCreated: (GoogleMapController controller) {
