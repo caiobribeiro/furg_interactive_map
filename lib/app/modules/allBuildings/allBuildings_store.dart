@@ -11,13 +11,16 @@ abstract class _AllBuildingsStoreBase with Store {
   Set<Polygon> polygons = HashSet<Polygon>();
 
   @observable
-  bool isAllMarkersFetched = false;
+  bool isAllBuildingetched = false;
 
   @observable
   String? allPolygonBuildingsJson;
 
   @observable
   var jsonDecodedLatLngPolygons;
+
+  @observable
+  var searchResult;
 
   @observable
   String buildingName = "";
@@ -27,6 +30,12 @@ abstract class _AllBuildingsStoreBase with Store {
 
   @observable
   String buildingOficialSite = "";
+
+  @observable
+  String searchQuery = "";
+
+  @action
+  void setSearchQuery(String value) => searchQuery = value;
 
   @observable
   String urlOficialSite =

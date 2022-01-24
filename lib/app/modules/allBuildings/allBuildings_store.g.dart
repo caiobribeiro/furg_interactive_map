@@ -24,19 +24,19 @@ mixin _$AllBuildingsStore on _AllBuildingsStoreBase, Store {
     });
   }
 
-  final _$isAllMarkersFetchedAtom =
-      Atom(name: '_AllBuildingsStoreBase.isAllMarkersFetched');
+  final _$isAllBuildingetchedAtom =
+      Atom(name: '_AllBuildingsStoreBase.isAllBuildingetched');
 
   @override
-  bool get isAllMarkersFetched {
-    _$isAllMarkersFetchedAtom.reportRead();
-    return super.isAllMarkersFetched;
+  bool get isAllBuildingetched {
+    _$isAllBuildingetchedAtom.reportRead();
+    return super.isAllBuildingetched;
   }
 
   @override
-  set isAllMarkersFetched(bool value) {
-    _$isAllMarkersFetchedAtom.reportWrite(value, super.isAllMarkersFetched, () {
-      super.isAllMarkersFetched = value;
+  set isAllBuildingetched(bool value) {
+    _$isAllBuildingetchedAtom.reportWrite(value, super.isAllBuildingetched, () {
+      super.isAllBuildingetched = value;
     });
   }
 
@@ -71,6 +71,21 @@ mixin _$AllBuildingsStore on _AllBuildingsStoreBase, Store {
     _$jsonDecodedLatLngPolygonsAtom
         .reportWrite(value, super.jsonDecodedLatLngPolygons, () {
       super.jsonDecodedLatLngPolygons = value;
+    });
+  }
+
+  final _$searchResultAtom = Atom(name: '_AllBuildingsStoreBase.searchResult');
+
+  @override
+  dynamic get searchResult {
+    _$searchResultAtom.reportRead();
+    return super.searchResult;
+  }
+
+  @override
+  set searchResult(dynamic value) {
+    _$searchResultAtom.reportWrite(value, super.searchResult, () {
+      super.searchResult = value;
     });
   }
 
@@ -121,6 +136,21 @@ mixin _$AllBuildingsStore on _AllBuildingsStoreBase, Store {
     });
   }
 
+  final _$searchQueryAtom = Atom(name: '_AllBuildingsStoreBase.searchQuery');
+
+  @override
+  String get searchQuery {
+    _$searchQueryAtom.reportRead();
+    return super.searchQuery;
+  }
+
+  @override
+  set searchQuery(String value) {
+    _$searchQueryAtom.reportWrite(value, super.searchQuery, () {
+      super.searchQuery = value;
+    });
+  }
+
   final _$urlOficialSiteAtom =
       Atom(name: '_AllBuildingsStoreBase.urlOficialSite');
 
@@ -137,16 +167,32 @@ mixin _$AllBuildingsStore on _AllBuildingsStoreBase, Store {
     });
   }
 
+  final _$_AllBuildingsStoreBaseActionController =
+      ActionController(name: '_AllBuildingsStoreBase');
+
+  @override
+  void setSearchQuery(String value) {
+    final _$actionInfo = _$_AllBuildingsStoreBaseActionController.startAction(
+        name: '_AllBuildingsStoreBase.setSearchQuery');
+    try {
+      return super.setSearchQuery(value);
+    } finally {
+      _$_AllBuildingsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 polygons: ${polygons},
-isAllMarkersFetched: ${isAllMarkersFetched},
+isAllBuildingetched: ${isAllBuildingetched},
 allPolygonBuildingsJson: ${allPolygonBuildingsJson},
 jsonDecodedLatLngPolygons: ${jsonDecodedLatLngPolygons},
+searchResult: ${searchResult},
 buildingName: ${buildingName},
 buildingDescription: ${buildingDescription},
 buildingOficialSite: ${buildingOficialSite},
+searchQuery: ${searchQuery},
 urlOficialSite: ${urlOficialSite}
     ''';
   }

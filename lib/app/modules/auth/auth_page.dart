@@ -90,7 +90,7 @@ class AuthPageState extends State<AuthPage> {
                   Icons.person_add_outlined,
                   size: 24.0,
                 ),
-                label: Text('Registrar-se'),
+                label: Text('Registrar'),
                 onPressed: () {
                   Modular.to.pushNamed('/registrationUser');
                 },

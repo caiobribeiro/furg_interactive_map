@@ -4541,11 +4541,11 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "OCEABTEC - Prédio-Padrão 1B",
+        "imageBuilding": "https://oceantec.furg.br/images/h1111111111111.fw.png",
+        "oficialSite": "https://oceantec.furg.br/",
+        "name": "OCEANTEC - Prédio-Padrão 1B",
         
-        "description": "{{https://oceantec.furg.br/images/h1111111111111.fw.png}}\nAcesse o site:\nhttps://oceantec.furg.br/\n"
+        "description": "O OCEANTEC, Parque Científico e Tecnológico da FURG, tem como diretrizes criar condições para a atração de novos investimentos e proporcionar o desenvolvimento de projetos locais que tenham por base o conhecimento científico e tecnológico de alto valor agregado, com foco na inovação e no desenvolvimento sustentável da região. O Parque constitui-se como um importante vetor de integração do conhecimento e da tecnologia com o setor produtivo, promovendo o bem estar da sociedade."
       },
       "geometry": {
         "type": "Polygon",
