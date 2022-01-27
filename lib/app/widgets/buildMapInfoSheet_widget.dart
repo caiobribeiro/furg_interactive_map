@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BuildMapInfoSheetWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
   final String? buildingDescription;
   final String? buildingOficialSite;
   final String? buildingImageLink;
+  final LatLng? buildingPostion;
   const BuildMapInfoSheetWidget({
     Key? key,
     this.title = "BuildMapInfoSheetWidget",
@@ -15,6 +17,7 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
     this.buildingDescription,
     this.buildingOficialSite,
     this.buildingImageLink,
+    this.buildingPostion,
   }) : super(key: key);
 
   @override
@@ -30,6 +33,15 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
           forceSafariVC: true, // IOS
           forceWebView: true, // Android
         );
+      }
+    }
+
+    void _launchMapsUrl(double lat, double lon) async {
+      final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
       }
     }
 
@@ -93,6 +105,27 @@ class BuildMapInfoSheetWidget extends StatelessWidget {
                 ),
                 onPressed: () => {
                   Modular.to.navigate('/search', arguments: buildingName),
+                },
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+              child: ElevatedButton.icon(
+                icon: Icon(
+                  Icons.map_sharp,
+                  size: 24.0,
+                ),
+                label: Text('Navegar'),
+                style: ElevatedButton.styleFrom(
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.65, 45),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                ),
+                onPressed: () {
+                  _launchMapsUrl(
+                      buildingPostion!.latitude, buildingPostion!.longitude);
                 },
               ),
             ),

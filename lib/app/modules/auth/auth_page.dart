@@ -1,4 +1,6 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/modules/auth/auth_store.dart';
 import 'package:flutter/material.dart';
 // import 'package:furg_interactive_map/app/widgets/customDrewer.dart';
@@ -14,6 +16,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends State<AuthPage> {
   final AuthStore store = Modular.get();
+  final AppStore appStore = Modular.get();
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +35,30 @@ class AuthPageState extends State<AuthPage> {
       appBar: appBar,
       body: Container(
         width: screenWidth,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/login-background.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage("assets/images/login-background.jpg"),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-              width: 200,
-              child:
-                  Image.asset("assets/images/logo-furg-sem-fundo-branco.png"),
-            ),
+            Observer(builder: (_) {
+              return appStore.isDark
+                  ? Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                      width: 200,
+                      child: Image.asset(
+                          "assets/images/logo-furg-sem-fundo-branco.png"),
+                    )
+                  : Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                      width: 200,
+                      child:
+                          Image.asset("assets/images/logo-furg-sem-fundo.png"),
+                    );
+            }),
             Container(
               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: ElevatedButton.icon(

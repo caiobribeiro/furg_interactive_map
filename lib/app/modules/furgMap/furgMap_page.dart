@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -10,6 +11,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:furg_interactive_map/app/modules/furgMap/furgMap_store.dart';
 import 'package:intl/intl.dart';
+import 'package:location/location.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class FurgMapPage extends StatefulWidget {
@@ -122,6 +124,7 @@ class FurgMapPageState extends State<FurgMapPage> {
       String tempDescription = "Não há descrição";
       String oficialBuildingSite = "Site não disponível";
       String tempimage = "";
+      LatLng buildingPostion = LatLng(0, 0);
 
       for (var j = 0;
           j <
@@ -154,6 +157,11 @@ class FurgMapPageState extends State<FurgMapPage> {
           tempimage = store
               .jsonDecodedLatLngPolygons.features![i].properties!.imageBuilding;
         }
+        buildingPostion = LatLng(
+            store.jsonDecodedLatLngPolygons.features![i].geometry!.coordinates!
+                .single[0].last,
+            store.jsonDecodedLatLngPolygons.features![i].geometry!.coordinates!
+                .single[0].first);
 
         store.polygons.add(
           Polygon(
@@ -163,6 +171,7 @@ class FurgMapPageState extends State<FurgMapPage> {
             fillColor: Colors.greenAccent,
             strokeWidth: 1,
             onTap: () {
+              animateTo(buildingPostion.latitude, buildingPostion.longitude);
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
@@ -176,6 +185,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                   buildingDescription: tempDescription,
                   buildingOficialSite: oficialBuildingSite,
                   buildingImageLink: tempimage,
+                  buildingPostion: buildingPostion,
                 ),
               );
             },
@@ -185,6 +195,49 @@ class FurgMapPageState extends State<FurgMapPage> {
     }
     // * Make the map widget visiable
     return store.allPolygonsFetched = !store.allPolygonsFetched;
+  }
+
+  Location location = new Location();
+  Location _locationTracker = Location();
+  void _getCurrentposition() async {
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    _locationData = await location.getLocation();
+    updateMarkerAndCircle(_locationData);
+  }
+
+  void updateMarkerAndCircle(LocationData newLocalData) async {
+    var location = await _locationTracker.getLocation();
+
+    this.setState(
+      () {
+        animateTo(location.latitude!, location.longitude!);
+      },
+    );
+  }
+
+  Future<void> animateTo(double lat, double lng) async {
+    final c = await store.googleMapController!.future;
+    final p = CameraPosition(target: LatLng(lat, lng), zoom: 16.4746);
+    c.animateCamera(CameraUpdate.newCameraPosition(p));
   }
 
   @override
@@ -202,6 +255,14 @@ class FurgMapPageState extends State<FurgMapPage> {
     return Scaffold(
       appBar: appBar,
       drawer: DrawerCustom(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          _getCurrentposition();
+        },
+        label: Text('Onde estou'),
+        icon: Icon(Icons.location_on),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Observer(
         builder: (_) {
           return Stack(
@@ -213,6 +274,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                   child: GoogleMap(
                     mapType: MapType.normal,
                     zoomControlsEnabled: true,
+                    myLocationEnabled: true,
                     initialCameraPosition: store.initialCameraPositionSmallHill,
                     onMapCreated: (GoogleMapController controller) {
                       store.googleMapController!.complete(controller);

@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.furg_interactive_map">
+      <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <queries>
     <!-- If your app opens https URLs -->
     <intent>
@@ -28,7 +30,7 @@
         android:usesCleartextTraffic="true">
         <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="Olha o passarinho"/>
+               android:value="AIzaSyAfVMr3b_o3x8FTAolzuGGDSoyOOM3fLRs"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -87,12 +87,12 @@ class LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/login-background.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: AssetImage("assets/images/login-background.jpg"),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
               width: screenWidth,
               height: deviceHeight,
               child: Container()
@@ -139,7 +139,7 @@ class LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           "Esqueceu a senha?",
-                          style: TextStyle(color: Colors.black),
+                          // style: TextStyle(color: Colors.black),
                         ),
                       ),
                     ),

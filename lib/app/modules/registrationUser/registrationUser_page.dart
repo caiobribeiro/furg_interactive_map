@@ -91,12 +91,12 @@ class RegistrationUserPageState extends State<RegistrationUserPage> {
       body: Container(
         // width: screenWidth,
         height: screenHeight,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/login-background.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage("assets/images/login-background.jpg"),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +160,7 @@ class RegistrationUserPageState extends State<RegistrationUserPage> {
                         value: store.registerFurgEmailType,
                         icon: const Icon(Icons.arrow_downward),
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        // style: const TextStyle(color: Colors.black),
                         underline: Container(
                           height: 2,
                           color: Colors.black,
