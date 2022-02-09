@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/buildMapInfoSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
+import 'package:furg_interactive_map/app/widgets/moreLinks_widget.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -23,7 +25,8 @@ class FurgMapPage extends StatefulWidget {
 
 class FurgMapPageState extends State<FurgMapPage> {
   final FurgMapStore store = Modular.get();
-
+  OverlayEntry? entry;
+  Offset offset = Offset(20, 40);
   @override
   void initState() {
     AppBar appBar = AppBar(
@@ -240,6 +243,62 @@ class FurgMapPageState extends State<FurgMapPage> {
     c.animateCamera(CameraUpdate.newCameraPosition(p));
   }
 
+  void showOberlay(urlPage) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+    entry = OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy,
+        child: Column(
+          children: [
+            GestureDetector(
+              onPanUpdate: (details) {
+                offset += details.delta;
+                entry!.markNeedsBuild();
+              },
+              child: Container(
+                color: Colors.grey,
+                width: deviceWidth * 0.7,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          hideOverlay();
+                        },
+                        child: Icon(Icons.close, color: Colors.white),
+                        style: ElevatedButton.styleFrom(
+                          maximumSize: Size(64, 45),
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                          primary: Colors.blue, // <-- Button color
+                          onPrimary: Colors.red, // <-- Splash color
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            MoreLinks(
+              urlPage: urlPage,
+            ),
+          ],
+        ),
+      ),
+    );
+
+    final overlay = Overlay.of(context);
+    overlay!.insert(entry!);
+  }
+
+  void hideOverlay() {
+    entry?.remove();
+    entry = null;
+  }
+
   @override
   Widget build(BuildContext context) {
     AppBar appBar = AppBar(
@@ -255,14 +314,55 @@ class FurgMapPageState extends State<FurgMapPage> {
     return Scaffold(
       appBar: appBar,
       drawer: DrawerCustom(),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _getCurrentposition();
-        },
-        label: Text('Onde estou'),
-        icon: Icon(Icons.location_on),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.link),
+            label: "Site Furg",
+            onTap: () {
+              if (entry == null) {
+                showOberlay("https://www.furg.br/");
+              } else {
+                hideOverlay();
+              }
+            },
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.link),
+            label: "Sistemas Furg",
+            onTap: () {
+              if (entry == null) {
+                showOberlay("https://api.furg.br/account/login");
+              } else {
+                hideOverlay();
+              }
+            },
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.link),
+            label: "AVA Furg",
+            onTap: () {
+              if (entry == null) {
+                showOberlay("https://ava.furg.br/login/index.php");
+              } else {
+                hideOverlay();
+              }
+            },
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.link),
+            label: "Repositório SI",
+            onTap: () {
+              if (entry == null) {
+                showOberlay("https://repositoriosi.com/index.php");
+              } else {
+                hideOverlay();
+              }
+            },
+          ),
+        ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Observer(
         builder: (_) {
           return Stack(
@@ -273,7 +373,6 @@ class FurgMapPageState extends State<FurgMapPage> {
                   visible: store.isMapPopulated,
                   child: GoogleMap(
                     mapType: MapType.normal,
-                    zoomControlsEnabled: true,
                     myLocationEnabled: true,
                     initialCameraPosition: store.initialCameraPositionSmallHill,
                     onMapCreated: (GoogleMapController controller) {
@@ -283,6 +382,36 @@ class FurgMapPageState extends State<FurgMapPage> {
                     markers: Set.from(store.allBuildings),
                     polygons: store.polygons,
                   ),
+                ),
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          child: ElevatedButton.icon(
+                            icon: Icon(
+                              Icons.my_location,
+                              size: 24.0,
+                            ),
+                            label: Text('Onde Estou'),
+                            onPressed: () => _getCurrentposition(),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(
+                                  MediaQuery.of(context).size.width * 0.2, 45),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ],

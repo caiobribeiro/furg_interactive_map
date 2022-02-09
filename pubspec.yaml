@@ -43,6 +43,9 @@ dependencies:
   parse_server_sdk_flutter: ^3.1.0
   download_assets: ^3.0.0
   location: ^4.3.0
+  webview_flutter: ^3.0.0
+  flutter_speed_dial: ^5.0.0+1
+  
 
   intl: ^0.17.0
   custom_info_window: ^1.0.1
