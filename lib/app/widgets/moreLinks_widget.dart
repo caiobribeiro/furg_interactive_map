@@ -4,6 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class MoreLinks extends StatefulWidget {
   final String urlPage;
+
   const MoreLinks({Key? key, required this.urlPage}) : super(key: key);
 
   @override

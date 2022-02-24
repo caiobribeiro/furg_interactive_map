@@ -31,6 +31,7 @@ class MoreLinksPageState extends State<MoreLinksPage> {
       drawer: DrawerCustom(),
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[

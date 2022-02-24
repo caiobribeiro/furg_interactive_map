@@ -43,13 +43,13 @@ class DrawerCustom extends StatelessWidget {
             title: Text('Eventos'),
             leading: Icon(Icons.event),
           ),
-          ListTile(
-            onTap: () {
-              Modular.to.navigate('/moreLinks');
-            },
-            title: Text('Mais Links'),
-            leading: Icon(Icons.link_outlined),
-          ),
+          // ListTile(
+          //   onTap: () {
+          //     Modular.to.navigate('/moreLinks');
+          //   },
+          //   title: Text('Mais Links'),
+          //   leading: Icon(Icons.link_outlined),
+          // ),
           Divider(
             height: 5,
             thickness: 2,

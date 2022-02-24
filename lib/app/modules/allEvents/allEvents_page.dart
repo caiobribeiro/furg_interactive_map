@@ -94,6 +94,7 @@ class AllEventsPageState extends State<AllEventsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       drawer: DrawerCustom(),
       body: Observer(builder: (_) {

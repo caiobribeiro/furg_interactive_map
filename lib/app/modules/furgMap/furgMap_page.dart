@@ -15,6 +15,7 @@ import 'package:furg_interactive_map/app/modules/furgMap/furgMap_store.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FurgMapPage extends StatefulWidget {
   final String title;
@@ -243,6 +244,14 @@ class FurgMapPageState extends State<FurgMapPage> {
     c.animateCamera(CameraUpdate.newCameraPosition(p));
   }
 
+  void _launchURL(link) async {
+    if (await canLaunch(link)) {
+      await launch(
+        link,
+      );
+    }
+  }
+
   void showOberlay(urlPage) {
     final deviceWidth = MediaQuery.of(context).size.width;
     entry = OverlayEntry(
@@ -257,11 +266,32 @@ class FurgMapPageState extends State<FurgMapPage> {
                 entry!.markNeedsBuild();
               },
               child: Container(
-                color: Colors.grey,
                 width: deviceWidth * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20.0),
+                      topLeft: Radius.circular(20.0)),
+                  color: Colors.grey,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _launchURL(urlPage);
+                        },
+                        child: Icon(Icons.open_in_browser, color: Colors.white),
+                        style: ElevatedButton.styleFrom(
+                          maximumSize: Size(64, 45),
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                          primary: Colors.blue, // <-- Button color
+                          onPrimary: Colors.red, // <-- Splash color
+                        ),
+                      ),
+                    ),
                     Container(
                       margin: EdgeInsets.all(5),
                       child: ElevatedButton(
@@ -374,6 +404,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                   child: GoogleMap(
                     mapType: MapType.normal,
                     myLocationEnabled: true,
+                    zoomControlsEnabled: false,
                     initialCameraPosition: store.initialCameraPositionSmallHill,
                     onMapCreated: (GoogleMapController controller) {
                       store.googleMapController!.complete(controller);
@@ -402,7 +433,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                             onPressed: () => _getCurrentposition(),
                             style: ElevatedButton.styleFrom(
                               minimumSize: Size(
-                                  MediaQuery.of(context).size.width * 0.2, 45),
+                                  MediaQuery.of(context).size.width * 0.2, 50),
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10.0),
                               ),

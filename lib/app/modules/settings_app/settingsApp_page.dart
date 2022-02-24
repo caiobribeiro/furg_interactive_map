@@ -100,6 +100,7 @@ class _SettingsAppPageState
     return Scaffold(
       appBar: AppBar(
         title: Text('Configurações'),
+        centerTitle: true,
       ),
       drawer: DrawerCustom(),
       body: Row(

@@ -5,7 +5,7 @@ import 'package:furg_interactive_map/app/modules/auth/auth_module.dart';
 import 'package:furg_interactive_map/app/modules/eventUpdater/eventUpdater_module.dart';
 // import 'package:furg_interactive_map/app/modules/fmap/fmap_module.dart';
 import 'package:furg_interactive_map/app/modules/login/login_module.dart';
-import 'package:furg_interactive_map/app/modules/moreLinks/moreLinks_module.dart';
+// import 'package:furg_interactive_map/app/modules/moreLinks/moreLinks_module.dart';
 import 'package:furg_interactive_map/app/modules/registrationUser/registrationUser_module.dart';
 import 'package:furg_interactive_map/app/modules/resetPassword/resetPassword_module.dart';
 import 'package:furg_interactive_map/app/modules/settings_app/settingsApp_module.dart';
@@ -36,6 +36,6 @@ class AppModule extends Module {
     ModuleRoute('/resetPassword', module: ResetPasswordModule()),
     ModuleRoute('/aboutTheProject', module: AboutTheProjectModule()),
     ModuleRoute('/eventUpdaterModule', module: EventUpdaterModule()),
-    ModuleRoute('/moreLinks', module: MoreLinksModule()),
+    // ModuleRoute('/moreLinks', module: MoreLinksModule()),
   ];
 }

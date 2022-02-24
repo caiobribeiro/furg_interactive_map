@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class AllBuildingsPage extends StatefulWidget {
   final String title;
-  const AllBuildingsPage({Key? key, this.title = 'AllBuildingsPage'})
+  const AllBuildingsPage({Key? key, this.title = 'Todos os Prédios'})
       : super(key: key);
   @override
   AllBuildingsPageState createState() => AllBuildingsPageState();
@@ -163,6 +163,7 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       drawer: DrawerCustom(),
       body: Observer(builder: (_) {

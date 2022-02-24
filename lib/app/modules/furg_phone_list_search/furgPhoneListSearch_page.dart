@@ -32,6 +32,7 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       drawer: DrawerCustom(),
       body: Column(
