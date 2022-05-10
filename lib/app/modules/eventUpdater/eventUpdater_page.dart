@@ -230,30 +230,49 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          "Nome atual:",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          child: Text(
+                            "Nome atual:",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Text("${store.eventName}"),
                         Divider(),
-                        Text(
-                          "Descrição atual:",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          child: Text(
+                            "Descrição atual:",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Text("${store.eventDescription}"),
                         Divider(),
-                        Text(
-                          "URL imagem atual: ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          child: Text(
+                            "URL imagem atual: ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
-                        Text("${store.eventImageLink}"),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          child: Image.network(store.eventImageLink),
+                        ),
                         Divider(),
-                        Text(
-                          "Site atual: ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          child: Text(
+                            "Site atual: ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Text("${store.eventOficialSite}"),
                         Divider(),
+                        Text(
+                          "Preencha apenas os campos que deseja alterar, os campos não preenchidos manterão o estado atual.",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 0, 5, 15),
                           child: TextFormField(
@@ -296,23 +315,6 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                                 ),
                               )
                             : Container(),
-                        CheckboxListTile(
-                          title: Text("Este evento não tem site oficial"),
-                          checkColor: Colors.white,
-                          // fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: store.thereIsNoOficialSite,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              store.thereIsNoOficialSite = value!;
-                            });
-                          },
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                          child: Divider(
-                            color: Colors.grey,
-                          ),
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -465,7 +467,6 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                             ),
                             label: Text('Atualizar Evento'),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.green,
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.65, 45),
                               shape: new RoundedRectangleBorder(

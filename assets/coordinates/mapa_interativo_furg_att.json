@@ -392,10 +392,10 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Arquivo GEral FURG"
-        
+        "imageBuilding": "https://proplad.furg.br/images/DSC01305.JPG",
+        "oficialSite": "https://proplad.furg.br/index.php/arquivo",
+        "name": "Arquivo Geral FURG",
+        "description": "A Coordenação de Arquivo Geral tem a finalidade de implementar, executar, supervisionar e dar apoio às diversas unidades na execução da política arquivística através do Sistema de Arquivos (SIARQ/FURG), responsabilizando-se pela normatização dos procedimentos técnicos aplicados aos arquivos da FURG. Localiza-se na segunda rótula após a entrada, enfrente ao lago, num prédio com área total de 1.219m2, distribuído em dois andares. Além da Coordenação, no andar térreo encontram-se o Protocolo (subordinado à Pró-Reitoria de Infraestrutura) e a Ouvidoria (subordinado à Reitoria). As duas salas destinadas a guarda dos acervos possuem mais de 310 m2, junto com uma Sala de Pesquisas, onde o usuário poderá consultar o acervo em mesas individuais ou coletivas com mobiliário e equipamentos adequados. O horário de funcionamento do Arquivo é de segunda a sexta-feira das 8h às 12h e das 13h30min às 17h30min. Considerando o Plano de Contingência da FURG para o enfrentamento da pandemia do Coronavíms (Covid-19), aprovado em 19/03/2020, que tem por objetivo orientar a organização do trabalho na universidade, priorizando o trabalho remoto e definindo as responsabilidades para as atividades classificadas como essenciais, assim como a Portaria n° 0533/2020 do Gabinete da Reitora, de 20/03/2020 que dispõe sobre o funcionamento administrativo e académico em todos os campi da Universidade Federal do Rio Grande- FURG, em consequência das medidas de prevenção e enfrentamento da pandemia provocada pelo novo Coronavíms (Covid -19), a Coordenação de Arquivo Geral informa que: Todas as atividades de competência da Pró-Retoria de Planejamento e Administração - PROPLAD, e consequentemente da Coordenação de Arquivo Geral, serão preferencialmente desenvolvidas por home office. Qualquer solicitação de documentos poderá ser realizada através dos seguintes e-mails: arquivo.geral@furg.br e arquivo.pesquisa@furg.br onde a equipe técnica entrará em contato com o solicitante para comunicar dia e hora de empréstimo dos documentos."
       },
       "geometry": {
         "type": "Polygon",
@@ -648,7 +648,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://img.restaurantguru.com/cbb8-Pub-and-bar-Bar-e-Lancheria-do-Japa-interior.jpg",
         "oficialSite": "",
         "name": "Bar do Japa"
         
@@ -688,9 +688,9 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Biblioteca Centra"
+        "imageBuilding": "https://ppgdjs.furg.br/images/Biblioteca-central.jpg",
+        "oficialSite": "https://biblioteca.furg.br/pt/",
+        "name": "Biblioteca Central"
         
       },
       "geometry": {
@@ -845,7 +845,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://bioteriocentral.furg.br/",
         "name": "Biotério"
         
       },
@@ -1037,9 +1037,9 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Café Cultura"
+        "imageBuilding": "https://dac.furg.br/images/noticias/162/04.jpg",
+        "oficialSite": "https://pt-br.facebook.com/pages/category/Performance-Art/Caf%C3%A9-Cultural-Furg-1667921880090777/",
+        "name": "Café Cultural"
         
       },
       "geometry": {
@@ -1113,8 +1113,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://www.furg.br/arquivos/Noticias/2019/Institucional/23-08-19-caic-fachada-furg-1.jpg",
+        "oficialSite": "https://caic.furg.br/pt/",
         "name": "CAIC"
         
       },
@@ -1217,8 +1217,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://ceamecim.furg.br/images/fotos/20.jpg",
+        "oficialSite": "https://ceamecim.furg.br/",
         "name": "CEAMECIM"
         
       },
@@ -1287,7 +1287,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "CEILORS 1 - Núcleo Operacional de Triagem "
+        "name": "CEILORS 1 - Núcleo Operacional de Triagem"
         
       },
       "geometry": {
@@ -1461,9 +1461,10 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "CEMESUL"
+        "imageBuilding": "https://cemesul.furg.br/images/logo/cemesul2.jpg",
+        "oficialSite": "https://cemesul.furg.br/index.php",
+        "name": "CEME-SUL",
+        "description": "O Centro de Microscopia Eletrônica do Sul - (CEME-SUL) constitui-se como um órgão vinculado à Pró-Reitoria de Pesquisa e Pós-Graduação – PROPESP conforme a Resolução Nº 031/2014 do CONSUN. O CEME-SUL tem por finalidade oferecer condições de uso dos recursos da microscopia eletrônica, bem como de técnicas afins lotadas no mesmo centro em atividades relacionadas ao ensino, à pesquisa, inovação e à extensão universitária. O CEME-SUL é voltado a diversas áreas do conhecimento, possuindo estrutura multiusuária com o uso compartilhado regido pela Resolução Nº 004/2006 (CONSUN), de 17 de Março de 2006, a qual dispõe sobre o Programa de Compartilhamento de Equipamentos Multiusuários da FURG – ProCEM."
         
       },
       "geometry": {
@@ -1725,7 +1726,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://sistemas.furg.br//sistemas/paginaFURG/arquivos/noticias_fotos/004780.JPG",
         "oficialSite": "",
         "name": "Centro de Convivência - CC"
         
@@ -1953,7 +1954,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://www.furg.br/arquivos/institucional/Historia/2008-cidec-linha-do-tempo-furg.png",
         "oficialSite": "",
         "name": "CIDEC-SUL"
         
@@ -2033,8 +2034,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://ctg.furg.br/images/stories/ctg.pagina.jpg",
+        "oficialSite": "https://ctg.furg.br/",
         "name": "CTG"
         
       },
@@ -2085,8 +2086,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://2.bp.blogspot.com/-aD0fNyqDe5c/VBzigYuftwI/AAAAAAAAABQ/_w5jtrr-hRA/s1600/DCE.jpg",
+        "oficialSite": "https://dcefurg.blogspot.com/",
         "name": "DCE"
         
       },
@@ -2161,7 +2162,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40b3ee26-1448-4802-955b-92abf9cddab8/index.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T010600Z&X-Amz-Expires=86400&X-Amz-Signature=83bf5812748fac778689b2db1f37bac85ba8dabbe7d4d12331ce6956c0ef259d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22index.jpg%22&x-id=GetObject",
         "oficialSite": "",
         "name": "Deck"
         
@@ -2229,8 +2230,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3fc14c65-56cb-4d48-a8b2-601273693058/Code_pjDyRd1JgZ.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T010905Z&X-Amz-Expires=86400&X-Amz-Signature=3c68197ca169077456ff2a506e6dbd236d2ee65d306096ddd2dbd62c08617d29&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Code_pjDyRd1JgZ.png%22&x-id=GetObject",
+        "oficialSite": "https://edgraf.furg.br/",
         "name": "EDGRAF"
         
       },
@@ -2266,7 +2267,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://edufisica.furg.br/",
         "name": "Educação Física"
         
       },
@@ -2325,10 +2326,10 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "EQA - Escola de Química e Alimentos - FURG"
-        
+        "imageBuilding": "https://eqa.furg.br/images/stories/inicial/DJI_00111.jpg",
+        "oficialSite": "https://eqa.furg.br/",
+        "name": "EQA - Escola de Química e Alimentos - FURG",
+        "description": "A Escola de Química e Alimentos tem por missão a educação superior e a produção do conhecimento, integrado no ensino, na pesquisa e na extensão, no domínio da Química e Alimentos e áreas correlatas, visando o progresso científico, tecnológico, cultural e socioeconômico local, regional e nacional, na perspectiva do desenvolvimento sustentável, da inclusão social e democratização do conhecimento, respeitando a sua filosofia e estando em consonância com o Projeto Pedagógico Institucional e com o Plano de Desenvolvimento Institucional da FURG."
       },
       "geometry": {
         "type": "Polygon",
@@ -2401,8 +2402,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://eqa.furg.br/images/stories/inicial/DJI_00111.jpg",
+        "oficialSite": "https://eqa.furg.br/",
         "name": "EQA - Escola de Química e Alimentos - FURG"
         
       },
@@ -2521,8 +2522,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://eqa.furg.br/images/stories/inicial/DJI_00111.jpg",
+        "oficialSite": "https://eqa.furg.br/",
         "name": "EQA LEEB CEAS - FURG"
         
       },
@@ -2565,8 +2566,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://io.furg.br/images/esantar.jpg",
+        "oficialSite": "https://esantar.furg.br/",
         "name": "Estação de Apoio Antártico - ESANTAR"
         
       },
@@ -2706,7 +2707,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://ee.furg.br/estrutura/nucleos-docentes/arquitetura-e-urbanismo",
         "name": "Expressão Gráfica"
         
       },
@@ -2837,8 +2838,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/be8e3920-55dc-47c1-89ac-4ee433e708c4/firefox_RhFxe9akkG.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T011506Z&X-Amz-Expires=86400&X-Amz-Signature=b832321b466104241de87e6e42c7f57cd8ffa2277730433bbf4d5c5bb1e7316e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22firefox_RhFxe9akkG.png%22&x-id=GetObject",
+        "oficialSite": "https://icb.furg.br/",
         "name": "ICB"
         
       },
@@ -2893,8 +2894,8 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/be8e3920-55dc-47c1-89ac-4ee433e708c4/firefox_RhFxe9akkG.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T011506Z&X-Amz-Expires=86400&X-Amz-Signature=b832321b466104241de87e6e42c7f57cd8ffa2277730433bbf4d5c5bb1e7316e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22firefox_RhFxe9akkG.png%22&x-id=GetObject",
+        "oficialSite": "https://icb.furg.br/",
         "name": "ICB - Limnologia"
         
       },
@@ -2962,7 +2963,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://ila.furg.br/pt/",
         "name": "ILA"
         
       },
@@ -3030,9 +3031,9 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Imef / EE"
-        
+        "oficialSite": "https://imef.furg.br/",
+        "name": "Imef / EE",
+        "description": "No campo de sua competência, nos termos do Estatuto, do Plano de Desenvolvimento Institucional 2007/2010 e do Projeto Político Pedagógico, o IMEF/FURG tem como funções: Promover, por meio do ensino, da pesquisa e da extensão, todas as formas de conhecimento nas áreas de Matemática, Estatística e Física. Ministrar o ensino da Matemática, da Estatística e da Física no ciclo básico e profissional das diferentes carreiras oferecidas pela Universidade; Ministrar o ensino profissional, para a formação de Licenciados e Bacharéis em Matemática e de Licenciados e Bacharéis em Física; Ministrar o ensino de disciplinas de Matemática, Estatística e Física em cursos de pós-graduação da Universidade; Promover o aperfeiçoamento continuado do corpo docente e técnico do IMEF; Desenvolver, coordenar e executar projetos de pesquisa básica e aplicada; Promover e participar de atividades interdisciplinares de ensino, pesquisa e extensão; Fornecer uma educação de qualidade, promovendo a formação de futuros professores de Matemática e Física, tornando estes críticos e ambientados com sua opção profissional; Propiciar aos acadêmicos da FURG o desenvolvimento de habilidades gerais e específicas, para aplicações em ciências puras e aplicadas; Fomentar a pesquisa, ensino e extensão em teorias e práticas, com uso dos laboratórios já existentes e novos a serem criados conforme metas propostas; Aprofundar a integração do IMEF com o desenvolvimento socioeconômico regional e nacional;"
       },
       "geometry": {
         "type": "Polygon",
@@ -3537,10 +3538,10 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Instituto de Ciências Humanas e da Inrfomeção -ICHI"
-        
+        "imageBuilding": "https://ichi.furg.br/images/phocagallery/prediopsi/thumbs/phoca_thumb_l_prediopsi3.jpg",
+        "oficialSite": "https://ichi.furg.br/",
+        "name": "Instituto de Ciências Humanas e da Informação - ICHI",
+        "description": "O ensino, a pesquisa e a extensão são funções básicas da Universidade Federal do Rio Grande e, por conseguinte, do Instituto de Ciências Humanas e da Informação, que busca, com sua execução, de forma indissociável, criar condições para que estudantes, professores e servidores sejam participantes, criativos, críticos e responsáveis, diante dos problemas socioeconômicos, filosóficos, culturais, artísticos, tecnológicos e científicos da humanidade. Este princípio basilar fundamenta e orienta as atividades acadêmico-científicas do Instituto, que focalizam a diversidade das experiências humanas, do indivíduo, das comunidades locais, das sociedades nacionais e do ser humano. Assim compreendido seu fazer, a coletividade acadêmica reunida no Instituto dedica-se ao estudo dos fenômenos e problemas intrínsecos à ação do ser humano, buscando conhecimento e compreensão sobre esse, suas ações e relações, de maneira a gerar e apropriar conhecimentos que contribuam para o aprimoramento da sociedade que mantém a Universidade, aí incluídos os membros da própria coletividade acadêmica. O conhecimento, apropriado ou gerado, é concebido como patrimônio cultural da humanidade, devendo ser o mais amplamente disseminado, seja diretamente, por meio das disciplinas oferecidas aos diferentes cursos da Universidade, seja por meio de atividades de pesquisa e extensão. Considerado o contexto histórico de sua criação, os protagonistas construtores do Instituto compreendem que a informação, concebida como conhecimento registrado e socialmente compartilhado, é um dos elementos constitutivos do próprio ser humano, independente das tecnologias utilizadas na sua geração, processamento, apropriação e uso, tendo a liberdade de expressão como princípio fundamental a ser observado em suas atividades acadêmico-científicas. Coerente com a Filosofia e Política para a Universidade Federal do Rio Grande, o Instituto integra-se à visão preconizada por esta diretriz aprovada pelo Conselho Universitário, elegendo o estudo do Ecossistema Costeiro como uma de suas prioridades, buscando aprimorar a compreensão das inter-relações entre os organismos que o constituem, incluindo-se aí o ser humano e o meio ambiente. Ademais, o Instituto enfatiza que é tarefa indeclinável de seus integrantes, docentes, discentes e servidores, articular a efetiva implementação desta diretriz, tanto no âmbito das disciplinas e dos projetos de pesquisa e extensão, quanto nos relacionamentos com as demais unidades acadêmicas da Universidade e com protagonistas da comunidade local, da sociedade brasileira e da comunidade acadêmico-científica internacional."
       },
       "geometry": {
         "type": "Polygon",
@@ -3653,10 +3654,9 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
+        "imageBuilding": "https://artes.furg.br/images/Imagens/predio-artes.png",
+        "oficialSite": "https://artes.furg.br/espaco",
         "name": "Instituto de Letras e Artes"
-        
       },
       "geometry": {
         "type": "Polygon",
@@ -3738,9 +3738,9 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Instituto de Oceanografia"
-        
+        "oficialSite": "https://io.furg.br/",
+        "name": "Instituto de Oceanografia",
+        "description": "O estudo oceanográfico sistemático teve início no Brasil com a criação do Instituto Paulista de Oceanografia (1946), entidade posteriormente absorvida pela Universidade de São Paulo, passando a denominar-se Instituto Oceanográfico. Desde então, foram criados diversos núcleos de pesquisas oceanográficas no país, sendo hoje raras as universidades brasileiras localizadas na região litorânea que não desenvolvam algum tipo de trabalho voltado para o mar. A criação dos cursos de graduação foi decisiva para o desenvolvimento da Oceanografia no Brasil. O curso de Oceanologia da FURG, criado em 1970, deu início ao primeiro ciclo de criação de cursos da modalidade, que se estendeu até o começo da década de 90. Neste período foram criados outros dois cursos, um na Universidade do Estado do Rio de Janeiro – UERJ (Rio de Janeiro/RJ), em 1977, e o outro na Universidade do Vale do Itajaí – UNIVALI (Itajaí/SC), em 1992. A criação destes cursos teve por base a convicção de que o mar era um manancial inesgotável de recursos, pesqueiros em particular, razão pela qual havia necessidade de formação de um profissional capaz de contribuir para a exploração ordenada destas riquezas. O segundo ciclo foi desencadeado pela aprovação da Lei N° 9.394 (Lei de Diretrizes e Bases da Educação Nacional – LDB), de 20/12/1996, que garantiu às instituições reconhecidas como universidades e centros universitários autonomia para criar cursos de graduação. Até então, todas as instituições tinham que solicitar autorização prévia ao Ministério da Educação – MEC. Num momento em que a preocupação com as questões ambientais começava a ganhar cada vez mais espaço junto à sociedade, para o que muito contribuiu a Conferência das Nações Unidas para o Meio Ambiente e o Desenvolvimento – CNUMAD (ECO’92/Rio’92), a criação de novos cursos que tinham como foco principal a preservação e a exploração sustentável de recursos aquáticos ocorreu como um processo natural. Assim, foram criados cursos de Oceanografia no Centro Universitário Monte Serrat – UNIMONTE (Santos/SP), em 1998, na Universidade Federal do Espírito Santo – UFES (Vitória/ES), em 2000, na Universidade Federal do Pará – UFPA (Belém/PA), também em 2000, na Universidade de São Paulo – USP (São Paulo/SP), em 2002, na Universidade Federal da Bahia – UFBA (Salvador/BA), em 2004 e, naquele mesmo ano, na Universidade Federal do Paraná – UFPR (Pontal do Sul/PR). Ainda em andamento, o terceiro ciclo foi desencadeado pela decisão governamental de implantar o Programa de Apoio a Planos de Reestruturação e Expansão das Universidades Federais (REUNI). Neste contexto, algumas instituições que tinham grupos de pesquisa e/ou programas de pós-graduação na área de Ciências do Mar trataram de aproveitar as condições favoráveis e propuseram a criação de novos cursos de Oceanografia. Assim, em 2008 foram criados cursos na Universidade Federal de Santa Catarina – UFSC (Florianópolis/SC), na Universidade Federal do Ceará – UFC (Fortaleza/CE) e na Universidade Federal de Pernambuco – UFPE (Recife/PE). Embora não associado ao contexto do REUNI, um outro curso de graduação em Oceanografia entrou em funcionamento na Universidade Federal do Maranhão – UFMA em 2009, resultado da alteração da denominação do curso de Ciências Aquáticas implantado naquela instituição em 2002."
       },
       "geometry": {
         "type": "Polygon",
@@ -3906,10 +3906,9 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Laboratório de Engenhaeia Civil"
-        
-      },
+        "oficialSite": "https://ee.furg.br/",
+        "name": "Laboratório de Engenharia Civil",
+        "description": "A Escola de Engenharia (EE) é uma Unidade organizacional executiva da Universidade Federal do Rio Grande - FURG, de âmbito e alcance acadêmico (ensino, pesquisa e extensão), didático-pedagógico (planejamento e execução curricular) e administrativo (gestão e organização de materiais e pessoal), identificada com a área de conhecimento ou de atividade acadêmica de formação em nível superior em Engenharia. A Escola de Engenharia foi criada em 15 de agosto de 2008, conforme disposto na Resolução Nº 18/2008 do Colegiado Especial da FURG. No desenvolvimento das atividades de ensino, pesquisa e extensão, abrange as áreas do conhecimento inerentes aos cursos de graduação em Engenharia Civil, Engenharia Mecânica, Engenharia Civil Empresarial, Engenharia Mecânica Empresarial, e aos cursos de mestrado em Engenharia Oceânica, Engenharia Mecânica e Modelagem Computacional. Possui 80 docentes efetivos, 8 docentes substitutos, 4 professores visitantes, 28 Técnicos Administrativos em Educação (TAE), 4 estagiários e 25 laboratórios. Com o Plano de Expansão e Reestruturação da Universidade - Reuni/FURG, passou a ter também as graduações em Engenharia Civil, Costeira e Portuária e Engenharia Mecânica Naval. Há uma pós-graduação, especialização em Gestão Ambiental em Municípios, mestrados em Engenharia Oceânica, Engenharia Mecânica e Modelagem Computacional e doutorado em Modelagem Computacional."      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -3973,9 +3972,9 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Laboratório de Esrudos de Oceano e Clima"
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66248c57-5a39-4448-9288-d6e1d3c4913d/39764897_zf1IlGFE1xAhAHO491Bt7qp_3dKS1aqx1YAAtv3Q2Y8.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T012039Z&X-Amz-Expires=86400&X-Amz-Signature=9a5753d3a65957fcb16f3199f5af4a6d648c3430bed6250d7100bfb4e1fbe877&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%2239764897_zf1IlGFE1xAhAHO491Bt7qp_3dKS1aqx1YAAtv3Q2Y8.jpg%22&x-id=GetObject",
+        "oficialSite": "https://goal.furg.br/",
+        "name": "Laboratório de Estudos de Oceano e Clima"
         
       },
       "geometry": {
@@ -4225,7 +4224,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQigDtE0BrP2kwV-kUEitrE_vreKo3DcXZigckfYp9QsNZ8oCE8bEsCC39at7xrgo16aSk&usqp=CAU",
         "oficialSite": "",
         "name": "Lanchonete Cláudio"
         
@@ -4266,7 +4265,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://life.furg.br/",
         "name": "LIFE"
         
       },
@@ -4506,7 +4505,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://nudese.furg.br/",
         "name": "NUDESE"
         
       },
@@ -4667,8 +4666,8 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Oceanogradia Biológica"
+        "oficialSite": "https://ppgocbio.furg.br/",
+        "name": "Oceanografia Biológica"
         
       },
       "geometry": {
@@ -4807,7 +4806,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "www.oceanografia.furg.br",
         "name": "Oceanografia"
         
       },
@@ -5390,7 +5389,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "http://www.c3.furg.br/images/img3.jpg",
         "oficialSite": "",
         "name": "Pavilhão 3",
         
@@ -5836,7 +5835,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://prae.furg.br/",
         "name": "PRAE"
         
       },
@@ -5872,7 +5871,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://musica.furg.br/",
         "name": "Prédio da Música"
         
       },
@@ -5947,7 +5946,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c468639b-f110-4047-a5ed-5198b34a64d1/index_artes.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T013121Z&X-Amz-Expires=86400&X-Amz-Signature=c062275da090c5bc7c9d4d4b4035a02ccd8de97c5447bfffacd01e4313790112&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22index%2520artes.jpg%22&x-id=GetObject",
         "oficialSite": "",
         "name": "Prédio das Artes"
         
@@ -6052,9 +6051,9 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Pró Reitoria de Gestão de Pessoas"
-        
+        "oficialSite": "https://progep.furg.br/",
+        "name": "Pró Reitoria de Gestão de Pessoas",
+        "description": "Os servidores públicos são elemento fundamental para que a universidade cumpra sua finalidade de formar pessoas. Com o objetivo de garantir que o trabalho na instituição seja coletivo, humanizado e orientado para o interesse público é que a Pró-reitoria de Gestão de Pessoas (Progep) atua, desenvolvendo ações na área de recursos humanos. O trabalho da Progep começa antes mesmo do ingresso do servidor na universidade, com as seleções e concursos públicos. A pró-reitoria atua na acolhida dos recém-chegados, com atividades de integração, acompanhamento de estágio probatório, avaliação de desempenho e desenvolvimento da vida funcional dos servidores, além de promover cursos e atividades na área da formação continuada e capacitação. A Progep também cuida da saúde do servidor, buscando proporcionar ambientes de trabalho saudáveis, distribuindo equipamentos de segurança e dando orientações e atendimentos que promovam a saúde física e mental."
       },
       "geometry": {
         "type": "Polygon",
@@ -6140,7 +6139,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://www.furg.br/pro-reitorias/apresentacao",
         "name": "Pró Reitorias"
         
       },
@@ -6220,8 +6219,8 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "PROGRAD - CEFOP"
+        "oficialSite": "https://prograd.furg.br/",
+        "name": "PROGRAD - CFOP"
         
       },
       "geometry": {
@@ -6311,9 +6310,9 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
-        "oficialSite": "",
-        "name": "PROINFA"
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3b49153d-04cc-4c6f-8830-f85ef3183faa/firefox_sBcOE5nvaX.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T013331Z&X-Amz-Expires=86400&X-Amz-Signature=55cd51b640f1af56a35170180e012daf266d3f6ca56f4ca04e7b5741a756f44a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22firefox_sBcOE5nvaX.png%22&x-id=GetObject",
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
+        "name": "PROINFRA"
         
       },
       "geometry": {
@@ -6388,7 +6387,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
         "name": "PROINFA / CGA - Armazenamento Temporário de Resíduos"
         
       },
@@ -6440,7 +6439,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://proplad.furg.br/",
         "name": "PROPLAD"
         
       },
@@ -6531,9 +6530,10 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://www.furg.br/arquivos/institucional/reitoria-furg.png",
         "oficialSite": "",
-        "name": "Reitoria"
+        "name": "Reitoria",
+        "description": "A Reitoria é o órgão executivo da Administração Superior da Universidade. O Reitor e o Vice-Reitor são responsáveis pela administração, supervisão e coordenação das atividades universitárias na forma prevista no Estatuto e no Regimento Geral. A Reitoria é composta por: Gabinete do Reitor, Pró-Reitorias, Secretaria Executiva dos Conselhos, Assessorias, Ouvidoria, Auditoria Interna, Comissões Permanentes e Órgãos Vinculados."
         
       },
       "geometry": {
@@ -6623,7 +6623,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://img.restaurantguru.com/w550/h367/rf6e-Rose-Conveniencias-interior.jpg",
         "oficialSite": "",
         "name": "Rose Conveniências"
         
@@ -6660,7 +6660,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://sead.furg.br/",
         "name": "SEAD"
         
       },
@@ -6773,7 +6773,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Pórtico Av. Roberto Socowski"
+        "name": "Pórtico Av. Roberto Socoowski"
         
       },
       "geometry": {
@@ -6843,7 +6843,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1c8bc82a-b79e-4035-9fba-e2423702f0e1/43546326_fILHLN60jD7kjkdFz5E_UmrdWxBy_iShkyjwW5g3nyk.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T013719Z&X-Amz-Expires=86400&X-Amz-Signature=dff68c9e36123fa14eeda4084963037637cc4206467107187b0ad1a3218c99cf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%2243546326_fILHLN60jD7kjkdFz5E_UmrdWxBy_iShkyjwW5g3nyk.jpg%22&x-id=GetObject",
         "oficialSite": "",
         "name": "Restaurante Universitário"
         
@@ -6887,7 +6887,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1c8bc82a-b79e-4035-9fba-e2423702f0e1/43546326_fILHLN60jD7kjkdFz5E_UmrdWxBy_iShkyjwW5g3nyk.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220319T013719Z&X-Amz-Expires=86400&X-Amz-Signature=dff68c9e36123fa14eeda4084963037637cc4206467107187b0ad1a3218c99cf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%2243546326_fILHLN60jD7kjkdFz5E_UmrdWxBy_iShkyjwW5g3nyk.jpg%22&x-id=GetObject",
         "oficialSite": "",
         "name": "Restaurante Universitário"
         
@@ -6991,7 +6991,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://www.furg.br/arquivos/servicos/ceu-assistencia-basica-furg.jpg",
         "oficialSite": "",
         "name": "CEU 1"
         
@@ -7027,7 +7027,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://www.furg.br/arquivos/servicos/ceu-assistencia-basica-furg.jpg",
         "oficialSite": "",
         "name": "CEU 2"
         
@@ -7063,7 +7063,7 @@
     {
       "type": "Feature",
       "properties": {
-        "imageBuilding": "",
+        "imageBuilding": "https://www.furg.br/arquivos/servicos/ceu-assistencia-basica-furg.jpg",
         "oficialSite": "",
         "name": "CEU 3"
         
@@ -7313,7 +7313,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7349,7 +7349,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7389,7 +7389,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7489,7 +7489,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7557,7 +7557,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7593,7 +7593,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7629,7 +7629,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7665,7 +7665,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7765,7 +7765,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7801,7 +7801,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7845,7 +7845,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7897,7 +7897,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7933,7 +7933,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -7969,7 +7969,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8025,7 +8025,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8113,7 +8113,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8149,7 +8149,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8185,7 +8185,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8221,7 +8221,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8293,7 +8293,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8337,7 +8337,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8381,7 +8381,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8437,7 +8437,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8644,9 +8644,9 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "Instituto de Ciências Biológicas"
-        
+        "oficialSite": "https://icb.furg.br/",
+        "name": "Instituto de Ciências Biológicas",
+        "description": "As atividades do Instituto de Ciências Biológicas estarão focadas nos aspectos ambientais, biológicos, relacionados à saúde humana, e na biodiversidade, buscando preservar, consolidar, expandir, organizar e disseminar o conhecimento por meio do ensino, da pesquisa e da extensão, respeitadas a Política e a Filosofia Institucional. Instituto de Ciências Biológicas tem como filosofia a formação e a capacitação de recursos humanos, o incentivo e a realização de atividades de geração, integração e difusão de conhecimentos em Ciências Biológicas, bem como a promoção de ações e atividades visando o desenvolvimento da cultura em todas as suas formas de expressão, e a preservação do patrimônio histórico e cultural. O Instituto de Ciências Biológicas tem por missão promover a educação plena do indivíduo enfatizada na formação em Ciências Biológicas, contemplando a técnica e as humanidades, sendo capaz de despertar a criatividade e o espírito crítico, fomentar as ciências e propiciar os conhecimentos necessários para o desenvolvimento humano e social, de maneira a contribuir para a preservação do ambiente e a promoção da saúde e da qualidade de vida. "
       },
       "geometry": {
         "type": "Polygon",
@@ -8744,7 +8744,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://icb.furg.br/",
         "name": "Instituto de Ciências Biológicas"
         
       },
@@ -8797,7 +8797,7 @@
       "properties": {
         "imageBuilding": "",
         "oficialSite": "",
-        "name": "Estacionamento "
+        "name": "Estacionamento"
         
       },
       "geometry": {
@@ -8832,8 +8832,8 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
-        "name": "PROINFA - Prédio Multiuso"
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
+        "name": "PROINFRA - Prédio Multiuso"
         
       },
       "geometry": {
@@ -8868,7 +8868,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
         "name": "PROINFA - Prédio Multiuso"
         
       },
@@ -8904,7 +8904,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
         "name": "PROINFA / PU - Manutenção Elétrica"
         
       },
@@ -8948,7 +8948,7 @@
       "type": "Feature",
       "properties": {
         "imageBuilding": "",
-        "oficialSite": "",
+        "oficialSite": "https://proinfra.furg.br/prefeitura_universitaria.html",
         "name": "PROINFA / PU - Manutenção Elétrica"
         
       },

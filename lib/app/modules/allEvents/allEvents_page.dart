@@ -334,7 +334,10 @@ class AllEventsPageState extends State<AllEventsPage> {
                       ),
                     ],
                   )
-                : Container(),
+                : Card(
+                    margin: EdgeInsets.all(10),
+                    child: Text("Para criar eventos é preciso estar conectado"),
+                  ),
           ],
         );
       }),

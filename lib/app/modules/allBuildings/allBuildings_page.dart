@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AllBuildingsPage extends StatefulWidget {
@@ -43,6 +44,7 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
     List<String> listBuildingDescrptions = [];
     List<String> listBuildingSite = [];
     List<String> listBuildingImage = [];
+    List<LatLng> listBuildingLocation = [];
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       final titleLower = store
           .jsonDecodedLatLngPolygons.features![i].properties.name
@@ -58,7 +60,7 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
           listBuildingDescrptions.add(store
               .jsonDecodedLatLngPolygons.features![i].properties.description);
         } else {
-          listBuildingDescrptions.add("Indisponível");
+          listBuildingDescrptions.add("Descrição indisponível");
         }
 
         if (store.jsonDecodedLatLngPolygons.features![i].properties
@@ -72,12 +74,19 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
 
         if (store.jsonDecodedLatLngPolygons.features![i].properties
                 .imageBuilding !=
-            null) {
+            "") {
           listBuildingImage.add(store
               .jsonDecodedLatLngPolygons.features![i].properties.imageBuilding);
         } else {
-          listBuildingImage.add("Indisponível");
+          listBuildingImage.add("Imagem indisponível");
         }
+        listBuildingLocation.add(
+          LatLng(
+              store.jsonDecodedLatLngPolygons.features![i].geometry
+                  .coordinates[0].last.last,
+              store.jsonDecodedLatLngPolygons.features![i].geometry
+                  .coordinates[0].first.first),
+        );
       }
     }
     void _launchURL(link) async {
@@ -87,6 +96,15 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
           forceSafariVC: true, // IOS
           forceWebView: true, // Android
         );
+      }
+    }
+
+    void _launchMapsUrl(double lat, double lon) async {
+      final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
       }
     }
 
@@ -120,27 +138,57 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
                                       ),
                                     ),
                                   ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
+                                    child: listBuildingImage[index] ==
+                                            "Imagem indisponível"
+                                        ? Text(listBuildingImage[index])
+                                        : Image.network(
+                                            listBuildingImage[index]),
+                                  ),
                                   Padding(
                                       padding: const EdgeInsets.all(16.0),
                                       child: Text(
                                         "${listBuildingDescrptions[index]}",
-                                        style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.6)),
                                       )),
-                                  ButtonBar(
-                                    alignment: MainAxisAlignment.start,
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
                                     children: [
-                                      TextButton(
-                                        style: ButtonStyle(
-                                          foregroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.blue),
+                                      ElevatedButton.icon(
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.4,
+                                              20),
                                         ),
                                         onPressed: () {
                                           _launchURL(listBuildingSite[index]);
                                         },
-                                        child: Text(listBuildingSite[index]),
+                                        label: Text("Site Oficial"),
+                                        icon: const Icon(Icons.web_rounded),
+                                      ),
+                                      ElevatedButton.icon(
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.4,
+                                              20),
+                                        ),
+                                        onPressed: () {
+                                          _launchMapsUrl(
+                                              listBuildingLocation
+                                                  .last.latitude,
+                                              listBuildingLocation
+                                                  .last.longitude);
+                                        },
+                                        label: const Text('Navegar'),
+                                        icon: const Icon(Icons.route_outlined),
                                       ),
                                     ],
                                   ),
@@ -160,6 +208,25 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    void _launchURL(link) async {
+      if (await canLaunch(link)) {
+        await launch(
+          link,
+          forceSafariVC: true, // IOS
+          forceWebView: true, // Android
+        );
+      }
+    }
+
+    void _launchMapsUrl(double lat, double lon) async {
+      final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lon';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -172,7 +239,7 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
               ? Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                      margin: EdgeInsets.fromLTRB(30, 10, 30, 0),
                       child: TextField(
                         decoration: InputDecoration(
                           filled: true,
@@ -184,7 +251,7 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                       child: ElevatedButton.icon(
                         icon: Icon(
                           Icons.search,
@@ -229,26 +296,113 @@ class AllBuildingsPageState extends State<AllBuildingsPage> {
                                             ),
                                             Padding(
                                                 padding:
-                                                    const EdgeInsets.all(16.0),
-                                                child: Text(
-                                                  "${store.jsonDecodedLatLngPolygons.features![index].properties.description}",
-                                                  style: TextStyle(
-                                                      color: Colors.black
-                                                          .withOpacity(0.6)),
+                                                    const EdgeInsets.all(12.0),
+                                                child: Column(
+                                                  children: [
+                                                    store
+                                                                .jsonDecodedLatLngPolygons
+                                                                .features![
+                                                                    index]
+                                                                .properties
+                                                                .imageBuilding ==
+                                                            ""
+                                                        ? Container(
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(0, 0,
+                                                                    0, 10),
+                                                            child: Text(
+                                                                "Imagem Indisponível"),
+                                                          )
+                                                        : Container(
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(0, 0,
+                                                                    0, 10),
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.6,
+                                                            child: Image.network(store
+                                                                .jsonDecodedLatLngPolygons
+                                                                .features![
+                                                                    index]
+                                                                .properties
+                                                                .imageBuilding),
+                                                          ),
+                                                    store
+                                                                .jsonDecodedLatLngPolygons
+                                                                .features![
+                                                                    index]
+                                                                .properties
+                                                                .description ==
+                                                            null
+                                                        ? Container(
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(0, 10,
+                                                                    0, 10),
+                                                            child: Text(
+                                                                "Descrição Indisponível"),
+                                                          )
+                                                        : Text(
+                                                            "${store.jsonDecodedLatLngPolygons.features![index].properties.description}",
+                                                          ),
+                                                  ],
                                                 )),
                                             ButtonBar(
                                               alignment:
-                                                  MainAxisAlignment.start,
+                                                  MainAxisAlignment.spaceAround,
                                               children: [
-                                                TextButton(
-                                                  style: ButtonStyle(
-                                                    foregroundColor:
-                                                        MaterialStateProperty
-                                                            .all<Color>(
-                                                                Colors.blue),
+                                                ElevatedButton.icon(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                        20),
                                                   ),
-                                                  onPressed: () {},
-                                                  child: Text('Site'),
+                                                  onPressed: () {
+                                                    _launchURL(store
+                                                        .jsonDecodedLatLngPolygons
+                                                        .features![index]
+                                                        .properties
+                                                        .oficialSite);
+                                                  },
+                                                  label: Text("Site Oficial"),
+                                                  icon: const Icon(
+                                                      Icons.web_rounded),
+                                                ),
+                                                ElevatedButton.icon(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    fixedSize: Size(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.4,
+                                                        20),
+                                                  ),
+                                                  onPressed: () {
+                                                    _launchMapsUrl(
+                                                        store
+                                                            .jsonDecodedLatLngPolygons
+                                                            .features![index]
+                                                            .geometry
+                                                            .coordinates[0]
+                                                            .last
+                                                            .last,
+                                                        store
+                                                            .jsonDecodedLatLngPolygons
+                                                            .features![index]
+                                                            .geometry
+                                                            .coordinates[0]
+                                                            .first
+                                                            .first);
+                                                  },
+                                                  label: const Text('Navegar'),
+                                                  icon: const Icon(
+                                                      Icons.route_outlined),
                                                 ),
                                               ],
                                             ),

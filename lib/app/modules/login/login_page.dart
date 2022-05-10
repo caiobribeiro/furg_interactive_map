@@ -84,92 +84,78 @@ class LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: appBar,
-      body: Stack(
-        children: [
-          Container(
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     image: AssetImage("assets/images/login-background.jpg"),
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
-              width: screenWidth,
-              height: deviceHeight,
-              child: Container()
-              // BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 60),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white30,
+                    border: OutlineInputBorder(),
+                    hintText: 'Email Furg',
+                  ),
+                  onChanged: store.setLoginNickName,
+                ),
               ),
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 60),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white30,
-                      border: OutlineInputBorder(),
-                      hintText: 'Email Furg',
-                    ),
-                    onChanged: store.setLoginNickName,
+              Container(
+                margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white30,
+                    border: OutlineInputBorder(),
+                    hintText: 'Senha',
                   ),
+                  onChanged: store.setLoginPassword,
                 ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white30,
-                      border: OutlineInputBorder(),
-                      hintText: 'Senha',
-                    ),
-                    onChanged: store.setLoginPassword,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 25, 0),
-                      child: TextButton(
-                        onPressed: () {
-                          Modular.to.pushNamed('/resetPassword');
-                        },
-                        child: Text(
-                          "Esqueceu a senha?",
-                          // style: TextStyle(color: Colors.black),
-                        ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                    child: TextButton(
+                      onPressed: () {
+                        Modular.to.pushNamed('/resetPassword');
+                      },
+                      child: Text(
+                        "Esqueceu a senha?",
+                        // style: TextStyle(color: Colors.black),
                       ),
                     ),
-                  ],
-                ),
-                Observer(
-                  builder: (_) {
-                    return Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: ElevatedButton.icon(
-                        icon: Icon(
-                          Icons.login_rounded,
-                          size: 24.0,
-                        ),
-                        label: Text('Entrar'),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(330, 50),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () => doUserLogin(),
+                  ),
+                ],
+              ),
+              Observer(
+                builder: (_) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: ElevatedButton.icon(
+                      icon: Icon(
+                        Icons.login_rounded,
+                        size: 24.0,
                       ),
-                    );
-                  },
-                ),
-              ],
-            ),
+                      label: Text('Entrar'),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(330, 50),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      onPressed: () => doUserLogin(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

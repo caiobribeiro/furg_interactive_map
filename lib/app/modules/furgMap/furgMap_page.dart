@@ -26,6 +26,7 @@ class FurgMapPage extends StatefulWidget {
 
 class FurgMapPageState extends State<FurgMapPage> {
   final FurgMapStore store = Modular.get();
+
   OverlayEntry? entry;
   Offset offset = Offset(20, 40);
   @override
@@ -172,7 +173,7 @@ class FurgMapPageState extends State<FurgMapPage> {
             consumeTapEvents: true,
             polygonId: PolygonId(tempName),
             points: tempPolygonList,
-            fillColor: Colors.greenAccent,
+            fillColor: tempName == "Estacionamento" ? Colors.grey : Colors.blue,
             strokeWidth: 1,
             onTap: () {
               animateTo(buildingPostion.latitude, buildingPostion.longitude);

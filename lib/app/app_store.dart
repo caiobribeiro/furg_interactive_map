@@ -15,57 +15,26 @@ class MyTheme {
 
   // * Iniatilizing light theme
   static ThemeData _buildLightTheme() {
-    final base = ThemeData.light();
-    return base.copyWith(
-      colorScheme: ColorScheme(
-        primary: HexColor("#e9c46a"),
-        onPrimary: Colors.black,
-        primaryVariant: Colors.orange,
-        background: Colors.red,
-        onBackground: Colors.black,
-        secondary: Colors.red,
-        onSecondary: Colors.white,
-        secondaryVariant: Colors.deepOrange,
-        error: Colors.black,
-        onError: Colors.white,
-        surface: Colors.white,
-        onSurface: Colors.black,
+    final lightBase = ThemeData(
+        colorSchemeSeed: HexColor("#FFEB3B"),
         brightness: Brightness.light,
-      ),
+        useMaterial3: true);
+    return lightBase;
 
-      //   elevatedButtonTheme: ElevatedButtonThemeData(
-      //     style: ButtonStyle(
-      //       backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
-      //     ),
-      //   ),
-    );
+    //   elevatedButtonTheme: ElevatedButtonThemeData(
+    //     style: ButtonStyle(
+    //       backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+    //     ),
+    //   ),
   }
 
   // * Iniatilizing dark theme and changing ElevatedButtonThemeData to fallow the dark theme
   static ThemeData _buildDarkTheme() {
-    final base = ThemeData.dark();
-    return base.copyWith(
-      colorScheme: ColorScheme(
-        primary: HexColor("#e9c46a"),
-        onPrimary: Colors.black,
-        primaryVariant: Colors.orange,
-        background: Colors.red,
-        onBackground: Colors.black,
-        secondary: Colors.red,
-        onSecondary: Colors.white,
-        secondaryVariant: Colors.deepOrange,
-        error: Colors.black,
-        onError: Colors.white,
-        surface: Colors.white,
-        onSurface: Colors.black,
+    final darkBase = ThemeData(
+        colorSchemeSeed: HexColor("#FFEB3B"),
         brightness: Brightness.dark,
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
-        ),
-      ),
-    );
+        useMaterial3: true);
+    return darkBase;
   }
 }
 
@@ -76,6 +45,9 @@ abstract class _AppStoreBase with Store {
     isLoggedVerification();
     loadTheme();
   }
+
+  // Breakpoints
+  var kTabletBreakpoint = 768.0;
 
   @observable
   bool isRegistered = false;

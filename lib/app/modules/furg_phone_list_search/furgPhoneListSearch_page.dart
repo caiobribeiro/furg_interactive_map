@@ -39,16 +39,6 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.all(10),
-            child: Text(
-              "Encontre aqui os telefones de pessoas ou setores da universidade.",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ),
-          Container(
             margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
             child: TextField(
               decoration: InputDecoration(
@@ -60,6 +50,17 @@ class FurgPhoneListSearchPageState extends State<FurgPhoneListSearchPage> {
               onChanged: store.setSearchTelListString,
             ),
           ),
+          Container(
+            margin: EdgeInsets.all(10),
+            child: Text(
+              "Encontre aqui os telefones de pessoas ou setores da universidade.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Divider(),
           Observer(
             builder: (_) {
               store.searchPhoneListString;
