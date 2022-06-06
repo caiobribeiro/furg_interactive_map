@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:furg_interactive_map/app/app_store.dart';
 
-class DrawerCustom extends StatelessWidget {
+class DrawerCustom extends StatefulWidget {
   const DrawerCustom({Key? key}) : super(key: key);
+
+  @override
+  State<DrawerCustom> createState() => _DrawerCustomState();
+}
+
+class _DrawerCustomState extends State<DrawerCustom> {
+  final AppStore _appStore = Modular.get();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
-          Container(
-            padding: EdgeInsets.all(25),
-            child: Image.asset('assets/images/furglogo.png'),
-            decoration: BoxDecoration(
-              color: Colors.black,
-            ),
+          _appStore.isDark
+              ? Container(
+                  padding: EdgeInsets.all(20),
+                  child: Image.asset('assets/images/furglogo.png'),
+                )
+              : Container(
+                  padding: EdgeInsets.all(20),
+                  child: Image.asset('assets/images/furglogo-fontepreta.png'),
+                ),
+          Divider(
+            height: 5,
+            thickness: 2,
           ),
           ListTile(
             onTap: () {
@@ -22,6 +37,7 @@ class DrawerCustom extends StatelessWidget {
             title: Text('Mapa'),
             leading: Icon(Icons.map),
           ),
+
           ListTile(
             onTap: () {
               Modular.to.navigate('/search');

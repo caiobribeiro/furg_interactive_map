@@ -89,14 +89,7 @@ class RegistrationUserPageState extends State<RegistrationUserPage> {
     return Scaffold(
       appBar: appBar,
       body: Container(
-        // width: screenWidth,
         height: screenHeight,
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/login-background.jpg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

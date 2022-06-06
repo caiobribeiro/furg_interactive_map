@@ -42,13 +42,15 @@ class AuthPageState extends State<AuthPage> {
                           return _appStore.isDark
                               ? Container(
                                   margin: EdgeInsets.fromLTRB(0, 20, 0, 40),
-                                  width: 200,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.3,
                                   child: Image.asset(
                                       "assets/images/logo-furg-sem-fundo-branco.png"),
                                 )
                               : Container(
                                   margin: EdgeInsets.fromLTRB(0, 20, 0, 40),
-                                  width: 200,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.3,
                                   child: Image.asset(
                                       "assets/images/logo-furg-sem-fundo.png"),
                                 );
@@ -147,14 +149,18 @@ class AuthPageState extends State<AuthPage> {
                             Observer(builder: (_) {
                               return _appStore.isDark
                                   ? Container(
-                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                                      width: 170,
+                                      margin: EdgeInsets.fromLTRB(0, 30, 0, 40),
+                                      width:
+                                          MediaQuery.of(context).size.height *
+                                              0.4,
                                       child: Image.asset(
                                           "assets/images/logo-furg-sem-fundo-branco.png"),
                                     )
                                   : Container(
                                       margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                                      width: 170,
+                                      width:
+                                          MediaQuery.of(context).size.height *
+                                              0.4,
                                       child: Image.asset(
                                           "assets/images/logo-furg-sem-fundo.png"),
                                     );
@@ -164,7 +170,7 @@ class AuthPageState extends State<AuthPage> {
                       ),
                       Flexible(
                         child: Container(
-                          margin: EdgeInsets.all(20),
+                          margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
                           child: Column(
                             children: [
                               Container(

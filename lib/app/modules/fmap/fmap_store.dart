@@ -145,7 +145,7 @@ abstract class _FmapStoreBase with Store {
     // * Create a marker for each building in json file
     for (var i = 0; i < jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
-      String tempDescription = "Não há descrição";
+      String tempDescription = "Descrição indisponível";
       for (var j = 0;
           j <
               jsonDecodedLatLngPolygons

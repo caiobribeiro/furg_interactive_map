@@ -31,12 +31,6 @@ class FurgMapPageState extends State<FurgMapPage> {
   Offset offset = Offset(20, 40);
   @override
   void initState() {
-    AppBar appBar = AppBar(
-      title: Text("Carreiros"),
-      centerTitle: true,
-      actions: [],
-    );
-    store.appBarSize = appBar.preferredSize.height;
     _getAllEvents();
     store.loadMapStyles();
     createPolygonForEachBuilding();
@@ -113,7 +107,6 @@ class FurgMapPageState extends State<FurgMapPage> {
     }
   }
 
-  // ! Create a polygon for each building
   Future createPolygonForEachBuilding() async {
     // * Load json file
     store.allPolygonBuildingsJson = await rootBundle
@@ -126,7 +119,7 @@ class FurgMapPageState extends State<FurgMapPage> {
     // * Create a marker for each building in json file
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
-      String tempDescription = "Não há descrição";
+      String tempDescription = "Descrição indisponível";
       String oficialBuildingSite = "Site não disponível";
       String tempimage = "";
       LatLng buildingPostion = LatLng(0, 0);
@@ -254,6 +247,7 @@ class FurgMapPageState extends State<FurgMapPage> {
   }
 
   void showOberlay(urlPage) {
+    var currentUrlPage = urlPage;
     final deviceWidth = MediaQuery.of(context).size.width;
     entry = OverlayEntry(
       builder: (context) => Positioned(
@@ -267,12 +261,12 @@ class FurgMapPageState extends State<FurgMapPage> {
                 entry!.markNeedsBuild();
               },
               child: Container(
-                width: deviceWidth * 0.7,
+                width: deviceWidth * 0.8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       topLeft: Radius.circular(20.0)),
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.background,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -283,14 +277,7 @@ class FurgMapPageState extends State<FurgMapPage> {
                         onPressed: () {
                           _launchURL(urlPage);
                         },
-                        child: Icon(Icons.open_in_browser, color: Colors.white),
-                        style: ElevatedButton.styleFrom(
-                          maximumSize: Size(64, 45),
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                          primary: Colors.blue, // <-- Button color
-                          onPrimary: Colors.red, // <-- Splash color
-                        ),
+                        child: Icon(Icons.open_in_browser),
                       ),
                     ),
                     Container(
@@ -299,23 +286,21 @@ class FurgMapPageState extends State<FurgMapPage> {
                         onPressed: () {
                           hideOverlay();
                         },
-                        child: Icon(Icons.close, color: Colors.white),
-                        style: ElevatedButton.styleFrom(
-                          maximumSize: Size(64, 45),
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                          primary: Colors.blue, // <-- Button color
-                          onPrimary: Colors.red, // <-- Splash color
-                        ),
+                        child: Icon(Icons.close),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            MoreLinks(
-              urlPage: urlPage,
-            ),
+            Observer(builder: (_) {
+              return Container(
+                width: deviceWidth * 0.8,
+                child: MoreLinks(
+                  urlPage: currentUrlPage,
+                ),
+              );
+            }),
           ],
         ),
       ),
@@ -376,6 +361,17 @@ class FurgMapPageState extends State<FurgMapPage> {
             onTap: () {
               if (entry == null) {
                 showOberlay("https://ava.furg.br/login/index.php");
+              } else {
+                hideOverlay();
+              }
+            },
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.link),
+            label: "Email Furg",
+            onTap: () {
+              if (entry == null) {
+                showOberlay("https://webmail.furg.br/");
               } else {
                 hideOverlay();
               }

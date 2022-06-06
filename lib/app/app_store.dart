@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:mobx/mobx.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+
+import 'modules/settings_app/color_schema.dart';
 part 'app_store.g.dart';
 
 class AppStore = _AppStoreBase with _$AppStore;
@@ -16,7 +17,7 @@ class MyTheme {
   // * Iniatilizing light theme
   static ThemeData _buildLightTheme() {
     final lightBase = ThemeData(
-        colorSchemeSeed: HexColor("#FFEB3B"),
+        colorScheme: lightColorScheme,
         brightness: Brightness.light,
         useMaterial3: true);
     return lightBase;
@@ -31,7 +32,7 @@ class MyTheme {
   // * Iniatilizing dark theme and changing ElevatedButtonThemeData to fallow the dark theme
   static ThemeData _buildDarkTheme() {
     final darkBase = ThemeData(
-        colorSchemeSeed: HexColor("#FFEB3B"),
+        colorScheme: darkColorScheme,
         brightness: Brightness.dark,
         useMaterial3: true);
     return darkBase;

@@ -90,7 +90,7 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     for (var i = 0; i < store.jsonDecodedLatLngPolygons.features!.length; i++) {
       List<LatLng> tempPolygonList = [];
       // ignore: unused_local_variable
-      String tempDescription = "Não há descrição";
+      String tempDescription = "Descrição indisponível";
 
       for (var j = 0;
           j <

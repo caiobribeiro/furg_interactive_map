@@ -21,12 +21,12 @@ class ResetPasswordPageState extends State<ResetPasswordPage> {
       centerTitle: true,
       title: Text("Recuperação de Senha"),
     );
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final appBarHeight = appBar.preferredSize.height;
-    final statusBarHeight = MediaQuery.of(context).padding.top;
-    // final deviceWidth = MediaQuery.of(context).size.width;
-    final deviceHeight = screenHeight - appBarHeight - statusBarHeight;
+    // final screenHeight = MediaQuery.of(context).size.height;
+    // final screenWidth = MediaQuery.of(context).size.width;
+    // final appBarHeight = appBar.preferredSize.height;
+    // final statusBarHeight = MediaQuery.of(context).padding.top;
+    // // final deviceWidth = MediaQuery.of(context).size.width;
+    // final deviceHeight = screenHeight - appBarHeight - statusBarHeight;
 
     void showSuccess(String message) {
       showDialog(
@@ -83,64 +83,50 @@ class ResetPasswordPageState extends State<ResetPasswordPage> {
 
     return Scaffold(
       appBar: appBar,
-      body: Stack(
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/login-background.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              width: screenWidth,
-              height: deviceHeight,
-              child: Container()
-              // BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-              ),
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 60),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white30,
-                      border: OutlineInputBorder(),
-                      hintText: 'Email',
-                    ),
-                    onChanged: store.setrecoverEmail,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.fromLTRB(0, 80, 0, 60),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.fromLTRB(30, 0, 30, 10),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white30,
+                    border: OutlineInputBorder(),
+                    hintText: 'Email',
                   ),
+                  onChanged: store.setrecoverEmail,
                 ),
-                Observer(
-                  builder: (_) {
-                    return Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: ElevatedButton.icon(
-                        icon: Icon(
-                          Icons.email_outlined,
-                          size: 24.0,
-                        ),
-                        label: Text('Recuperar'),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(330, 50),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () => store.isRecoverFormValid
-                            ? doUserResetPassword()
-                            : null,
+              ),
+              Observer(
+                builder: (_) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: ElevatedButton.icon(
+                      icon: Icon(
+                        Icons.email_outlined,
+                        size: 24.0,
                       ),
-                    );
-                  },
-                ),
-              ],
-            ),
+                      label: Text('Recuperar'),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(330, 50),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      onPressed: () => store.isRecoverFormValid
+                          ? doUserResetPassword()
+                          : null,
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
