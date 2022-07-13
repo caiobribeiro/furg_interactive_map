@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/app/widgets/customDrawer.dart';
+import 'package:furg_interactive_map/app/widgets/moreLinks_widget.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
@@ -130,6 +131,76 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
     }
     // * Make the map widget visiable
     return store.isAllMarkersFetched = !store.isAllMarkersFetched;
+  }
+
+  OverlayEntry? entry;
+  Offset offset = Offset(20, 40);
+
+  void showOberlay(urlPage) {
+    var currentUrlPage = urlPage;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    entry = OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy,
+        child: Column(
+          children: [
+            GestureDetector(
+              onPanUpdate: (details) {
+                offset += details.delta;
+                entry!.markNeedsBuild();
+              },
+              child: Container(
+                width: deviceWidth * 0.8,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20.0),
+                      topLeft: Radius.circular(20.0)),
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.open_in_browser),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          hideOverlay();
+                        },
+                        child: Icon(Icons.close),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Observer(builder: (_) {
+              return Container(
+                width: deviceWidth * 0.8,
+                child: MoreLinks(
+                  urlPage: currentUrlPage,
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+
+    final overlay = Overlay.of(context);
+    overlay!.insert(entry!);
+  }
+
+  void hideOverlay() {
+    entry?.remove();
+    entry = null;
   }
 
   @override
@@ -351,6 +422,24 @@ class EventUpdaterPageState extends State<EventUpdaterPage> {
                             ),
                             label: Text('Selecionar Data'),
                             onPressed: () => _selectDate(context),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(
+                                  MediaQuery.of(context).size.width * 0.65, 45),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: ElevatedButton.icon(
+                            icon: Icon(
+                              Icons.date_range,
+                              size: 24.0,
+                            ),
+                            label: Text('Overlay test'),
+                            onPressed: () => showOberlay("google.com"),
                             style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.65, 45),

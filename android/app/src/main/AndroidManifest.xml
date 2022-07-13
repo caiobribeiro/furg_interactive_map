@@ -29,7 +29,7 @@
         android:usesCleartextTraffic="true">
         <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="Olha o passarinho"/>
+               android:value="olha"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

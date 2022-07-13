@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:furg_interactive_map/app/app_store.dart';
 import 'package:furg_interactive_map/app/widgets/buildEventSheet_widget.dart';
 import 'package:furg_interactive_map/models/coordinates/polygon_coordinates.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -20,6 +22,7 @@ class EventsManagementPage extends StatefulWidget {
 
 class EventsManagementPageState extends State<EventsManagementPage> {
   final EventsManagementStore store = Modular.get();
+  final AppStore _appStore = Modular.get();
 
   @override
   void initState() {
@@ -127,6 +130,113 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     return store.isAllMarkersFetched = !store.isAllMarkersFetched;
   }
 
+  OverlayEntry? entry;
+  Offset offset = Offset(20, 40);
+
+  void showOberlay(urlPage) {
+    var currentUrlPage = urlPage;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    Completer<GoogleMapController>? googleMapController = Completer();
+    entry = OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy,
+        child: Column(
+          children: [
+            GestureDetector(
+              onPanUpdate: (details) {
+                offset += details.delta;
+                entry!.markNeedsBuild();
+              },
+              child: Container(
+                width: deviceWidth * 0.8,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20.0),
+                      topLeft: Radius.circular(20.0)),
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          hideOverlay();
+                        },
+                        child: Icon(Icons.done),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              width: deviceWidth * 0.8,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+              ),
+              child: Text(
+                "Mantenha pressionado para definir a localização do evento.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Observer(builder: (_) {
+              return Container(
+                width: deviceWidth * 0.8,
+                child: Container(
+                  width: deviceWidth * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: Observer(
+                    builder: (_) {
+                      return Visibility(
+                        visible: store.isAllMarkersFetched,
+                        child: GoogleMap(
+                          mapType: MapType.normal,
+                          zoomControlsEnabled: true,
+                          initialCameraPosition:
+                              store.initialCameraPositionSmallHill,
+                          onMapCreated: (GoogleMapController controller) {
+                            googleMapController.complete(controller);
+                            store.setMapStyle();
+
+                            if (_appStore.isDark) {
+                              controller.setMapStyle(store.darkMapStyle);
+                            } else {
+                              controller.setMapStyle(store.lightMapStyle);
+                            }
+                          },
+                          markers: {
+                            if (store.eventLocantion != null)
+                              store.eventLocantion!,
+                          },
+                          polygons: store.polygons,
+                          onLongPress: _addNewwMarkerEvent,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+
+    final overlay = Overlay.of(context);
+    overlay!.insert(entry!);
+  }
+
+  void hideOverlay() {
+    entry?.remove();
+    entry = null;
+  }
+
   @override
   Widget build(BuildContext context) {
     _registerEvent() async {
@@ -153,6 +263,12 @@ class EventsManagementPageState extends State<EventsManagementPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
+        leading: IconButton(
+          iconSize: 25,
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Modular.to.navigate('/allEvents'),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.all(5),
@@ -265,6 +381,24 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                 ),
               ),
               Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.date_range,
+                    size: 24.0,
+                  ),
+                  label: Text('Test overlay'),
+                  onPressed: () => showOberlay("google.com"),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width * 0.65, 45),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
                 margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                 child: Divider(
                   color: Colors.grey,
@@ -282,34 +416,34 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(5, 15, 5, 15),
-                    width: MediaQuery.of(context).size.width - 10,
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: Observer(
-                      builder: (_) {
-                        return Visibility(
-                          visible: store.isAllMarkersFetched,
-                          child: GoogleMap(
-                            mapType: MapType.normal,
-                            zoomControlsEnabled: true,
-                            initialCameraPosition:
-                                store.initialCameraPositionSmallHill,
-                            onMapCreated: (GoogleMapController controller) {
-                              store.googleMapController!.complete(controller);
-                              store.setMapStyle();
-                            },
-                            markers: {
-                              if (store.eventLocantion != null)
-                                store.eventLocantion!,
-                            },
-                            polygons: store.polygons,
-                            onLongPress: _addNewwMarkerEvent,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                  // Container(
+                  //   margin: EdgeInsets.fromLTRB(5, 15, 5, 15),
+                  //   width: MediaQuery.of(context).size.width - 10,
+                  //   height: MediaQuery.of(context).size.height * 0.3,
+                  //   child: Observer(
+                  //     builder: (_) {
+                  //       return Visibility(
+                  //         visible: store.isAllMarkersFetched,
+                  //         child: GoogleMap(
+                  //           mapType: MapType.normal,
+                  //           zoomControlsEnabled: true,
+                  //           initialCameraPosition:
+                  //               store.initialCameraPositionSmallHill,
+                  //           onMapCreated: (GoogleMapController controller) {
+                  //             store.googleMapController!.complete(controller);
+                  //             store.setMapStyle();
+                  //           },
+                  //           markers: {
+                  //             if (store.eventLocantion != null)
+                  //               store.eventLocantion!,
+                  //           },
+                  //           polygons: store.polygons,
+                  //           onLongPress: _addNewwMarkerEvent,
+                  //         ),
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                   Container(
                     margin: EdgeInsets.fromLTRB(5, 5, 5, 50),
                     child: Text(
@@ -369,7 +503,6 @@ class EventsManagementPageState extends State<EventsManagementPage> {
                   ),
                   label: Text('Criar Evento'),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
                     minimumSize:
                         Size(MediaQuery.of(context).size.width * 0.65, 45),
                     shape: new RoundedRectangleBorder(

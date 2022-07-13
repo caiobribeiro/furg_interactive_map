@@ -75,12 +75,6 @@ class LoginPageState extends State<LoginPage> {
       centerTitle: true,
       title: Text("Login"),
     );
-    // final screenHeight = MediaQuery.of(context).size.height;
-    // final screenWidth = MediaQuery.of(context).size.width;
-    // final appBarHeight = appBar.preferredSize.height;
-    // final statusBarHeight = MediaQuery.of(context).padding.top;
-    // final deviceWidth = MediaQuery.of(context).size.width;
-    // final deviceHeight = screenHeight - appBarHeight - statusBarHeight;
 
     return Scaffold(
       appBar: appBar,

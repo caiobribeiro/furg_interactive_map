@@ -230,7 +230,7 @@ class _SettingsAppPageState
                               size: 24.0,
                             ),
                             label: Text('Voltar ao Mapa'),
-                            onPressed: () => Modular.to.pushNamed('/furgMap'),
+                            onPressed: () => Modular.to.navigate('/furgMap'),
                             style: ElevatedButton.styleFrom(
                               minimumSize: Size(deviceWidth * 0.65, 45),
                               shape: new RoundedRectangleBorder(

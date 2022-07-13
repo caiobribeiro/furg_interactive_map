@@ -321,7 +321,7 @@ class AllEventsPageState extends State<AllEventsPage> {
                           ),
                           label: Text('Criação de Evento'),
                           onPressed: () {
-                            Modular.to.pushNamed('/eventsManagament');
+                            Modular.to.navigate('/eventsManagament');
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(
